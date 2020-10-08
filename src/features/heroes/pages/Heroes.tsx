@@ -20,12 +20,12 @@ type Props = {};
 
 const Heroes: React.FC<Props> = () => {
   const dispatch = useDispatch();
+  const { heroes, loading } = useSelector((state: RootState) => state.hero);
 
   const smallScreen = useMediaQuery('(max-width:600px)');
-
   const classes = useStyles();
 
-  const { heroes, loading } = useSelector((state: RootState) => state.hero);
+  /*local state*/
   const [counter, setCounter] = useState('0');
 
   useEffect(() => {

@@ -10,19 +10,15 @@ import {
   AntiHeroStateType,
 } from './anti-hero.types';
 
+/*antiHero state*/
 export const initialState: AntiHeroStateType = {
-  antiHero: {
-    firstName: '',
-    house: '',
-    id: '',
-    knownAs: '',
-    lastName: '',
-  },
-  antiHeroes: [],
+  antiHero: {} as AntiHeroModel,
+  antiHeroes: [] as AntiHeroModel[],
   error: '',
   loading: false,
 };
 
+/*antiHero store*/
 export const antiHeroSlice = createSlice({
   // name is your (feature, module, namespace, context). The terminologies here can be interchangeable.
   name: antiHeroNamespace,

@@ -23,15 +23,14 @@ type Props = {};
 
 const AntiHeroes: React.FC<Props> = () => {
   const dispatch = useDispatch();
-
-  const smallScreen = useMediaQuery('(max-width:600px)');
-
-  const classes = useStyles();
-
   const { loading, antiHeroes } = useSelector(
     (state: RootState) => state.antiHero,
   );
 
+  const smallScreen = useMediaQuery('(max-width:600px)');
+  const classes = useStyles();
+
+  /*local state*/
   const [counter, setCounter] = useState('0');
 
   useEffect(() => {

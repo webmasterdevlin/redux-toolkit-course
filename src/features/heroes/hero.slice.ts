@@ -6,19 +6,15 @@ import {
 } from './hero.async.actions';
 import { HeroModel, heroNamespace, HeroStateType } from './hero.types';
 
+/*hero state*/
 export const initialState: HeroStateType = {
-  hero: {
-    firstName: '',
-    house: '',
-    id: '',
-    knownAs: '',
-    lastName: '',
-  },
-  heroes: [],
+  hero: {} as HeroModel,
+  heroes: [] as HeroModel[],
   error: '',
   loading: false,
 };
 
+/*hero store*/
 export const heroSlice = createSlice({
   // name is your (feature, module, namespace, context). The terminologies here can be interchangeable.
   name: heroNamespace,

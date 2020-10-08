@@ -10,19 +10,15 @@ import {
   VillainStateType,
 } from './villain.types';
 
+/*villain state*/
 export const initialState: VillainStateType = {
-  villain: {
-    firstName: '',
-    house: '',
-    id: '',
-    knownAs: '',
-    lastName: '',
-  },
-  villains: [],
+  villain: {} as VillainModel,
+  villains: [] as VillainModel[],
   error: '',
   loading: false,
 };
 
+/*villain store*/
 export const villainSlice = createSlice({
   // name is your (feature, module, namespace, context). The terminologies here can be interchangeable.
   name: villainNamespace,

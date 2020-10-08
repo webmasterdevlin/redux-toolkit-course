@@ -23,14 +23,14 @@ type Props = {};
 
 const Villains: React.FC<Props> = () => {
   const dispatch = useDispatch();
-
-  const classes = useStyles();
-
-  const smallScreen = useMediaQuery('(max-width:600px)');
-
   const { villains, loading } = useSelector(
     (state: RootState) => state.villain,
   );
+
+  const classes = useStyles();
+  const smallScreen = useMediaQuery('(max-width:600px)');
+
+  /*local state*/
   const [counter, setCounter] = useState('0');
 
   useEffect(() => {

@@ -1,13 +1,14 @@
 import React from 'react';
+import { Box } from '@material-ui/core';
 
 type Props = {
   title: string;
 };
 
 const TitleBar: React.FC<Props> = ({ title }) => (
-  <div className={'mb-4'}>
+  <Box mb={5}>
     <h1>{title}</h1>
-  </div>
+  </Box>
 );
 
 export default TitleBar;

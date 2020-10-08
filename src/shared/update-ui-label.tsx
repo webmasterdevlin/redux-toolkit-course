@@ -1,9 +1,15 @@
 import React from 'react';
+import { Box } from '@material-ui/core';
 
 const UpdateUiLabel = () => (
-  <div className={'d-flex flex-row-reverse bd-highlight'}>
+  <Box
+    mb={1}
+    display={'flex'}
+    flexDirection={'row'}
+    justifyContent={'flex-end'}
+  >
     <div>local-state updates, non-async actions, async actions</div>
-  </div>
+  </Box>
 );
 
 export default UpdateUiLabel;

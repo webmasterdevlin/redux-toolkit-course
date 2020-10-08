@@ -1,17 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from 'react-bootstrap/Button';
 import HeroForm from '../components/HeroForm';
 import TitleBar from '../../../shared/title-bar';
 import UpdateUiLabel from '../../../shared/update-ui-label';
 import { deleteHeroByIdAction, getHeroesAction } from '../hero.async.actions';
 import { removeHeroByIdTemporaryAction } from '../hero.slice';
 import { RootState } from '../../../store/reducers';
+import {
+  Box,
+  Button,
+  createStyles,
+  Theme,
+  Typography,
+  useMediaQuery,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 
 type Props = {};
 
 const Heroes: React.FC<Props> = () => {
   const dispatch = useDispatch();
+
+  const smallScreen = useMediaQuery('(max-width:600px)');
+
+  const classes = useStyles();
+
   const { heroes, loading } = useSelector((state: RootState) => state.hero);
   const [counter, setCounter] = useState('0');
 
@@ -24,44 +37,59 @@ const Heroes: React.FC<Props> = () => {
       <TitleBar title={'Super Heroes'} />
       <HeroForm />
       <UpdateUiLabel />
-      <ul className={'list-group'}>
+      <>
         {loading ? (
           <h2>Loading.. Please wait..</h2>
         ) : (
           heroes.map(h => (
-            <li
+            <Box
               key={h.id}
-              className={
-                'list-group-item col-12 d-flex justify-content-between'
-              }
+              mb={2}
+              display={'flex'}
+              flexDirection={smallScreen ? 'column' : 'row'}
+              justifyContent={'space-between'}
             >
-              <div>
+              <Typography>
                 <span>{`${h.firstName} ${h.lastName} is ${h.knownAs}`}</span>
                 {counter === h.id && <span> - marked</span>}
-              </div>
+              </Typography>
               <div>
-                <Button onClick={() => setCounter(h.id)} variant="dark">
+                <Button
+                  className={classes.button}
+                  onClick={() => setCounter(h.id)}
+                  variant={'contained'}
+                  color={'default'}
+                >
                   Mark
                 </Button>{' '}
                 <Button
+                  className={classes.button}
                   onClick={() => dispatch(removeHeroByIdTemporaryAction(h.id))}
-                  variant="outline-danger"
+                  variant={'contained'}
+                  color={'secondary'}
                 >
                   Remove
                 </Button>{' '}
                 <Button
+                  className={classes.button}
                   onClick={() => dispatch(deleteHeroByIdAction(h.id))}
-                  variant="danger"
+                  variant={'outlined'}
+                  color={'secondary'}
                 >
                   DELETE in DB
                 </Button>
               </div>
-            </li>
+            </Box>
           ))
         )}
-      </ul>
+      </>
       {heroes.length === 0 && !loading && (
-        <Button variant={'info'} onClick={() => dispatch(getHeroesAction())}>
+        <Button
+          className={classes.button}
+          variant={'contained'}
+          color={'primary'}
+          onClick={() => dispatch(getHeroesAction())}
+        >
           Re-fetch
         </Button>
       )}
@@ -70,3 +98,14 @@ const Heroes: React.FC<Props> = () => {
 };
 
 export default Heroes;
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    button: {
+      margin: '0 0.5rem',
+      '&:focus': {
+        outline: 'none',
+      },
+    },
+  }),
+);

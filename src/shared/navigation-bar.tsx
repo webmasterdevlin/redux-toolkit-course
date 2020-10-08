@@ -1,32 +1,70 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { style } from 'typestyle';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/reducers';
+import {
+  AppBar,
+  Box,
+  Button,
+  createStyles,
+  Theme,
+  Toolbar,
+} from '@material-ui/core';
 import TotalOfCharacters from './TotalOfCharacters';
+import { makeStyles } from '@material-ui/styles';
 
 const NavigationBar = () => {
   const store = useSelector((state: RootState) => state);
+  const history = useHistory();
+  const classes = useStyles();
   return (
-    <Navbar bg="dark" expand="lg" className={'mb-5'}>
-      <Nav className="mr-auto">
-        <Link className={`${navStyle} p-1 m-1`} to={'/anti-heroes'}>
-          Anti Heroes{' '}
+    <AppBar position="static" style={{ marginBottom: '2rem' }}>
+      <Toolbar>
+        <Box>
+          <Button
+            className={classes.button}
+            onClick={() => history.push('/anti-heroes')}
+            color="inherit"
+          >
+            Anti Heroes
+          </Button>
           <TotalOfCharacters collection={store.antiHero.antiHeroes} />
-        </Link>
-        <Link className={`${navStyle} p-1 m-1`} to={'/villains'}>
-          Villains <TotalOfCharacters collection={store.villain.villains} />
-        </Link>
-        <Link className={`${navStyle} p-1 m-1`} to={'/heroes'}>
-          Heroes <TotalOfCharacters collection={store.hero.heroes} />
-        </Link>
-      </Nav>
-    </Navbar>
+        </Box>
+        <Box>
+          <Button
+            className={classes.button}
+            onClick={() => history.push('/heroes')}
+            color="inherit"
+          >
+            Heroes
+          </Button>
+          <TotalOfCharacters collection={store.hero.heroes} />
+        </Box>
+        <Box>
+          <Button
+            className={classes.button}
+            onClick={() => history.push('/villains')}
+            color="inherit"
+          >
+            Villains
+          </Button>
+          <TotalOfCharacters collection={store.villain.villains} />
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 };
 
 export default NavigationBar;
 
-const navStyle = style({ color: 'white' });
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    button: {
+      margin: '0 0.5rem',
+      '&:focus': {
+        outline: 'none',
+      },
+    },
+  }),
+);

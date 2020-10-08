@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from 'react-bootstrap/Button';
 import VillainForm from '../components/VillainForm';
 import TitleBar from '../../../shared/title-bar';
 import UpdateUiLabel from '../../../shared/update-ui-label';
@@ -10,11 +9,25 @@ import {
 } from '../villain.async.actions';
 import { removeVillainByIdTemporaryAction } from '../villain.slice';
 import { RootState } from '../../../store/reducers';
+import {
+  Box,
+  Button,
+  createStyles,
+  Theme,
+  Typography,
+  useMediaQuery,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 
 type Props = {};
 
 const Villains: React.FC<Props> = () => {
   const dispatch = useDispatch();
+
+  const classes = useStyles();
+
+  const smallScreen = useMediaQuery('(max-width:600px)');
+
   const { villains, loading } = useSelector(
     (state: RootState) => state.villain,
   );
@@ -29,46 +42,61 @@ const Villains: React.FC<Props> = () => {
       <TitleBar title={'Super Villains'} />
       <VillainForm />
       <UpdateUiLabel />
-      <ul className={'list-group'}>
+      <>
         {loading ? (
           <h2>Loading.. Please wait..</h2>
         ) : (
           villains.map(v => (
-            <li
+            <Box
               key={v.id}
-              className={
-                'list-group-item col-12 d-flex justify-content-between'
-              }
+              mb={2}
+              display={'flex'}
+              flexDirection={smallScreen ? 'column' : 'row'}
+              justifyContent={'space-between'}
             >
-              <div>
+              <Typography>
                 <span>{`${v.firstName} ${v.lastName} is ${v.knownAs}`}</span>
                 {counter === v.id && <span> - marked</span>}
-              </div>
+              </Typography>
               <div>
-                <Button onClick={() => setCounter(v.id)} variant="dark">
+                <Button
+                  className={classes.button}
+                  onClick={() => setCounter(v.id)}
+                  variant={'contained'}
+                  color={'default'}
+                >
                   Mark
                 </Button>{' '}
                 <Button
+                  className={classes.button}
                   onClick={() =>
                     dispatch(removeVillainByIdTemporaryAction(v.id))
                   }
-                  variant="outline-danger"
+                  variant={'contained'}
+                  color={'secondary'}
                 >
                   Remove
                 </Button>{' '}
                 <Button
+                  className={classes.button}
                   onClick={() => dispatch(deleteVillainByIdAction(v.id))}
-                  variant="danger"
+                  variant={'outlined'}
+                  color={'secondary'}
                 >
                   DELETE in DB
                 </Button>
               </div>
-            </li>
+            </Box>
           ))
         )}
-      </ul>
+      </>
       {villains.length === 0 && !loading && (
-        <Button variant={'info'} onClick={() => dispatch(getVillainsAction())}>
+        <Button
+          className={classes.button}
+          variant={'contained'}
+          color={'primary'}
+          onClick={() => dispatch(getVillainsAction())}
+        >
           Re-fetch
         </Button>
       )}
@@ -77,3 +105,14 @@ const Villains: React.FC<Props> = () => {
 };
 
 export default Villains;
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    button: {
+      margin: '0 0.5rem',
+      '&:focus': {
+        outline: 'none',
+      },
+    },
+  }),
+);

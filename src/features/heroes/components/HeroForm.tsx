@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import SharedForm from '../../../shared/shared-form';
@@ -8,7 +8,7 @@ import {
 } from '../../../shared/forms-initial-values';
 import { postHeroAction } from '../hero.async.actions';
 
-const HeroForm: React.FC = () => {
+const HeroForm: FC = () => {
   const dispatch = useDispatch();
 
   return (

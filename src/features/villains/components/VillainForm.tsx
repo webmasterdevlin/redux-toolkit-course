@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import {
@@ -8,7 +8,7 @@ import {
 import SharedForm from '../../../shared/shared-form';
 import { postVillainAction } from '../villain.async.actions';
 
-const VillainForm: React.FC = () => {
+const VillainForm: FC = () => {
   const dispatch = useDispatch();
 
   return (

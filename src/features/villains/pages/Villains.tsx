@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import VillainForm from '../components/VillainForm';
 import TitleBar from '../../../shared/title-bar';
@@ -19,9 +19,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
-type Props = {};
-
-const Villains: React.FC<Props> = () => {
+const Villains: FC = () => {
   const dispatch = useDispatch();
   const { villains, loading } = useSelector(
     (state: RootState) => state.villain,

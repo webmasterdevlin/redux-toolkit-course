@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import SharedForm from '../../../shared/shared-form';
@@ -9,7 +9,7 @@ import {
   validationSchema,
 } from '../../../shared/forms-initial-values';
 
-const AntiHeroForm: React.FC = () => {
+const AntiHeroForm: FC = () => {
   const dispatch = useDispatch();
 
   return (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import HeroForm from '../components/HeroForm';
 import TitleBar from '../../../shared/title-bar';
@@ -16,9 +16,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
-type Props = {};
-
-const Heroes: React.FC<Props> = () => {
+const Heroes: FC = () => {
   const dispatch = useDispatch();
   const { heroes, loading } = useSelector((state: RootState) => state.hero);
 

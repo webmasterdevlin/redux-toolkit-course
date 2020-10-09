@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Form, FormikProps } from 'formik';
 import SharedInput from './shared-input';
 import { Box, Button, Paper } from '@material-ui/core';
 
-type Props = {
+const SharedForm: FC<{
   formikProps: FormikProps<any>;
-};
-
-const SharedForm: React.FC<Props> = ({ formikProps }) => {
+}> = ({ formikProps }) => {
   return (
     <Box mb={4}>
       <Paper>

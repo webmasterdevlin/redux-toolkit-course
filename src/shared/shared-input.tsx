@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Field, FormikProps } from 'formik';
 import { Box, createStyles, TextField, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
-type Props = {
+const SharedInput: FC<{
   formikProps: FormikProps<any>;
   id: string;
-};
-
-const SharedInput: React.FC<Props> = ({ formikProps, id }) => {
+}> = ({ formikProps, id }) => {
   const classes = useStyles();
 
   return (

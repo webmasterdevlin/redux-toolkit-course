@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AntiHeroForm from '../components/AntiHeroForm';
 import { RootState } from '../../../store/reducers';
@@ -19,9 +19,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
-type Props = {};
-
-const AntiHeroes: React.FC<Props> = () => {
+const AntiHeroes: FC = () => {
   const dispatch = useDispatch();
   const { loading, antiHeroes } = useSelector(
     (state: RootState) => state.antiHero,

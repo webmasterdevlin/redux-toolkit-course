@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-type Props = {
+const TotalOfCharacters: FC<{
   collection: any[];
-};
-
-const TotalOfCharacters: React.FC<Props> = ({ collection }) => (
-  <span style={{ color: 'cyan', margin: '0 1rem' }}>{collection?.length}</span>
+}> = props => (
+  <span style={{ color: 'cyan', margin: '0 1rem' }}>
+    {props.collection?.length}
+  </span>
 );
 
 export default TotalOfCharacters;

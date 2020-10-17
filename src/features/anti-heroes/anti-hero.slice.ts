@@ -11,6 +11,7 @@ import {
 } from './anti-hero.types';
 
 /*antiHero state*/
+// initial state or default state or initial values, it's up to you.
 export const initialState: AntiHeroStateType = {
   antiHero: {} as AntiHeroModel,
   antiHeroes: [] as AntiHeroModel[],
@@ -20,11 +21,15 @@ export const initialState: AntiHeroStateType = {
 
 /*antiHero store*/
 export const antiHeroSlice = createSlice({
-  // name is your (feature, module, namespace, context). The terminologies here can be interchangeable.
+  /*
+   name: is your feature or also called module, or namespace, 
+   or context, etc. The terminologies here can be interchangeable.
+   This is required.
+  */
   name: antiHeroNamespace,
 
-  // initialState is the default value
-  initialState,
+  // initialState is the default value and it is required.
+  initialState: initialState,
 
   // mutate using non-asynchronous actions
   reducers: {
@@ -85,7 +90,7 @@ export const antiHeroSlice = createSlice({
   },
 });
 
-/* non-async actions */
+/* export all non-async actions */
 export const { removeAntiHeroByIdTemporaryAction } = antiHeroSlice.actions;
 
 export default antiHeroSlice.reducer;

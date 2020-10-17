@@ -11,6 +11,10 @@ export const getAntiHeroesAction = createAsyncThunk(
   AntiHeroActionTypes.FETCH_ANTI_HEROES,
   async () => {
     return (await getAxios<AntiHeroModel>(EndPoints.antiHeroes)).data;
+    /* same as*/
+    // const {data} = await getAxios<AntiHeroModel>(EndPoints.antiHeroes);
+    // return data;
+    // or (await getAxios<AntiHeroModel>(EndPoints.antiHeroes)).data without the curly braces.
   },
 );
 

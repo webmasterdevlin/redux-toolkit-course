@@ -22,7 +22,7 @@ export const postVillainAction = createAsyncThunk(
 );
 
 export const deleteVillainByIdAction = createAsyncThunk(
-  VillainActionTypes.REMOVE_VILLAIN,
+  VillainActionTypes.REMOVE_VILLAIN_BY_ID,
   async (id: string) => {
     return await deleteAxios<void>(EndPoints.villains, id);
   },

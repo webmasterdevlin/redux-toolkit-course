@@ -20,9 +20,9 @@ export const heroNamespace = 'hero';
 
 /* action types */
 export const HeroActionTypes = {
-  FETCH_HEROES: `@@/${heroNamespace}/FETCH_HEROES`,
-  FETCH_HERO_BY_ID: `@@/${heroNamespace}/FETCH_HEROES_BY_ID`,
-  REMOVE_HERO: `@@/${heroNamespace}/REMOVE_HERO`,
-  ADD_HERO: `@@/${heroNamespace}/ADD_HERO`,
-  UPDATE_HERO: `@@/${heroNamespace}/UPDATE_HERO`,
+  FETCH_HEROES: `${heroNamespace}/FETCH_HEROES`,
+  FETCH_HERO_BY_ID: `${heroNamespace}/FETCH_HEROES_BY_ID`,
+  REMOVE_HERO_BY_ID: `${heroNamespace}/REMOVE_HERO_BY_ID`,
+  ADD_HERO: `${heroNamespace}/ADD_HERO`,
+  UPDATE_HERO: `${heroNamespace}/UPDATE_HERO`,
 };

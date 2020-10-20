@@ -13,7 +13,6 @@ import {
   Box,
   Button,
   createStyles,
-  Theme,
   Typography,
   useMediaQuery,
 } from '@material-ui/core';
@@ -106,7 +105,7 @@ const AntiHeroes: FC = () => {
 
 export default AntiHeroes;
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     button: {
       margin: '0 0.5rem',

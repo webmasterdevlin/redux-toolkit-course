@@ -10,7 +10,6 @@ import {
   Box,
   Button,
   createStyles,
-  Theme,
   Typography,
   useMediaQuery,
 } from '@material-ui/core';
@@ -28,7 +27,7 @@ const Heroes: FC = () => {
 
   useEffect(() => {
     dispatch(getHeroesAction());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
@@ -97,7 +96,7 @@ const Heroes: FC = () => {
 
 export default Heroes;
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     button: {
       margin: '0 0.5rem',

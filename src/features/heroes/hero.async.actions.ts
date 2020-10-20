@@ -22,7 +22,7 @@ export const postHeroAction = createAsyncThunk(
 );
 
 export const deleteHeroByIdAction = createAsyncThunk(
-  HeroActionTypes.REMOVE_HERO,
+  HeroActionTypes.REMOVE_HERO_BY_ID,
   async (id: string) => {
     return await deleteAxios<void>(EndPoints.heroes, id);
   },

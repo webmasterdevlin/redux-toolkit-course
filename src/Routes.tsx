@@ -10,7 +10,7 @@ type Routes = {
   routes?: Routes;
 }[];
 
-export const renderRoutes = (routes: Routes = []): JSX.Element => (
+export const renderRoutes = (routes: Routes = []) => (
   <Suspense fallback={<h2>Loading</h2>}>
     <Switch>
       {routes.map((route, i) => {

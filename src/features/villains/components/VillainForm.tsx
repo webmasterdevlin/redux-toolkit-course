@@ -20,7 +20,7 @@ const VillainForm: FC = () => {
         actions.resetForm();
       }}
     >
-      {formikProps => <SharedForm />}
+      {() => <SharedForm />}
     </Formik>
   );
 };

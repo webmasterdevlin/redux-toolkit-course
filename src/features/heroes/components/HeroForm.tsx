@@ -20,7 +20,7 @@ const HeroForm: FC = () => {
         actions.resetForm();
       }}
     >
-      {formikProps => <SharedForm formikProps={formikProps} />}
+      {formikProps => <SharedForm />}
     </Formik>
   );
 };

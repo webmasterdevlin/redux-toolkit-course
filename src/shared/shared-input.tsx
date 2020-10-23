@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
-import { Field, FormikProps } from 'formik';
+import { Field, useFormikContext } from 'formik';
 import { Box, createStyles, TextField, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
 const SharedInput: FC<{
-  formikProps: FormikProps<any>;
   id: string;
-}> = ({ formikProps, id }) => {
+}> = ({ id }) => {
   const classes = useStyles();
+  const formik = useFormikContext<any>();
 
   return (
     <Box mb={2}>
@@ -17,8 +17,8 @@ const SharedInput: FC<{
         label={id.toUpperCase()}
         name={id}
         as={TextField}
-        error={formikProps.touched[`${id}`] && formikProps.errors[`${id}`]}
-        helperText={formikProps.touched[`${id}`] && formikProps.errors[`${id}`]}
+        error={formik.touched[id] && formik.errors[id]}
+        helperText={formik.touched[id] && formik.errors[id]}
       />
     </Box>
   );

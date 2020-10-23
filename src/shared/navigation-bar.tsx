@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { style } from 'typestyle';
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/reducers';
 import {

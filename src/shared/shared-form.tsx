@@ -1,24 +1,24 @@
 import React, { FC } from 'react';
-import { Form, FormikProps } from 'formik';
+import { Form, useFormikContext } from 'formik';
 import SharedInput from './shared-input';
 import { Box, Button, Paper } from '@material-ui/core';
 
-const SharedForm: FC<{
-  formikProps: FormikProps<any>;
-}> = ({ formikProps }) => {
+const SharedForm: FC = () => {
+  const formik = useFormikContext<any>();
+
   return (
     <Box mb={4}>
       <Paper>
         <Form style={{ padding: '1rem' }}>
           <div>
-            <SharedInput formikProps={formikProps} id={'firstName'} />
-            <SharedInput formikProps={formikProps} id={'lastName'} />
-            <SharedInput formikProps={formikProps} id={'house'} />
-            <SharedInput formikProps={formikProps} id={'knownAs'} />
+            <SharedInput id={'firstName'} />
+            <SharedInput id={'lastName'} />
+            <SharedInput id={'house'} />
+            <SharedInput id={'knownAs'} />
           </div>
 
           <Button
-            disabled={!formikProps.dirty || !formikProps.isValid}
+            disabled={!formik.dirty || !formik.isValid}
             type="submit"
             color={'primary'}
             variant={'outlined'}

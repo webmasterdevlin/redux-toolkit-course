@@ -72,7 +72,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsc --noEmit"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {

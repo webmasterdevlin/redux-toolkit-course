@@ -69,5 +69,13 @@
     "json-server": "^0.16.3",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }

@@ -1,35 +1,36 @@
-import React, { FC, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'store/reducers';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "store/reducers";
 
-import AntiHeroForm from 'components/AntiHeroForm';
-import TitleBar from 'components/title-bar';
-import UpdateUiLabel from 'components/update-ui-label';
-import { removeAntiHeroByIdTemporaryAction } from '../features/anti-heroes/anti-hero.slice';
+import TitleBar from "components/title-bar";
+import UpdateUiLabel from "components/update-ui-label";
+import { removeAntiHeroByIdTemporaryAction } from "features/anti-heroes/anti-hero.slice";
 import {
   deleteAntiHeroByIdAction,
   getAntiHeroesAction,
-} from '../features/anti-heroes/anti-hero.async.actions';
+  postAntiHeroAction,
+} from "features/anti-heroes/anti-hero.async.actions";
 import {
   Box,
   Button,
   createStyles,
   Typography,
   useMediaQuery,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
+import FormSubmission from "components/form-submission";
 
-const AntiHeroes: FC = () => {
+const AntiHeroes = () => {
   const dispatch = useDispatch();
   const { loading, antiHeroes } = useSelector(
-    (state: RootState) => state.antiHero,
+    (state: RootState) => state.antiHero
   );
 
-  const smallScreen = useMediaQuery('(max-width:600px)');
+  const smallScreen = useMediaQuery("(max-width:600px)");
   const classes = useStyles();
 
   /*local state*/
-  const [counter, setCounter] = useState('0');
+  const [counter, setCounter] = useState("0");
 
   useEffect(() => {
     dispatch(getAntiHeroesAction());
@@ -37,20 +38,20 @@ const AntiHeroes: FC = () => {
 
   return (
     <div>
-      <TitleBar title={'Anti Heroes'} />
-      <AntiHeroForm />
+      <TitleBar title={"Anti Heroes"} />
+      <FormSubmission handleCreateAction={postAntiHeroAction} />
       <UpdateUiLabel />
       <>
         {loading ? (
           <h2>Loading.. Please wait..</h2>
         ) : (
-          antiHeroes.map(ah => (
+          antiHeroes.map((ah) => (
             <Box
               mb={2}
               key={ah.id}
-              display={'flex'}
-              flexDirection={smallScreen ? 'column' : 'row'}
-              justifyContent={'space-between'}
+              display={"flex"}
+              flexDirection={smallScreen ? "column" : "row"}
+              justifyContent={"space-between"}
             >
               <div>
                 <Typography>
@@ -62,26 +63,26 @@ const AntiHeroes: FC = () => {
                 <Button
                   className={classes.button}
                   onClick={() => setCounter(ah.id)}
-                  variant={'contained'}
-                  color={'default'}
+                  variant={"contained"}
+                  color={"default"}
                 >
                   Mark
-                </Button>{' '}
+                </Button>{" "}
                 <Button
                   className={classes.button}
                   onClick={() =>
                     dispatch(removeAntiHeroByIdTemporaryAction(ah.id))
                   }
-                  variant={'contained'}
-                  color={'secondary'}
+                  variant={"contained"}
+                  color={"secondary"}
                 >
                   Remove
-                </Button>{' '}
+                </Button>{" "}
                 <Button
                   className={classes.button}
                   onClick={() => dispatch(deleteAntiHeroByIdAction(ah.id))}
-                  variant={'outlined'}
-                  color={'secondary'}
+                  variant={"outlined"}
+                  color={"secondary"}
                 >
                   DELETE in DB
                 </Button>
@@ -93,8 +94,8 @@ const AntiHeroes: FC = () => {
       {antiHeroes.length === 0 && !loading && (
         <Button
           className={classes.button}
-          variant={'contained'}
-          color={'primary'}
+          variant={"contained"}
+          color={"primary"}
           onClick={() => dispatch(getAntiHeroesAction())}
         >
           Re-fetch
@@ -109,10 +110,10 @@ export default AntiHeroes;
 const useStyles = makeStyles(() =>
   createStyles({
     button: {
-      margin: '0 0.5rem',
-      '&:focus': {
-        outline: 'none',
+      margin: "0 0.5rem",
+      "&:focus": {
+        outline: "none",
       },
     },
-  }),
+  })
 );

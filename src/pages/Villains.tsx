@@ -1,14 +1,14 @@
-import React, { FC, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import TitleBar from 'components/title-bar';
-import UpdateUiLabel from 'components/update-ui-label';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import TitleBar from "components/title-bar";
+import UpdateUiLabel from "components/update-ui-label";
 import {
   deleteVillainByIdAction,
   getVillainsAction,
-} from 'features/villains/villain.async.actions';
-import { removeVillainByIdTemporaryAction } from 'features/villains/villain.slice';
-import { RootState } from 'store/reducers';
-import VillainForm from 'components/VillainForm';
+  postVillainAction,
+} from "features/villains/villain.async.actions";
+import { removeVillainByIdTemporaryAction } from "features/villains/villain.slice";
+import { RootState } from "store/reducers";
 
 import {
   Box,
@@ -16,20 +16,21 @@ import {
   createStyles,
   Typography,
   useMediaQuery,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
+import FormSubmission from "components/form-submission";
 
 const Villains = () => {
   const dispatch = useDispatch();
   const { villains, loading } = useSelector(
-    (state: RootState) => state.villain,
+    (state: RootState) => state.villain
   );
 
   const classes = useStyles();
-  const smallScreen = useMediaQuery('(max-width:600px)');
+  const smallScreen = useMediaQuery("(max-width:600px)");
 
   /*local state*/
-  const [counter, setCounter] = useState('0');
+  const [counter, setCounter] = useState("0");
 
   useEffect(() => {
     dispatch(getVillainsAction());
@@ -37,20 +38,20 @@ const Villains = () => {
 
   return (
     <div>
-      <TitleBar title={'Super Villains'} />
-      <VillainForm />
+      <TitleBar title={"Super Villains"} />
+      <FormSubmission handleCreateAction={postVillainAction} />
       <UpdateUiLabel />
       <>
         {loading ? (
           <h2>Loading.. Please wait..</h2>
         ) : (
-          villains.map(v => (
+          villains.map((v) => (
             <Box
               key={v.id}
               mb={2}
-              display={'flex'}
-              flexDirection={smallScreen ? 'column' : 'row'}
-              justifyContent={'space-between'}
+              display={"flex"}
+              flexDirection={smallScreen ? "column" : "row"}
+              justifyContent={"space-between"}
             >
               <Typography>
                 <span>{`${v.firstName} ${v.lastName} is ${v.knownAs}`}</span>
@@ -60,26 +61,26 @@ const Villains = () => {
                 <Button
                   className={classes.button}
                   onClick={() => setCounter(v.id)}
-                  variant={'contained'}
-                  color={'default'}
+                  variant={"contained"}
+                  color={"default"}
                 >
                   Mark
-                </Button>{' '}
+                </Button>{" "}
                 <Button
                   className={classes.button}
                   onClick={() =>
                     dispatch(removeVillainByIdTemporaryAction(v.id))
                   }
-                  variant={'contained'}
-                  color={'secondary'}
+                  variant={"contained"}
+                  color={"secondary"}
                 >
                   Remove
-                </Button>{' '}
+                </Button>{" "}
                 <Button
                   className={classes.button}
                   onClick={() => dispatch(deleteVillainByIdAction(v.id))}
-                  variant={'outlined'}
-                  color={'secondary'}
+                  variant={"outlined"}
+                  color={"secondary"}
                 >
                   DELETE in DB
                 </Button>
@@ -91,8 +92,8 @@ const Villains = () => {
       {villains.length === 0 && !loading && (
         <Button
           className={classes.button}
-          variant={'contained'}
-          color={'primary'}
+          variant={"contained"}
+          color={"primary"}
           onClick={() => dispatch(getVillainsAction())}
         >
           Re-fetch
@@ -107,10 +108,10 @@ export default Villains;
 const useStyles = makeStyles(() =>
   createStyles({
     button: {
-      margin: '0 0.5rem',
-      '&:focus': {
-        outline: 'none',
+      margin: "0 0.5rem",
+      "&:focus": {
+        outline: "none",
       },
     },
-  }),
+  })
 );

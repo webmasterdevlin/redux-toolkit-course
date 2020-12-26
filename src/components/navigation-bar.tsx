@@ -1,29 +1,22 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { RootState } from 'store/reducers';
-import {
-  AppBar,
-  Box,
-  Button,
-  createStyles,
-  Theme,
-  Toolbar,
-} from '@material-ui/core';
-import TotalOfCharacters from './total-of-characters';
-import { makeStyles } from '@material-ui/styles';
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "store/reducers";
+import { AppBar, Box, Button, createStyles, Toolbar } from "@material-ui/core";
+import TotalOfCharacters from "./total-of-characters";
+import { makeStyles } from "@material-ui/styles";
 
 const NavigationBar = () => {
   const store = useSelector((state: RootState) => state);
   const history = useHistory();
   const classes = useStyles();
   return (
-    <AppBar position="static" style={{ marginBottom: '2rem' }}>
+    <AppBar position="static" style={{ marginBottom: "2rem" }}>
       <Toolbar>
         <Box>
           <Button
             className={classes.button}
-            onClick={() => history.push('/anti-heroes')}
+            onClick={() => history.push("/anti-heroes")}
             color="inherit"
           >
             Anti Heroes
@@ -33,7 +26,7 @@ const NavigationBar = () => {
         <Box>
           <Button
             className={classes.button}
-            onClick={() => history.push('/heroes')}
+            onClick={() => history.push("/heroes")}
             color="inherit"
           >
             Heroes
@@ -43,7 +36,7 @@ const NavigationBar = () => {
         <Box>
           <Button
             className={classes.button}
-            onClick={() => history.push('/villains')}
+            onClick={() => history.push("/villains")}
             color="inherit"
           >
             Villains
@@ -57,13 +50,13 @@ const NavigationBar = () => {
 
 export default NavigationBar;
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     button: {
-      margin: '0 0.5rem',
-      '&:focus': {
-        outline: 'none',
+      margin: "0 0.5rem",
+      "&:focus": {
+        outline: "none",
       },
     },
-  }),
+  })
 );

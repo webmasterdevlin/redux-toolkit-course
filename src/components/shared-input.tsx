@@ -1,7 +1,7 @@
-import React from 'react';
-import { Field, useFormikContext } from 'formik';
-import { Box, createStyles, TextField, Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import React from "react";
+import { Field, useFormikContext } from "formik";
+import { Box, createStyles, TextField } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 
 type Props = {
   id: string;
@@ -15,7 +15,7 @@ const SharedInput = ({ id }: Props) => {
     <Box mb={2}>
       <Field
         className={classes.field}
-        type={'text'}
+        type={"text"}
         label={id.toUpperCase()}
         name={id}
         as={TextField}
@@ -28,11 +28,11 @@ const SharedInput = ({ id }: Props) => {
 
 export default SharedInput;
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     field: {
-      marginBottom: '2rem',
-      width: '100%',
+      marginBottom: "2rem",
+      width: "100%",
     },
-  }),
+  })
 );

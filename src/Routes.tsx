@@ -1,5 +1,5 @@
 import React, { Fragment, lazy, Suspense } from 'react';
-import { Redirect, Route, Switch } from 'react-router';
+import { Route, Switch } from 'react-router';
 
 type Routes = {
   exact?: boolean;
@@ -45,29 +45,22 @@ const routes: Routes = [
   {
     exact: true,
     path: '/',
-    component: lazy(
-      () => import('../src/features/anti-heroes/pages/AntiHeroes'),
-    ),
+    component: lazy(() => import('./pages/AntiHeroes')),
   },
   {
     exact: true,
     path: '/anti-heroes',
-    component: lazy(
-      () => import('../src/features/anti-heroes/pages/AntiHeroes'),
-    ),
+    component: lazy(() => import('./pages/AntiHeroes')),
   },
   {
     exact: true,
     path: '/villains',
-    component: lazy(() => import('../src/features/villains/pages/Villains')),
+    component: lazy(() => import('./pages/Villains')),
   },
   {
     exact: true,
     path: '/heroes',
-    component: lazy(() => import('../src/features/heroes/pages/Heroes')),
-  },
-  {
-    component: () => <Redirect to={'/toolkit'} />,
+    component: lazy(() => import('./pages/Heroes')),
   },
 ];
 

@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { configureAppStore } from './store/configureStore';
-import NavigationBar from './shared/navigation-bar';
+import NavigationBar from 'components/navigation-bar';
 import routes, { renderRoutes } from './Routes';
 import { Container } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-const App: FC = () => {
+const App = () => {
   const store = configureAppStore();
 
   return (

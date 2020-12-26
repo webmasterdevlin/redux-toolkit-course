@@ -1,11 +1,13 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box } from '@material-ui/core';
 
-const TitleBar: FC<{
+type Props = {
   title: string;
-}> = props => (
+};
+
+const TitleBar = ({ title }: Props) => (
   <Box mb={5}>
-    <h1>{props.title}</h1>
+    <h1>{title}</h1>
   </Box>
 );
 

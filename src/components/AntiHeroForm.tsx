@@ -1,15 +1,14 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
-import SharedForm from '../../../shared/shared-form';
-
-import { postAntiHeroAction } from '../anti-hero.async.actions';
+import SharedForm from 'components/shared-form';
 import {
   formsInitialValue,
   validationSchema,
-} from '../../../shared/forms-initial-values';
+} from 'formik/forms-initial-values';
+import { postAntiHeroAction } from '../features/anti-heroes/anti-hero.async.actions';
 
-const AntiHeroForm: FC = () => {
+const AntiHeroForm = () => {
   const dispatch = useDispatch();
 
   return (

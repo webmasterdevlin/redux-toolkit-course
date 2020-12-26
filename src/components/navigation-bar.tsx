@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/reducers';
+import { RootState } from 'store/reducers';
 import {
   AppBar,
   Box,
@@ -10,7 +10,7 @@ import {
   Theme,
   Toolbar,
 } from '@material-ui/core';
-import TotalOfCharacters from './TotalOfCharacters';
+import TotalOfCharacters from './total-of-characters';
 import { makeStyles } from '@material-ui/styles';
 
 const NavigationBar = () => {

@@ -1,14 +1,15 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import AntiHeroForm from '../components/AntiHeroForm';
-import { RootState } from '../../../store/reducers';
-import TitleBar from '../../../shared/title-bar';
-import UpdateUiLabel from '../../../shared/update-ui-label';
-import { removeAntiHeroByIdTemporaryAction } from '../anti-hero.slice';
+import { RootState } from 'store/reducers';
+
+import AntiHeroForm from 'components/AntiHeroForm';
+import TitleBar from 'components/title-bar';
+import UpdateUiLabel from 'components/update-ui-label';
+import { removeAntiHeroByIdTemporaryAction } from '../features/anti-heroes/anti-hero.slice';
 import {
   deleteAntiHeroByIdAction,
   getAntiHeroesAction,
-} from '../anti-hero.async.actions';
+} from '../features/anti-heroes/anti-hero.async.actions';
 import {
   Box,
   Button,

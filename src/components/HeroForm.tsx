@@ -1,14 +1,14 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
+import SharedForm from 'components/shared-form';
 import {
   formsInitialValue,
   validationSchema,
-} from '../../../shared/forms-initial-values';
-import SharedForm from '../../../shared/shared-form';
-import { postVillainAction } from '../villain.async.actions';
+} from 'formik/forms-initial-values';
+import { postHeroAction } from 'features/heroes/hero.async.actions';
 
-const VillainForm: FC = () => {
+const HeroForm = () => {
   const dispatch = useDispatch();
 
   return (
@@ -16,7 +16,7 @@ const VillainForm: FC = () => {
       initialValues={formsInitialValue}
       validationSchema={validationSchema}
       onSubmit={(values, actions) => {
-        dispatch(postVillainAction(values));
+        dispatch(postHeroAction(values));
         actions.resetForm();
       }}
     >
@@ -25,4 +25,4 @@ const VillainForm: FC = () => {
   );
 };
 
-export default VillainForm;
+export default HeroForm;

@@ -7,9 +7,7 @@ export function configureAppStore() {
     reducer: createReducer(),
     middleware: [
       ...getDefaultMiddleware({
-        serializableCheck: {
-          ignoredActions: ['persist/PERSIST'],
-        },
+        serializableCheck: false,
       }),
     ],
     devTools:

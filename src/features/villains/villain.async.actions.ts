@@ -1,11 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { EndPoints } from '../../axios-http-client/api-config';
 import { VillainActionTypes, VillainModel } from './villain.types';
-import {
-  deleteAxios,
-  getAxios,
-  postAxios,
-} from '../../axios-http-client/generic-api-calls';
+import { EndPoints } from 'axios/api-config';
+import { deleteAxios, getAxios, postAxios } from 'axios/generic-api-calls';
 
 export const getVillainsAction = createAsyncThunk(
   VillainActionTypes.FETCH_VILLAINS,

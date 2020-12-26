@@ -1,11 +1,15 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import HeroForm from '../components/HeroForm';
-import TitleBar from '../../../shared/title-bar';
-import UpdateUiLabel from '../../../shared/update-ui-label';
-import { deleteHeroByIdAction, getHeroesAction } from '../hero.async.actions';
-import { removeHeroByIdTemporaryAction } from '../hero.slice';
-import { RootState } from '../../../store/reducers';
+import TitleBar from 'components/title-bar';
+import UpdateUiLabel from 'components/update-ui-label';
+import {
+  deleteVillainByIdAction,
+  getVillainsAction,
+} from 'features/villains/villain.async.actions';
+import { removeVillainByIdTemporaryAction } from 'features/villains/villain.slice';
+import { RootState } from 'store/reducers';
+import VillainForm from 'components/VillainForm';
+
 import {
   Box,
   Button,
@@ -15,45 +19,47 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
-const Heroes: FC = () => {
+const Villains = () => {
   const dispatch = useDispatch();
-  const { heroes, loading } = useSelector((state: RootState) => state.hero);
+  const { villains, loading } = useSelector(
+    (state: RootState) => state.villain,
+  );
 
-  const smallScreen = useMediaQuery('(max-width:600px)');
   const classes = useStyles();
+  const smallScreen = useMediaQuery('(max-width:600px)');
 
   /*local state*/
   const [counter, setCounter] = useState('0');
 
   useEffect(() => {
-    dispatch(getHeroesAction());
+    dispatch(getVillainsAction());
   }, [dispatch]);
 
   return (
     <div>
-      <TitleBar title={'Super Heroes'} />
-      <HeroForm />
+      <TitleBar title={'Super Villains'} />
+      <VillainForm />
       <UpdateUiLabel />
       <>
         {loading ? (
           <h2>Loading.. Please wait..</h2>
         ) : (
-          heroes.map(h => (
+          villains.map(v => (
             <Box
-              key={h.id}
+              key={v.id}
               mb={2}
               display={'flex'}
               flexDirection={smallScreen ? 'column' : 'row'}
               justifyContent={'space-between'}
             >
               <Typography>
-                <span>{`${h.firstName} ${h.lastName} is ${h.knownAs}`}</span>
-                {counter === h.id && <span> - marked</span>}
+                <span>{`${v.firstName} ${v.lastName} is ${v.knownAs}`}</span>
+                {counter === v.id && <span> - marked</span>}
               </Typography>
               <div>
                 <Button
                   className={classes.button}
-                  onClick={() => setCounter(h.id)}
+                  onClick={() => setCounter(v.id)}
                   variant={'contained'}
                   color={'default'}
                 >
@@ -61,7 +67,9 @@ const Heroes: FC = () => {
                 </Button>{' '}
                 <Button
                   className={classes.button}
-                  onClick={() => dispatch(removeHeroByIdTemporaryAction(h.id))}
+                  onClick={() =>
+                    dispatch(removeVillainByIdTemporaryAction(v.id))
+                  }
                   variant={'contained'}
                   color={'secondary'}
                 >
@@ -69,7 +77,7 @@ const Heroes: FC = () => {
                 </Button>{' '}
                 <Button
                   className={classes.button}
-                  onClick={() => dispatch(deleteHeroByIdAction(h.id))}
+                  onClick={() => dispatch(deleteVillainByIdAction(v.id))}
                   variant={'outlined'}
                   color={'secondary'}
                 >
@@ -80,12 +88,12 @@ const Heroes: FC = () => {
           ))
         )}
       </>
-      {heroes.length === 0 && !loading && (
+      {villains.length === 0 && !loading && (
         <Button
           className={classes.button}
           variant={'contained'}
           color={'primary'}
-          onClick={() => dispatch(getHeroesAction())}
+          onClick={() => dispatch(getVillainsAction())}
         >
           Re-fetch
         </Button>
@@ -94,7 +102,7 @@ const Heroes: FC = () => {
   );
 };
 
-export default Heroes;
+export default Villains;
 
 const useStyles = makeStyles(() =>
   createStyles({

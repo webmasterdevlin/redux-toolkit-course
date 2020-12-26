@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Form, useFormikContext } from 'formik';
 import SharedInput from './shared-input';
 import { Box, Button, Paper } from '@material-ui/core';
 
-const SharedForm: FC = () => {
+const SharedForm = () => {
   const formik = useFormikContext<any>();
 
   return (

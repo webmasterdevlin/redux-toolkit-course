@@ -24,6 +24,8 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "clsx": "^1.1.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
     "formik": "^2.2.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -76,7 +78,8 @@
     ],
     "*.{md,json}": [
       "prettier --write"
-    ]
+    ],
+    "*.{js,css,md}": "prettier --write"
   },
   "husky": {
     "hooks": {

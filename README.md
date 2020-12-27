@@ -16,12 +16,12 @@ $ npx mrm lint-staged
 Create or go to your demo directory then run the following in the terminal or cmd.
 
 ```sh
-$ git clone https://github.com/webmasterdevlin/react-typescript-redux-toolkit.git
-$ cd react-typescript-redux-toolkit
+$ git clone https://github.com/webmasterdevlin/redux-toolkit-course.git
+$ cd redux-toolkit-course
 $ npm install
 $ npm run start:fullstack
 ```
 
-The React app and the fake web service will run concurrently.
+The React app, and the fake web service will run concurrently.
 
 ![screenshot](./screenshot.png)

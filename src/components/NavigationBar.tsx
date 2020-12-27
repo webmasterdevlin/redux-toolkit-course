@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "store/reducers";
 import { AppBar, Box, Button, createStyles, Toolbar } from "@material-ui/core";
-import TotalOfCharacters from "./total-of-characters";
+import TotalOfCharacters from "./TotalOfCharacters";
 import { makeStyles } from "@material-ui/styles";
 
 const NavigationBar = () => {
@@ -13,6 +13,15 @@ const NavigationBar = () => {
   return (
     <AppBar position="static" style={{ marginBottom: "2rem" }}>
       <Toolbar>
+        <Box>
+          <Button
+            className={classes.button}
+            onClick={() => history.push("/")}
+            color="inherit"
+          >
+            Home
+          </Button>
+        </Box>
         <Box>
           <Button
             className={classes.button}

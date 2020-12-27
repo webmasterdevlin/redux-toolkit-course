@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Formik } from "formik";
 import * as yup from "yup";
-import SharedForm from "components/shared-form";
+import SharedForm from "components/SharedForm";
 
 type Props = {
   handleCreateAction: (values: any) => void;

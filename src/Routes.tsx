@@ -1,5 +1,6 @@
-import React, { Fragment, lazy, Suspense } from 'react';
-import { Route, Switch } from 'react-router';
+import React, { Fragment, lazy, Suspense } from "react";
+import { Route, Switch } from "react-router";
+import HomePage from "./pages/HomePage";
 
 type Routes = {
   exact?: boolean;
@@ -23,7 +24,7 @@ export const renderRoutes = (routes: Routes = []) => (
             key={i}
             path={route.path}
             exact={route.exact}
-            render={props => (
+            render={(props) => (
               <Guard>
                 <Layout>
                   {route.routes ? (
@@ -44,23 +45,23 @@ export const renderRoutes = (routes: Routes = []) => (
 const routes: Routes = [
   {
     exact: true,
-    path: '/',
-    component: lazy(() => import('./pages/AntiHeroes')),
+    path: "/",
+    component: HomePage,
   },
   {
     exact: true,
-    path: '/anti-heroes',
-    component: lazy(() => import('./pages/AntiHeroes')),
+    path: "/anti-heroes",
+    component: lazy(() => import("./pages/AntiHeroesPage")),
   },
   {
     exact: true,
-    path: '/villains',
-    component: lazy(() => import('./pages/Villains')),
+    path: "/villains",
+    component: lazy(() => import("./pages/VillainsPage")),
   },
   {
     exact: true,
-    path: '/heroes',
-    component: lazy(() => import('./pages/Heroes')),
+    path: "/heroes",
+    component: lazy(() => import("./pages/HeroesPage")),
   },
 ];
 

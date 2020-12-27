@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import TitleBar from "components/TitleBar";
+import UpdateUiLabel from "components/UpdateUiLabel";
+import {
+  deleteVillainByIdAction,
+  getVillainsAction,
+  postVillainAction,
+} from "features/villains/villain.async.actions";
+import { removeVillainByIdTemporaryAction } from "features/villains/villain.slice";
 import { RootState } from "store/reducers";
 
-import TitleBar from "components/title-bar";
-import UpdateUiLabel from "components/update-ui-label";
-import { removeAntiHeroByIdTemporaryAction } from "features/anti-heroes/anti-hero.slice";
-import {
-  deleteAntiHeroByIdAction,
-  getAntiHeroesAction,
-  postAntiHeroAction,
-} from "features/anti-heroes/anti-hero.async.actions";
 import {
   Box,
   Button,
@@ -18,51 +18,49 @@ import {
   useMediaQuery,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import FormSubmission from "components/form-submission";
+import FormSubmission from "components/FormSubmission";
 
-const AntiHeroes = () => {
+const VillainsPage = () => {
   const dispatch = useDispatch();
-  const { loading, antiHeroes } = useSelector(
-    (state: RootState) => state.antiHero
+  const { villains, loading } = useSelector(
+    (state: RootState) => state.villain
   );
 
-  const smallScreen = useMediaQuery("(max-width:600px)");
   const classes = useStyles();
+  const smallScreen = useMediaQuery("(max-width:600px)");
 
   /*local state*/
   const [counter, setCounter] = useState("0");
 
   useEffect(() => {
-    dispatch(getAntiHeroesAction());
+    dispatch(getVillainsAction());
   }, [dispatch]);
 
   return (
     <div>
-      <TitleBar title={"Anti Heroes"} />
-      <FormSubmission handleCreateAction={postAntiHeroAction} />
+      <TitleBar title={"Super VillainsPage"} />
+      <FormSubmission handleCreateAction={postVillainAction} />
       <UpdateUiLabel />
       <>
         {loading ? (
           <h2>Loading.. Please wait..</h2>
         ) : (
-          antiHeroes.map((ah) => (
+          villains.map((v) => (
             <Box
+              key={v.id}
               mb={2}
-              key={ah.id}
               display={"flex"}
               flexDirection={smallScreen ? "column" : "row"}
               justifyContent={"space-between"}
             >
-              <div>
-                <Typography>
-                  <span>{`${ah.firstName} ${ah.lastName} is ${ah.knownAs}`}</span>
-                  {counter === ah.id && <span> - marked</span>}
-                </Typography>
-              </div>
+              <Typography>
+                <span>{`${v.firstName} ${v.lastName} is ${v.knownAs}`}</span>
+                {counter === v.id && <span> - marked</span>}
+              </Typography>
               <div>
                 <Button
                   className={classes.button}
-                  onClick={() => setCounter(ah.id)}
+                  onClick={() => setCounter(v.id)}
                   variant={"contained"}
                   color={"default"}
                 >
@@ -71,7 +69,7 @@ const AntiHeroes = () => {
                 <Button
                   className={classes.button}
                   onClick={() =>
-                    dispatch(removeAntiHeroByIdTemporaryAction(ah.id))
+                    dispatch(removeVillainByIdTemporaryAction(v.id))
                   }
                   variant={"contained"}
                   color={"secondary"}
@@ -80,7 +78,7 @@ const AntiHeroes = () => {
                 </Button>{" "}
                 <Button
                   className={classes.button}
-                  onClick={() => dispatch(deleteAntiHeroByIdAction(ah.id))}
+                  onClick={() => dispatch(deleteVillainByIdAction(v.id))}
                   variant={"outlined"}
                   color={"secondary"}
                 >
@@ -91,12 +89,12 @@ const AntiHeroes = () => {
           ))
         )}
       </>
-      {antiHeroes.length === 0 && !loading && (
+      {villains.length === 0 && !loading && (
         <Button
           className={classes.button}
           variant={"contained"}
           color={"primary"}
-          onClick={() => dispatch(getAntiHeroesAction())}
+          onClick={() => dispatch(getVillainsAction())}
         >
           Re-fetch
         </Button>
@@ -105,7 +103,7 @@ const AntiHeroes = () => {
   );
 };
 
-export default AntiHeroes;
+export default VillainsPage;
 
 const useStyles = makeStyles(() =>
   createStyles({

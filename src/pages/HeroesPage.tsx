@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import TitleBar from "components/title-bar";
-import UpdateUiLabel from "components/update-ui-label";
+import TitleBar from "components/TitleBar";
+import UpdateUiLabel from "components/UpdateUiLabel";
 import { RootState } from "store/reducers";
 import {
   deleteHeroByIdAction,
@@ -18,9 +18,9 @@ import {
   useMediaQuery,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import FormSubmission from "components/form-submission";
+import FormSubmission from "components/FormSubmission";
 
-const Heroes = () => {
+const HeroesPage = () => {
   const dispatch = useDispatch();
   const { heroes, loading } = useSelector((state: RootState) => state.hero);
 
@@ -36,7 +36,7 @@ const Heroes = () => {
 
   return (
     <div>
-      <TitleBar title={"Super Heroes"} />
+      <TitleBar title={"Super HeroesPage"} />
       <FormSubmission handleCreateAction={postHeroAction} />
       <UpdateUiLabel />
       <>
@@ -99,7 +99,7 @@ const Heroes = () => {
   );
 };
 
-export default Heroes;
+export default HeroesPage;
 
 const useStyles = makeStyles(() =>
   createStyles({

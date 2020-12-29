@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { EndPoints } from "axios/api-config";
-import { AntiHeroActionTypes, AntiHeroModel } from "./anti-hero.types";
+import { AntiHeroActionTypes, AntiHeroModel } from "./antiHeroTypes";
 import { deleteAxios, getAxios, postAxios } from "axios/generic-api-calls";
 
 export const getAntiHeroesAction = createAsyncThunk(

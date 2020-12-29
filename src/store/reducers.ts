@@ -1,11 +1,11 @@
 /**
  * Combine all reducers in this file and export the combined reducers.
  */
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import antiHeroReducer from 'features/anti-heroes/anti-hero.slice';
-import heroReducer from 'features/heroes/hero.slice';
-import villainReducer from 'features/villains/villain.slice';
+import antiHeroReducer from "features/antiHeroes/antiHeroSlice";
+import heroReducer from "features/heroes/heroSlice";
+import villainReducer from "features/villains/villainSlice";
 
 /*Merges the main reducer with the router state and dynamically injected reducers*/
 /*place all reducers here separated by commas. For example, heroReducer*/

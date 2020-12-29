@@ -1,16 +1,16 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   deleteHeroByIdAction,
   getHeroesAction,
   postHeroAction,
-} from './hero.async.actions';
-import { HeroModel, heroNamespace, HeroStateType } from './hero.types';
+} from "./heroAsyncActions";
+import { HeroModel, heroNamespace, HeroStateType } from "./heroTypes";
 
 /*hero state*/
 export const initialState: HeroStateType = {
   hero: {} as HeroModel,
   heroes: [] as HeroModel[],
-  error: '',
+  error: "",
   loading: false,
 };
 
@@ -25,12 +25,12 @@ export const heroSlice = createSlice({
   // mutate using non-asynchronous actions
   reducers: {
     removeHeroByIdTemporaryAction: (state, action: PayloadAction<string>) => {
-      state.heroes = state.heroes.filter(h => h.id !== action.payload);
+      state.heroes = state.heroes.filter((h) => h.id !== action.payload);
     },
   },
 
   // mutate using asynchronous actions
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     /* GET ALL */
     builder.addCase(getHeroesAction.pending, (state, action) => {
       state.loading = true;
@@ -64,8 +64,8 @@ export const heroSlice = createSlice({
     /* DELETE - Optimistic update */
     builder.addCase(deleteHeroByIdAction.pending, (state, action) => {
       state.tempData = [...state.heroes];
-      state.error = '';
-      const index = state.heroes.findIndex(h => h.id === action.meta.arg);
+      state.error = "";
+      const index = state.heroes.findIndex((h) => h.id === action.meta.arg);
       state.heroes.splice(index, 1);
     });
 

@@ -1,20 +1,20 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   deleteVillainByIdAction,
   getVillainsAction,
   postVillainAction,
-} from './villain.async.actions';
+} from "./villainAsyncActions";
 import {
   VillainModel,
   villainNamespace,
   VillainStateType,
-} from './villain.types';
+} from "./villainTypes";
 
 /*villain state*/
 export const initialState: VillainStateType = {
   villain: {} as VillainModel,
   villains: [] as VillainModel[],
-  error: '',
+  error: "",
   loading: false,
 };
 
@@ -30,14 +30,14 @@ export const villainSlice = createSlice({
   reducers: {
     removeVillainByIdTemporaryAction: (
       state,
-      action: PayloadAction<string>,
+      action: PayloadAction<string>
     ) => {
-      state.villains = state.villains.filter(v => v.id !== action.payload);
+      state.villains = state.villains.filter((v) => v.id !== action.payload);
     },
   },
 
   // mutate using asynchronous actions
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     /* GET ALL */
     builder.addCase(getVillainsAction.pending, (state, action) => {
       state.loading = true;
@@ -71,8 +71,8 @@ export const villainSlice = createSlice({
     /* DELETE - Optimistic update */
     builder.addCase(deleteVillainByIdAction.pending, (state, action) => {
       state.tempData = [...state.villains];
-      state.error = '';
-      const index = state.villains.findIndex(v => v.id === action.meta.arg);
+      state.error = "";
+      const index = state.villains.findIndex((v) => v.id === action.meta.arg);
       state.villains.splice(index, 1);
     });
 

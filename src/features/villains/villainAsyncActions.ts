@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { VillainActionTypes, VillainModel } from "./villain.types";
+import { VillainActionTypes, VillainModel } from "./villainTypes";
 import { EndPoints } from "axios/api-config";
 import { deleteAxios, getAxios, postAxios } from "axios/generic-api-calls";
 

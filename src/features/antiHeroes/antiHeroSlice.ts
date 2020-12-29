@@ -1,28 +1,28 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   deleteAntiHeroByIdAction,
   getAntiHeroesAction,
   postAntiHeroAction,
-} from './anti-hero.async.actions';
+} from "./antiHeroAsyncActions";
 import {
   AntiHeroModel,
   antiHeroNamespace,
   AntiHeroStateType,
-} from './anti-hero.types';
+} from "./antiHeroTypes";
 
 /*antiHero state*/
 // initial state or default state or initial values, it's up to you.
 export const initialState: AntiHeroStateType = {
   antiHero: {} as AntiHeroModel,
   antiHeroes: [] as AntiHeroModel[],
-  error: '',
+  error: "",
   loading: false,
 };
 
 /*antiHero store*/
 export const antiHeroSlice = createSlice({
   /*
-   name: is your feature or also called module, or namespace, 
+   name: is your feature or also called module, or namespace,
    or context, etc. The terminologies here can be interchangeable.
    This is required.
   */
@@ -35,16 +35,16 @@ export const antiHeroSlice = createSlice({
   reducers: {
     removeAntiHeroByIdTemporaryAction: (
       state,
-      action: PayloadAction<string>,
+      action: PayloadAction<string>
     ) => {
       state.antiHeroes = state.antiHeroes.filter(
-        ah => ah.id !== action.payload,
+        (ah) => ah.id !== action.payload
       );
     },
   },
 
   // mutate using asynchronous actions
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     /* GET ALL */
     builder.addCase(getAntiHeroesAction.pending, (state, action) => {
       state.loading = true;
@@ -78,8 +78,10 @@ export const antiHeroSlice = createSlice({
     /* DELETE - Optimistic update */
     builder.addCase(deleteAntiHeroByIdAction.pending, (state, action) => {
       state.tempData = [...state.antiHeroes];
-      state.error = '';
-      const index = state.antiHeroes.findIndex(ah => ah.id === action.meta.arg);
+      state.error = "";
+      const index = state.antiHeroes.findIndex(
+        (ah) => ah.id === action.meta.arg
+      );
       state.antiHeroes.splice(index, 1);
     });
 

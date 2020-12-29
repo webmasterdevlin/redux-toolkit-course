@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { HeroActionTypes, HeroModel } from "./hero.types";
+import { HeroActionTypes, HeroModel } from "./heroTypes";
 import { EndPoints } from "axios/api-config";
 import { deleteAxios, getAxios, postAxios } from "axios/generic-api-calls";
 

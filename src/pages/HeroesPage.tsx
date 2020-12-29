@@ -8,8 +8,8 @@ import {
   deleteHeroByIdAction,
   getHeroesAction,
   postHeroAction,
-} from "features/heroes/hero.async.actions";
-import { removeHeroByIdTemporaryAction } from "features/heroes/hero.slice";
+} from "features/heroes/heroAsyncActions";
+import { removeHeroByIdTemporaryAction } from "features/heroes/heroSlice";
 import {
   Box,
   Button,

@@ -4,12 +4,12 @@ import { RootState } from "store/reducers";
 
 import TitleBar from "components/TitleBar";
 import UpdateUiLabel from "components/UpdateUiLabel";
-import { removeAntiHeroByIdTemporaryAction } from "features/anti-heroes/anti-hero.slice";
+import { removeAntiHeroByIdTemporaryAction } from "features/antiHeroes/antiHeroSlice";
 import {
   deleteAntiHeroByIdAction,
   getAntiHeroesAction,
   postAntiHeroAction,
-} from "features/anti-heroes/anti-hero.async.actions";
+} from "features/antiHeroes/antiHeroAsyncActions";
 import {
   Box,
   Button,

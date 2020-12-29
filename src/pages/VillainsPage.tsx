@@ -6,8 +6,8 @@ import {
   deleteVillainByIdAction,
   getVillainsAction,
   postVillainAction,
-} from "features/villains/villain.async.actions";
-import { removeVillainByIdTemporaryAction } from "features/villains/villain.slice";
+} from "features/villains/villainAsyncActions";
+import { removeVillainByIdTemporaryAction } from "features/villains/villainSlice";
 import { RootState } from "store/reducers";
 
 import {

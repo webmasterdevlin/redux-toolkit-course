@@ -47,9 +47,6 @@
     "eject": "react-scripts eject",
     "checkTs": "tsc --noEmit"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -69,6 +66,7 @@
     "concurrently": "^6.0.0",
     "cypress": "^6.5.0",
     "eslint-plugin-jest-dom": "^3.6.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-testing-library": "^3.10.1",
     "husky": "^4.3.8",
     "json-server": "^0.16.3",

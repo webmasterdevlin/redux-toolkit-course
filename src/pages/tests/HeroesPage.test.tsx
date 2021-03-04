@@ -25,6 +25,6 @@ describe("Heroes Heroes Page", () => {
   it("should dispatch getHeroesAction", async () => {
     await store.dispatch(getHeroesAction());
     let state = store.getState().hero;
-    expect(state.heroes).toHaveLength(4);
+    expect(state.heroes).toHaveLength(5);
   });
 });

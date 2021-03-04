@@ -1,29 +1,30 @@
 import { render, screen } from "test-utils/testing-library-utils";
 import AntiHeroesPage from "../AntiHeroesPage";
+import { configureAppStore } from "store/configureStore";
+import { getAntiHeroesAction } from "../../features/antiHeroes/antiHeroAsyncActions";
 
 describe("Anti Heroes Page", () => {
-  test("AntiHeroesPage's title is visible", () => {
+  const store = configureAppStore();
+
+  it("should AntiHeroesPage's title is visible", () => {
     render(<AntiHeroesPage />);
 
     const title = screen.getByRole("heading", { name: "Anti HeroesPage" });
-
     expect(title).toBeInTheDocument();
   });
 
-  test("Anti heroes loading", async () => {
+  it("should Anti heroes loading", async () => {
     render(<AntiHeroesPage />);
 
     const loading = screen.getByRole("heading", {
       name: "Loading.. Please wait..",
     });
-
     expect(loading).toHaveTextContent("Loading.. Please wait..");
   });
 
-  test("Mark Buttons are visible", async () => {
-    render(<AntiHeroesPage />);
-
-    const markButtons = screen.getByRole("button", { name: "Save Character" });
-    expect(markButtons).toBeInTheDocument();
+  it("should dispatch getAntiHeroesAction", async () => {
+    await store.dispatch(getAntiHeroesAction());
+    let state = store.getState().antiHero;
+    expect(state.antiHeroes).toHaveLength(6);
   });
 });

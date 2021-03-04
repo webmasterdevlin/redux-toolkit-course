@@ -1,7 +1,7 @@
 import { render, screen } from "test-utils/testing-library-utils";
 import NavigationBar from "../NavigationBar";
 
-test("Navigation menus are present", () => {
+it("Navigation menus are present", () => {
   render(<NavigationBar />);
 
   const antiHeroes = screen.getByRole("button", { name: "Anti Heroes" });

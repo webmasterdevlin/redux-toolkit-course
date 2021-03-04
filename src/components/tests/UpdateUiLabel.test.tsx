@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import UpdateUiLabel from "../UpdateUiLabel";
 
-test("Action Labels are visible", () => {
+it("Action Labels are visible", () => {
   render(<UpdateUiLabel />);
 
   const labels = screen.getByText(

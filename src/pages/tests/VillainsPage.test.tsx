@@ -27,4 +27,13 @@ describe("Villains Heroes Page", () => {
     let state = store.getState().villain;
     expect(state.villains).toHaveLength(4);
   });
+
+  it("should save character button be in disabled", () => {
+    render(<VillainsPage />);
+
+    const saveCharacterButton = screen.getByRole("button", {
+      name: "Save Character",
+    });
+    expect(saveCharacterButton).toBeDisabled();
+  });
 });

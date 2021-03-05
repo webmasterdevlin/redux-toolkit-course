@@ -27,4 +27,13 @@ describe("Heroes Heroes Page", () => {
     let state = store.getState().hero;
     expect(state.heroes).toHaveLength(5);
   });
+
+  it("should save character button be in disabled", () => {
+    render(<HeroesPage />);
+
+    const saveCharacterButton = screen.getByRole("button", {
+      name: "Save Character",
+    });
+    expect(saveCharacterButton).toBeDisabled();
+  });
 });

@@ -17,4 +17,13 @@ describe("Anti Heroes Page", () => {
     });
     expect(loading).toHaveTextContent("Loading.. Please wait..");
   });
+
+  it("should save character button be in disabled", () => {
+    render(<AntiHeroesPage />);
+
+    const saveCharacterButton = screen.getByRole("button", {
+      name: "Save Character",
+    });
+    expect(saveCharacterButton).toBeDisabled();
+  });
 });

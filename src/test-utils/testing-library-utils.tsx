@@ -4,6 +4,9 @@ import { Provider } from "react-redux";
 // Import your own reducer
 import { initialState as reducerInitialState } from "../features/antiHeroes/antiHeroSlice";
 import { configureAppStore } from "../store/configureStore";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { BrowserRouter } from "react-router-dom";
+import NavigationBar from "../components/NavigationBar";
 
 function render(
   ui,
@@ -14,7 +17,18 @@ function render(
   } = {}
 ) {
   function Wrapper({ children }) {
-    return <Provider store={store}>{children}</Provider>;
+    return (
+      <Provider store={store}>
+        <CssBaseline>
+          <BrowserRouter>
+            <>
+              <NavigationBar />
+              {children}
+            </>
+          </BrowserRouter>
+        </CssBaseline>
+      </Provider>
+    );
   }
   return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
 }

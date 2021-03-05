@@ -1,8 +1,8 @@
 import { render, screen } from "test-utils/testing-library-utils";
-import NavigationBar from "../NavigationBar";
+import HomePage from "../../pages/HomePage";
 
 it("Navigation menus are present", () => {
-  render(<NavigationBar />);
+  render(<HomePage />);
 
   const antiHeroes = screen.getByRole("button", { name: "Anti Heroes" });
   expect(antiHeroes).toHaveTextContent("Anti Heroes");

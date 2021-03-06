@@ -1,4 +1,4 @@
-import { render, screen } from "test-utils/testing-library-utils";
+import { render, screen, waitFor } from "test-utils/testing-library-utils";
 import AntiHeroesPage from "../AntiHeroesPage";
 
 describe("Anti Heroes Page", () => {
@@ -25,5 +25,13 @@ describe("Anti Heroes Page", () => {
       name: "Save Character",
     });
     expect(saveCharacterButton).toBeDisabled();
+  });
+
+  it("should render anti heroes", async function () {
+    render(<AntiHeroesPage />);
+
+    await waitFor(() => {
+      expect(screen.queryAllByRole("card")).toHaveLength(6);
+    });
   });
 });

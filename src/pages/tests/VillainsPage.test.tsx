@@ -1,4 +1,4 @@
-import { render, screen } from "test-utils/testing-library-utils";
+import { render, screen, waitFor } from "test-utils/testing-library-utils";
 import { configureAppStore } from "store/configureStore";
 import VillainsPage from "../VillainsPage";
 import { getVillainsAction } from "../../features/villains/villainAsyncActions";
@@ -35,5 +35,11 @@ describe("Villains Heroes Page", () => {
       name: "Save Character",
     });
     expect(saveCharacterButton).toBeDisabled();
+  });
+
+  it("should render villains", async () => {
+    render(<VillainsPage />);
+
+    await waitFor(() => expect(screen.queryAllByRole("card")).toHaveLength(4));
   });
 });

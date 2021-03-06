@@ -48,6 +48,7 @@ const VillainsPage = () => {
           villains.map((v) => (
             <Box
               key={v.id}
+              role={'card'}
               mb={2}
               display={"flex"}
               flexDirection={smallScreen ? "column" : "row"}

@@ -46,6 +46,7 @@ const HeroesPage = () => {
           heroes.map((h) => (
             <Box
               key={h.id}
+              role={'card'}
               mb={2}
               display={"flex"}
               flexDirection={smallScreen ? "column" : "row"}

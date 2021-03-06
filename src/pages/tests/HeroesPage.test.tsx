@@ -1,4 +1,4 @@
-import { render, screen } from "test-utils/testing-library-utils";
+import { render, screen, waitFor } from 'test-utils/testing-library-utils';
 import { configureAppStore } from "store/configureStore";
 import HeroesPage from "../HeroesPage";
 import { getHeroesAction } from "../../features/heroes/heroAsyncActions";
@@ -35,5 +35,13 @@ describe("Heroes Heroes Page", () => {
       name: "Save Character",
     });
     expect(saveCharacterButton).toBeDisabled();
+  });
+
+  it("should render heroes", async function () {
+    render(<HeroesPage />);
+
+    await waitFor(() => {
+      expect(screen.queryAllByRole("card")).toHaveLength(5);
+    });
   });
 });

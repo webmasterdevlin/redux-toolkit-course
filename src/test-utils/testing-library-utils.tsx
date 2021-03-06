@@ -1,22 +1,13 @@
 import React from "react";
 import { render as rtlRender } from "@testing-library/react";
 import { Provider } from "react-redux";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
-// Import your own reducer
-import { initialState as reducerInitialState } from "../features/antiHeroes/antiHeroSlice";
 import { configureAppStore } from "../store/configureStore";
 import NavigationBar from "../components/NavigationBar";
 
-const render = (
-  ui,
-  {
-    initialState = reducerInitialState,
-    store = configureAppStore(),
-    ...renderOptions
-  } = {}
-) => {
+const render = (ui, { store = configureAppStore(), ...renderOptions } = {}) => {
   const Wrapper = ({ children }) => (
     <Provider store={store}>
       <CssBaseline>

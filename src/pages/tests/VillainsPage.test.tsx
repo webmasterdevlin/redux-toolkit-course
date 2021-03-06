@@ -37,9 +37,12 @@ describe("Villains Heroes Page", () => {
     expect(saveCharacterButton).toBeDisabled();
   });
 
-  it("should render villains", async () => {
+  it("should show exact number of villains in main content and navigation bar", async () => {
     render(<VillainsPage />);
 
-    await waitFor(() => expect(screen.queryAllByRole("card")).toHaveLength(4));
+    await waitFor(() => {
+      expect(screen.queryAllByRole("card")).toHaveLength(4);
+      expect(screen.queryByRole("total-villains")).toHaveTextContent("4");
+    });
   });
 });

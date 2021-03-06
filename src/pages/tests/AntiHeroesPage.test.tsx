@@ -27,11 +27,12 @@ describe("Anti Heroes Page", () => {
     expect(saveCharacterButton).toBeDisabled();
   });
 
-  it("should render anti heroes", async function () {
+  it("should show exact number of anti heroes in main content and navigation bar", async () => {
     render(<AntiHeroesPage />);
 
     await waitFor(() => {
       expect(screen.queryAllByRole("card")).toHaveLength(6);
+      expect(screen.queryByRole("total-anti-heroes")).toHaveTextContent("6");
     });
   });
 });

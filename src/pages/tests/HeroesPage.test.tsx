@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from 'test-utils/testing-library-utils';
+import { render, screen, waitFor } from "test-utils/testing-library-utils";
 import { configureAppStore } from "store/configureStore";
 import HeroesPage from "../HeroesPage";
 import { getHeroesAction } from "../../features/heroes/heroAsyncActions";
@@ -37,11 +37,12 @@ describe("Heroes Heroes Page", () => {
     expect(saveCharacterButton).toBeDisabled();
   });
 
-  it("should render heroes", async function () {
+  it("should show exact number of heroes in main content and navigation bar", async () => {
     render(<HeroesPage />);
 
     await waitFor(() => {
       expect(screen.queryAllByRole("card")).toHaveLength(5);
+      expect(screen.queryByRole("total-heroes")).toHaveTextContent("5");
     });
   });
 });

@@ -30,7 +30,10 @@ const NavigationBar = () => {
           >
             Anti Heroes
           </Button>
-          <TotalOfCharacters collection={store.antiHero.antiHeroes} />
+          <TotalOfCharacters
+            collection={store.antiHero.antiHeroes}
+            role={"total-anti-heroes"}
+          />
         </Box>
         <Box>
           <Button
@@ -40,7 +43,10 @@ const NavigationBar = () => {
           >
             Heroes
           </Button>
-          <TotalOfCharacters collection={store.hero.heroes} />
+          <TotalOfCharacters
+            collection={store.hero.heroes}
+            role={"total-heroes"}
+          />
         </Box>
         <Box>
           <Button
@@ -50,7 +56,10 @@ const NavigationBar = () => {
           >
             Villains
           </Button>
-          <TotalOfCharacters collection={store.villain.villains} />
+          <TotalOfCharacters
+            collection={store.villain.villains}
+            role={"total-villains"}
+          />
         </Box>
       </Toolbar>
     </AppBar>

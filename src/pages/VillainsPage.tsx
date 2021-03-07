@@ -43,12 +43,12 @@ const VillainsPage = () => {
       <UpdateUiLabel />
       <>
         {loading ? (
-          <h2>Loading.. Please wait..</h2>
+          <Typography variant={"h2"}>Loading.. Please wait..</Typography>
         ) : (
           villains.map((v) => (
             <Box
               key={v.id}
-              role={'card'}
+              role={"card"}
               mb={2}
               display={"flex"}
               flexDirection={smallScreen ? "column" : "row"}

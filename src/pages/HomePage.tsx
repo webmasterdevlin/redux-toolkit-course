@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
+import { Typography } from "@material-ui/core";
 
 const HomePage = () => {
   return (
@@ -12,7 +13,9 @@ const HomePage = () => {
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <h1>Welcome to Redux Toolkit Course 🧑‍🏫 💻</h1>
+        <Typography variant={"h2"}>
+          Welcome to Redux Toolkit Course 🧑‍🏫 💻
+        </Typography>
       </Box>
     </Container>
   );

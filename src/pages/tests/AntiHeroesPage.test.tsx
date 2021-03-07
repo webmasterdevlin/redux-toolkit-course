@@ -1,4 +1,5 @@
 import { render, screen, waitFor } from "test-utils/testing-library-utils";
+
 import AntiHeroesPage from "../AntiHeroesPage";
 
 describe("Anti Heroes Page", () => {

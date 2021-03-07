@@ -1,5 +1,6 @@
 import { render, screen, waitFor } from "test-utils/testing-library-utils";
 import { configureAppStore } from "store/configureStore";
+
 import HeroesPage from "../HeroesPage";
 import { getHeroesAction } from "../../features/heroes/heroAsyncActions";
 

@@ -48,7 +48,7 @@ const AntiHeroesPage = () => {
           antiHeroes.map((ah) => (
             <Box
               mb={2}
-              role={'card'}
+              role={"card"}
               key={ah.id}
               display={"flex"}
               flexDirection={smallScreen ? "column" : "row"}

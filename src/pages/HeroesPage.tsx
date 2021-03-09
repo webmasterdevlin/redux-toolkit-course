@@ -41,12 +41,12 @@ const HeroesPage = () => {
       <UpdateUiLabel />
       <>
         {loading ? (
-          <h2>Loading.. Please wait..</h2>
+          <Typography variant={"h2"}>Loading.. Please wait..</Typography>
         ) : (
           heroes.map((h) => (
             <Box
               key={h.id}
-              role={'card'}
+              role={"card"}
               mb={2}
               display={"flex"}
               flexDirection={smallScreen ? "column" : "row"}

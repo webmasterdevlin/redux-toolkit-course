@@ -43,7 +43,7 @@ const AntiHeroesPage = () => {
       <UpdateUiLabel />
       <>
         {loading ? (
-          <h2>Loading.. Please wait..</h2>
+          <Typography variant={"h2"}>Loading.. Please wait..</Typography>
         ) : (
           antiHeroes.map((ah) => (
             <Box

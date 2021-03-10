@@ -69,6 +69,21 @@ describe("Anti Heroes Page", () => {
       expect(firstNameTextInput).toBeInTheDocument();
       fireEvent.change(firstNameTextInput, { target: { value: "Devlin" } });
       expect(firstNameTextInput).toHaveValue("Devlin");
+
+      const lastNameTextInput = screen.getByLabelText("lastName");
+      expect(lastNameTextInput).toBeInTheDocument();
+      fireEvent.change(lastNameTextInput, { target: { value: "Duldulao" } });
+      expect(lastNameTextInput).toHaveValue("Duldulao");
+
+      const houseTextInput = screen.getByLabelText("house");
+      expect(houseTextInput).toBeInTheDocument();
+      fireEvent.change(houseTextInput, { target: { value: "Marvel" } });
+      expect(houseTextInput).toHaveValue("Marvel");
+
+      const knownAsTextInput = screen.getByLabelText("knownAs");
+      expect(knownAsTextInput).toBeInTheDocument();
+      fireEvent.change(knownAsTextInput, { target: { value: "React Man" } });
+      expect(knownAsTextInput).toHaveValue("React Man");
     });
   });
 });

@@ -22,24 +22,24 @@ describe("HeroesPage dispatch", () => {
   it("should dispatch getHeroesAction", async function () {
     await store.dispatch(getHeroesAction());
     state = store.getState().hero;
-    expect(state.heroes).toHaveLength(5);
+    expect(state.heroes).toHaveLength(2);
   });
 
   it("should dispatch postHeroAction", async function () {
     await store.dispatch(postHeroAction(newHero));
     state = store.getState().hero;
-    expect(state.heroes).toHaveLength(6);
+    expect(state.heroes).toHaveLength(3);
   });
 
   it("should dispatch deleteHeroByIdAction", async function () {
     await store.dispatch(deleteHeroByIdAction(state.heroes[0].id));
     state = store.getState().hero;
-    expect(state.heroes).toHaveLength(5);
+    expect(state.heroes).toHaveLength(2);
   });
 
   it("should dispatch removeHeroByIdTemporaryAction", function () {
     store.dispatch(removeHeroByIdTemporaryAction(state.heroes[0].id));
     state = store.getState().hero;
-    expect(state.heroes).toHaveLength(4);
+    expect(state.heroes).toHaveLength(1);
   });
 });

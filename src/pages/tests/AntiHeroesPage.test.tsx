@@ -10,8 +10,6 @@ import { getAntiHeroesAction } from "features/antiHeroes/antiHeroAsyncActions";
 import { store } from "App";
 
 describe("Anti Heroes Page", () => {
-  const changeHandler = jest.fn();
-
   it("should render title", () => {
     render(<AntiHeroesPage />);
 
@@ -31,7 +29,7 @@ describe("Anti Heroes Page", () => {
   it("should dispatch getAntiHeroesAction", async () => {
     await store.dispatch(getAntiHeroesAction());
     let state = store.getState().antiHero;
-    expect(state.antiHeroes).toHaveLength(6);
+    expect(state.antiHeroes).toHaveLength(2);
   });
 
   it("should save character button be in disabled", () => {
@@ -47,22 +45,13 @@ describe("Anti Heroes Page", () => {
     render(<AntiHeroesPage />);
 
     await waitFor(() => {
-      expect(screen.queryAllByRole("card")).toHaveLength(6);
-      expect(screen.queryByRole("total-anti-heroes")).toHaveTextContent("6");
-    });
-  });
-
-  it("should be able to add new anti hero", async () => {
-    render(<AntiHeroesPage />);
-
-    await waitFor(() => {
-      expect(screen.queryAllByRole("card")).toHaveLength(6);
-      expect(screen.queryByRole("total-anti-heroes")).toHaveTextContent("6");
+      expect(screen.queryAllByRole("card")).toHaveLength(2);
+      expect(screen.queryByRole("total-anti-heroes")).toHaveTextContent("2");
     });
   });
 
   it("should add new anti hero", async () => {
-    render(<AntiHeroesPage />);
+    const { rerender } = render(<AntiHeroesPage />);
 
     await waitFor(() => {
       const firstNameTextInput = screen.getByLabelText("firstName");
@@ -84,6 +73,19 @@ describe("Anti Heroes Page", () => {
       expect(knownAsTextInput).toBeInTheDocument();
       fireEvent.change(knownAsTextInput, { target: { value: "React Man" } });
       expect(knownAsTextInput).toHaveValue("React Man");
+
+      const saveCharacterButton = screen.getByRole("button", {
+        name: "Save Character",
+      });
+      expect(saveCharacterButton).toBeEnabled();
+      fireEvent.click(saveCharacterButton);
+    });
+
+    rerender(<AntiHeroesPage />);
+
+    await waitFor(() => {
+      expect(screen.queryAllByRole("card")).toHaveLength(3);
+      expect(screen.queryByRole("total-anti-heroes")).toHaveTextContent("3");
     });
   });
 });

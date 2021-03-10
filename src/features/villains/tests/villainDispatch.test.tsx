@@ -1,4 +1,3 @@
-import { configureAppStore } from "store/configureStore";
 import {
   getVillainsAction,
   postVillainAction,
@@ -23,24 +22,24 @@ describe("VillainsPage dispatch", () => {
   it("should dispatch getVillainsAction", async function () {
     await store.dispatch(getVillainsAction());
     state = store.getState().villain;
-    expect(state.villains).toHaveLength(4);
+    expect(state.villains).toHaveLength(2);
   });
 
   it("should dispatch postVillainAction", async function () {
     await store.dispatch(postVillainAction(newVillain));
     state = store.getState().villain;
-    expect(state.villains).toHaveLength(5);
+    expect(state.villains).toHaveLength(3);
   });
 
   it("should dispatch deleteVillainByIdAction", async function () {
     await store.dispatch(deleteVillainByIdAction(state.villains[0].id));
     state = store.getState().villain;
-    expect(state.villains).toHaveLength(4);
+    expect(state.villains).toHaveLength(2);
   });
 
   it("should dispatch removeVillainByIdTemporaryAction", function () {
     store.dispatch(removeVillainByIdTemporaryAction(state.villains[0].id));
     state = store.getState().villain;
-    expect(state.villains).toHaveLength(3);
+    expect(state.villains).toHaveLength(1);
   });
 });

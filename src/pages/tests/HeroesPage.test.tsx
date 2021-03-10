@@ -24,7 +24,7 @@ describe("Heroes Heroes Page", () => {
   it("should dispatch getHeroesAction", async () => {
     await store.dispatch(getHeroesAction());
     let state = store.getState().hero;
-    expect(state.heroes).toHaveLength(5);
+    expect(state.heroes).toHaveLength(2);
   });
 
   it("should save character button be in disabled", () => {
@@ -40,8 +40,8 @@ describe("Heroes Heroes Page", () => {
     render(<HeroesPage />);
 
     await waitFor(() => {
-      expect(screen.queryAllByRole("card")).toHaveLength(5);
-      expect(screen.queryByRole("total-heroes")).toHaveTextContent("5");
+      expect(screen.queryAllByRole("card")).toHaveLength(2);
+      expect(screen.queryByRole("total-heroes")).toHaveTextContent("2");
     });
   });
 });

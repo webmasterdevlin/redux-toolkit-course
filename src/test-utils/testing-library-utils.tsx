@@ -6,6 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 import { configureAppStore } from "../store/configureStore";
 import NavigationBar from "../components/NavigationBar";
+import { Container } from "@material-ui/core";
 
 const render = (ui, { store = configureAppStore(), ...renderOptions } = {}) => {
   const Wrapper = ({ children }) => (
@@ -14,7 +15,7 @@ const render = (ui, { store = configureAppStore(), ...renderOptions } = {}) => {
         <BrowserRouter>
           <>
             <NavigationBar />
-            {children}
+            <Container>{children}</Container>
           </>
         </BrowserRouter>
       </CssBaseline>

@@ -6,9 +6,9 @@ import {
 } from "../villainAsyncActions";
 import { removeVillainByIdTemporaryAction } from "../villainSlice";
 import { VillainStateType } from "../villainTypes";
+import { store } from "../../../App";
 
 describe("VillainsPage dispatch", () => {
-  const store = configureAppStore();
   let state: VillainStateType;
   let newVillain = {
     id: "123",

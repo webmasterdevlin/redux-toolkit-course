@@ -1,4 +1,3 @@
-import { configureAppStore } from "store/configureStore";
 import {
   getHeroesAction,
   postHeroAction,
@@ -6,9 +5,9 @@ import {
 } from "../heroAsyncActions";
 import { removeHeroByIdTemporaryAction } from "../heroSlice";
 import { HeroStateType } from "../heroTypes";
+import { store } from "App";
 
 describe("HeroesPage dispatch", () => {
-  const store = configureAppStore();
   let state: HeroStateType;
   let newHero = {
     id: "123",

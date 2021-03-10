@@ -1,4 +1,3 @@
-import { configureAppStore } from "store/configureStore";
 import {
   getAntiHeroesAction,
   postAntiHeroAction,
@@ -6,9 +5,9 @@ import {
 } from "../antiHeroAsyncActions";
 import { removeAntiHeroByIdTemporaryAction } from "../antiHeroSlice";
 import { AntiHeroStateType } from "../antiHeroTypes";
+import { store } from "App";
 
 describe("AntiHeroesPage dispatch", () => {
-  const store = configureAppStore();
   let state: AntiHeroStateType;
   let newAntiHero = {
     id: "123",

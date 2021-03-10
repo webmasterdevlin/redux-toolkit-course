@@ -1,6 +1,8 @@
 import { render, screen, waitFor } from "test-utils/testing-library-utils";
 
-import AntiHeroesPage from "../AntiHeroesPage";
+import AntiHeroesPage from "pages/AntiHeroesPage";
+import { getAntiHeroesAction } from "features/antiHeroes/antiHeroAsyncActions";
+import { store } from "App";
 
 describe("Anti Heroes Page", () => {
   it("should render title", () => {
@@ -17,6 +19,12 @@ describe("Anti Heroes Page", () => {
       name: "Loading.. Please wait..",
     });
     expect(loading).toHaveTextContent("Loading.. Please wait..");
+  });
+
+  it("should dispatch getAntiHeroesAction", async () => {
+    await store.dispatch(getAntiHeroesAction());
+    let state = store.getState().antiHero;
+    expect(state.antiHeroes).toHaveLength(6);
   });
 
   it("should save character button be in disabled", () => {

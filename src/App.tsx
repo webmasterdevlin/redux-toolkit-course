@@ -7,9 +7,9 @@ import routes, { renderRoutes } from "./Routes";
 import { Container } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-const App = () => {
-  const store = configureAppStore();
+export const store = configureAppStore();
 
+const App = () => {
   return (
     <Provider store={store}>
       <CssBaseline>

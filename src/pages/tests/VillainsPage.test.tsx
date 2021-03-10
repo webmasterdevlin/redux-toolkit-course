@@ -1,12 +1,10 @@
 import { render, screen, waitFor } from "test-utils/testing-library-utils";
-import { configureAppStore } from "store/configureStore";
 
-import VillainsPage from "../VillainsPage";
-import { getVillainsAction } from "../../features/villains/villainAsyncActions";
+import VillainsPage from "pages/VillainsPage";
+import { getVillainsAction } from "features/villains/villainAsyncActions";
+import { store } from "App";
 
 describe("Villains Heroes Page", () => {
-  const store = configureAppStore();
-
   it("should VillainsPage's title is visible", () => {
     render(<VillainsPage />);
 
@@ -14,7 +12,7 @@ describe("Villains Heroes Page", () => {
     expect(title).toBeInTheDocument();
   });
 
-  it("should Villains loading is visible", async () => {
+  it("should render loading message", async () => {
     render(<VillainsPage />);
 
     const loading = screen.getByRole("heading", {

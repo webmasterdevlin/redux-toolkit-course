@@ -1,10 +1,17 @@
-import { render, screen, waitFor } from "test-utils/testing-library-utils";
+import {
+  render,
+  screen,
+  waitFor,
+  fireEvent,
+} from "test-utils/testing-library-utils";
 
 import AntiHeroesPage from "pages/AntiHeroesPage";
 import { getAntiHeroesAction } from "features/antiHeroes/antiHeroAsyncActions";
 import { store } from "App";
 
 describe("Anti Heroes Page", () => {
+  const changeHandler = jest.fn();
+
   it("should render title", () => {
     render(<AntiHeroesPage />);
 
@@ -42,6 +49,26 @@ describe("Anti Heroes Page", () => {
     await waitFor(() => {
       expect(screen.queryAllByRole("card")).toHaveLength(6);
       expect(screen.queryByRole("total-anti-heroes")).toHaveTextContent("6");
+    });
+  });
+
+  it("should be able to add new anti hero", async () => {
+    render(<AntiHeroesPage />);
+
+    await waitFor(() => {
+      expect(screen.queryAllByRole("card")).toHaveLength(6);
+      expect(screen.queryByRole("total-anti-heroes")).toHaveTextContent("6");
+    });
+  });
+
+  it("should add new anti hero", async () => {
+    render(<AntiHeroesPage />);
+
+    await waitFor(() => {
+      const firstNameTextInput = screen.getByLabelText("firstName");
+      expect(firstNameTextInput).toBeInTheDocument();
+      fireEvent.change(firstNameTextInput, { target: { value: "Devlin" } });
+      expect(firstNameTextInput).toHaveValue("Devlin");
     });
   });
 });

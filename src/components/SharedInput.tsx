@@ -14,9 +14,10 @@ const SharedInput = ({ id }: Props) => {
   return (
     <Box mb={2}>
       <Field
+        label={id}
+        id={id}
         className={classes.field}
         type={"text"}
-        label={id.toUpperCase()}
         name={id}
         as={TextField}
         error={formik.touched[id] && formik.errors[id]}

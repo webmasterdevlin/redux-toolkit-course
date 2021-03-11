@@ -1,11 +1,11 @@
-import { render, screen, waitFor } from "test-utils/testing-library-utils";
-
 import VillainsPage from "pages/VillainsPage";
-import { getVillainsAction } from "features/villains/villainAsyncActions";
 import { store } from "App";
+import { getVillainsAction } from "features/villains/villainAsyncActions";
+import { render, screen, waitFor } from "test-utils/testing-library-utils";
+import userEvent from "@testing-library/user-event";
 
-describe("Villains Heroes Page", () => {
-  it("should VillainsPage's title is visible", () => {
+describe("Villains Page", () => {
+  it("should render title", () => {
     render(<VillainsPage />);
 
     const title = screen.getByRole("heading", { name: "Super VillainsPage" });
@@ -39,9 +39,82 @@ describe("Villains Heroes Page", () => {
   it("should show exact number of villains in main content and navigation bar", async () => {
     render(<VillainsPage />);
 
-    await waitFor(() => {
-      expect(screen.getAllByRole("card")).toHaveLength(2);
-      expect(screen.getByRole("total-villains")).toHaveTextContent("2");
+    const cards = await screen.findAllByRole("card");
+    expect(cards).toHaveLength(2);
+    const counter = screen.getByRole("total-villains");
+    expect(counter).toHaveTextContent("2");
+  });
+
+  it("should add new villain", async () => {
+    const { rerender } = render(<VillainsPage />);
+
+    const firstNameTextInput = await screen.findByLabelText("firstName");
+    expect(firstNameTextInput).toBeInTheDocument();
+    userEvent.type(firstNameTextInput, "Devlin");
+    expect(firstNameTextInput).toHaveValue("Devlin");
+
+    const lastNameTextInput = await screen.findByLabelText("lastName");
+    expect(lastNameTextInput).toBeInTheDocument();
+    userEvent.type(lastNameTextInput, "Duldulao");
+    expect(lastNameTextInput).toHaveValue("Duldulao");
+
+    const houseTextInput = await screen.findByLabelText("house");
+    expect(houseTextInput).toBeInTheDocument();
+    userEvent.type(houseTextInput, "Marvel");
+    expect(houseTextInput).toHaveValue("Marvel");
+
+    const knownAsTextInput = await screen.findByLabelText("knownAs");
+    expect(knownAsTextInput).toBeInTheDocument();
+    userEvent.type(knownAsTextInput, "React Man");
+    expect(knownAsTextInput).toHaveValue("React Man");
+
+    const saveCharacterButton = await screen.findByRole("button", {
+      name: "Save Character",
     });
+    expect(saveCharacterButton).toBeEnabled();
+    userEvent.click(saveCharacterButton);
+
+    rerender(<VillainsPage />);
+
+    await waitFor(() => {
+      const cards = screen.getAllByRole("card");
+      expect(cards).toHaveLength(3);
+      const counter = screen.getByRole("total-villains");
+      expect(counter).toHaveTextContent("3");
+    });
+  });
+
+  it("should delete a villain from the database", async () => {
+    render(<VillainsPage />);
+
+    const buttons = await screen.findAllByRole("button", {
+      name: "DELETE in DB",
+    });
+    userEvent.click(buttons[0]);
+    expect(screen.getByRole("card")).toBeInTheDocument();
+    expect(screen.getByRole("total-villains")).toHaveTextContent("1");
+  });
+
+  it("should remove a villain from the store", async () => {
+    render(<VillainsPage />);
+
+    const buttons = await screen.findAllByRole("button", {
+      name: "Remove",
+    });
+    userEvent.click(buttons[0]);
+    expect(screen.getByRole("card")).toBeInTheDocument();
+    expect(screen.getByRole("total-villains")).toHaveTextContent("1");
+  });
+
+  it("should mark a villain", async () => {
+    render(<VillainsPage />);
+
+    const buttons = await screen.findAllByRole("button", {
+      name: "Mark",
+    });
+    expect(buttons).toHaveLength(2);
+    userEvent.click(buttons[0]);
+    const cards = await screen.findAllByRole("card");
+    expect(cards[0]).toHaveTextContent("marked");
   });
 });

@@ -19,25 +19,25 @@ describe("AntiHeroesPage dispatch", () => {
 
   /* Select the store.getState().antiHero again
    * before running another expect. It's just how it is */
-  it("should dispatch getAntiHeroesAction", async function () {
+  it("should dispatch getAntiHeroesAction", async () => {
     await store.dispatch(getAntiHeroesAction());
     state = store.getState().antiHero;
     expect(state.antiHeroes).toHaveLength(2);
   });
 
-  it("should dispatch postAntiHeroAction", async function () {
+  it("should dispatch postAntiHeroAction", async () => {
     await store.dispatch(postAntiHeroAction(newAntiHero));
     state = store.getState().antiHero;
     expect(state.antiHeroes).toHaveLength(3);
   });
 
-  it("should dispatch deleteAntiHeroByIdAction", async function () {
+  it("should dispatch deleteAntiHeroByIdAction", async () => {
     await store.dispatch(deleteAntiHeroByIdAction(state.antiHeroes[0].id));
     state = store.getState().antiHero;
     expect(state.antiHeroes).toHaveLength(2);
   });
 
-  it("should dispatch removeAntiHeroByIdTemporaryAction", function () {
+  it("should dispatch removeAntiHeroByIdTemporaryAction", () => {
     store.dispatch(removeAntiHeroByIdTemporaryAction(state.antiHeroes[0].id));
     state = store.getState().antiHero;
     expect(state.antiHeroes).toHaveLength(1);

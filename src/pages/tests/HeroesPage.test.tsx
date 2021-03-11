@@ -1,11 +1,11 @@
-import { render, screen, waitFor } from "test-utils/testing-library-utils";
-
 import HeroesPage from "pages/HeroesPage";
-import { getHeroesAction } from "features/heroes/heroAsyncActions";
 import { store } from "App";
+import { getHeroesAction } from "features/heroes/heroAsyncActions";
+import { render, screen, waitFor } from "test-utils/testing-library-utils";
+import userEvent from "@testing-library/user-event";
 
-describe("Heroes Heroes Page", () => {
-  it("should HeroesPage's title is visible", () => {
+describe("Heroes Page", () => {
+  it("should render title", () => {
     render(<HeroesPage />);
 
     const title = screen.getByRole("heading", { name: "Super HeroesPage" });
@@ -39,9 +39,82 @@ describe("Heroes Heroes Page", () => {
   it("should show exact number of heroes in main content and navigation bar", async () => {
     render(<HeroesPage />);
 
-    await waitFor(() => {
-      expect(screen.getAllByRole("card")).toHaveLength(2);
-      expect(screen.getByRole("total-heroes")).toHaveTextContent("2");
+    const cards = await screen.findAllByRole("card");
+    expect(cards).toHaveLength(2);
+    const counter = screen.getByRole("total-heroes");
+    expect(counter).toHaveTextContent("2");
+  });
+
+  it("should add new hero", async () => {
+    const { rerender } = render(<HeroesPage />);
+
+    const firstNameTextInput = await screen.findByLabelText("firstName");
+    expect(firstNameTextInput).toBeInTheDocument();
+    userEvent.type(firstNameTextInput, "Devlin");
+    expect(firstNameTextInput).toHaveValue("Devlin");
+
+    const lastNameTextInput = await screen.findByLabelText("lastName");
+    expect(lastNameTextInput).toBeInTheDocument();
+    userEvent.type(lastNameTextInput, "Duldulao");
+    expect(lastNameTextInput).toHaveValue("Duldulao");
+
+    const houseTextInput = await screen.findByLabelText("house");
+    expect(houseTextInput).toBeInTheDocument();
+    userEvent.type(houseTextInput, "Marvel");
+    expect(houseTextInput).toHaveValue("Marvel");
+
+    const knownAsTextInput = await screen.findByLabelText("knownAs");
+    expect(knownAsTextInput).toBeInTheDocument();
+    userEvent.type(knownAsTextInput, "React Man");
+    expect(knownAsTextInput).toHaveValue("React Man");
+
+    const saveCharacterButton = await screen.findByRole("button", {
+      name: "Save Character",
     });
+    expect(saveCharacterButton).toBeEnabled();
+    userEvent.click(saveCharacterButton);
+
+    rerender(<HeroesPage />);
+
+    await waitFor(() => {
+      const cards = screen.getAllByRole("card");
+      expect(cards).toHaveLength(3);
+      const counter = screen.getByRole("total-heroes");
+      expect(counter).toHaveTextContent("3");
+    });
+  });
+
+  it("should delete a hero from the database", async () => {
+    render(<HeroesPage />);
+
+    const buttons = await screen.findAllByRole("button", {
+      name: "DELETE in DB",
+    });
+    userEvent.click(buttons[0]);
+    expect(screen.getByRole("card")).toBeInTheDocument();
+    expect(screen.getByRole("total-heroes")).toHaveTextContent("1");
+  });
+
+  it("should remove a hero from the store", async () => {
+    render(<HeroesPage />);
+
+    const buttons = await screen.findAllByRole("button", {
+      name: "Remove",
+    });
+    userEvent.click(buttons[0]);
+    expect(screen.getByRole("card")).toBeInTheDocument();
+    expect(screen.getByRole("total-heroes")).toHaveTextContent("1");
+  });
+
+  it("should mark a hero", async () => {
+    render(<HeroesPage />);
+
+    const buttons = await screen.findAllByRole("button", {
+      name: "Mark",
+    });
+    expect(buttons).toHaveLength(2);
+    userEvent.click(buttons[0]);
+    const cards = await screen.findAllByRole("card");
+    expect(cards[0]).toHaveTextContent("marked");
   });
 });

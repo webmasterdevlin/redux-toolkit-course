@@ -1,12 +1,7 @@
 import AntiHeroesPage from "pages/AntiHeroesPage";
 import { store } from "App";
 import { getAntiHeroesAction } from "features/antiHeroes/antiHeroAsyncActions";
-import {
-  render,
-  screen,
-  waitFor,
-  fireEvent,
-} from "test-utils/testing-library-utils";
+import { render, screen, waitFor } from "test-utils/testing-library-utils";
 import userEvent from "@testing-library/user-event";
 
 describe("Anti Heroes Page", () => {

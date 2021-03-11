@@ -43,10 +43,10 @@ describe("Anti Heroes Page", () => {
   it("should show exact number of anti heroes in main content and navigation bar", async () => {
     render(<AntiHeroesPage />);
 
-    await waitFor(() => {
-      expect(screen.queryAllByRole("card")).toHaveLength(2);
-      expect(screen.queryByRole("total-anti-heroes")).toHaveTextContent("2");
-    });
+    const cards = await screen.findAllByRole("card");
+    expect(cards).toHaveLength(2);
+    const counter = await screen.findByRole("total-anti-heroes");
+    expect(counter).toHaveTextContent("2");
   });
 
   it("should add new anti hero", async () => {
@@ -83,17 +83,17 @@ describe("Anti Heroes Page", () => {
     rerender(<AntiHeroesPage />);
 
     await waitFor(() => {
-      expect(screen.queryAllByRole("card")).toHaveLength(3);
-      expect(screen.queryByRole("total-anti-heroes")).toHaveTextContent("3");
+      expect(screen.getAllByRole("card")).toHaveLength(3);
+      expect(screen.getByRole("total-anti-heroes")).toHaveTextContent("3");
     });
   });
 
-  it("should delete a hero from the database after", async () => {
-    const wrapper = render(<AntiHeroesPage />);
-
-    await waitFor(() => {
-      const button = screen.queryByRole("button", { name: "DELETE in DB" });
-      // expect(button).toBeInTheDocument();
-    });
-  });
+  // it("should delete a hero from the database after", async () => {
+  //   const { rerender } = render(<AntiHeroesPage />);
+  //
+  //   // await waitFor(() => {
+  //     // const button = screen.getByRole("button", { name: "DELETE in DB" });
+  //     // expect(button).toBeInTheDocument();
+  //   // });
+  // });
 });

@@ -40,8 +40,8 @@ describe("Villains Heroes Page", () => {
     render(<VillainsPage />);
 
     await waitFor(() => {
-      expect(screen.queryAllByRole("card")).toHaveLength(2);
-      expect(screen.queryByRole("total-villains")).toHaveTextContent("2");
+      expect(screen.getAllByRole("card")).toHaveLength(2);
+      expect(screen.getByRole("total-villains")).toHaveTextContent("2");
     });
   });
 });

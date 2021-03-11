@@ -45,40 +45,38 @@ describe("Anti Heroes Page", () => {
 
     const cards = await screen.findAllByRole("card");
     expect(cards).toHaveLength(2);
-    const counter = await screen.findByRole("total-anti-heroes");
+    const counter = screen.getByRole("total-anti-heroes");
     expect(counter).toHaveTextContent("2");
   });
 
   it("should add new anti hero", async () => {
     const { rerender } = render(<AntiHeroesPage />);
 
-    await waitFor(() => {
-      const firstNameTextInput = screen.getByLabelText("firstName");
-      expect(firstNameTextInput).toBeInTheDocument();
-      fireEvent.change(firstNameTextInput, { target: { value: "Devlin" } });
-      expect(firstNameTextInput).toHaveValue("Devlin");
+    const firstNameTextInput = await screen.findByLabelText("firstName");
+    expect(firstNameTextInput).toBeInTheDocument();
+    fireEvent.change(firstNameTextInput, { target: { value: "Devlin" } });
+    expect(firstNameTextInput).toHaveValue("Devlin");
 
-      const lastNameTextInput = screen.getByLabelText("lastName");
-      expect(lastNameTextInput).toBeInTheDocument();
-      fireEvent.change(lastNameTextInput, { target: { value: "Duldulao" } });
-      expect(lastNameTextInput).toHaveValue("Duldulao");
+    const lastNameTextInput = await screen.findByLabelText("lastName");
+    expect(lastNameTextInput).toBeInTheDocument();
+    fireEvent.change(lastNameTextInput, { target: { value: "Duldulao" } });
+    expect(lastNameTextInput).toHaveValue("Duldulao");
 
-      const houseTextInput = screen.getByLabelText("house");
-      expect(houseTextInput).toBeInTheDocument();
-      fireEvent.change(houseTextInput, { target: { value: "Marvel" } });
-      expect(houseTextInput).toHaveValue("Marvel");
+    const houseTextInput = await screen.findByLabelText("house");
+    expect(houseTextInput).toBeInTheDocument();
+    fireEvent.change(houseTextInput, { target: { value: "Marvel" } });
+    expect(houseTextInput).toHaveValue("Marvel");
 
-      const knownAsTextInput = screen.getByLabelText("knownAs");
-      expect(knownAsTextInput).toBeInTheDocument();
-      fireEvent.change(knownAsTextInput, { target: { value: "React Man" } });
-      expect(knownAsTextInput).toHaveValue("React Man");
+    const knownAsTextInput = await screen.findByLabelText("knownAs");
+    expect(knownAsTextInput).toBeInTheDocument();
+    fireEvent.change(knownAsTextInput, { target: { value: "React Man" } });
+    expect(knownAsTextInput).toHaveValue("React Man");
 
-      const saveCharacterButton = screen.getByRole("button", {
-        name: "Save Character",
-      });
-      expect(saveCharacterButton).toBeEnabled();
-      fireEvent.click(saveCharacterButton);
+    const saveCharacterButton = await screen.findByRole("button", {
+      name: "Save Character",
     });
+    expect(saveCharacterButton).toBeEnabled();
+    fireEvent.click(saveCharacterButton);
 
     rerender(<AntiHeroesPage />);
 

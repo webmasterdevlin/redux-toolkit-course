@@ -12,6 +12,6 @@ The React app, and the fake web service will run concurrently.
 ![screenshot](./screenshot.png)
 
 
-### TESTS
+### Best practices in writing tests
 
 - https://kentcdodds.com/blog/common-mistakes-with-react-testing-library

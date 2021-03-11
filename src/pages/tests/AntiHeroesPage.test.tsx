@@ -7,6 +7,7 @@ import {
   waitFor,
   fireEvent,
 } from "test-utils/testing-library-utils";
+import userEvent from "@testing-library/user-event";
 
 describe("Anti Heroes Page", () => {
   it("should render title", () => {
@@ -54,44 +55,71 @@ describe("Anti Heroes Page", () => {
 
     const firstNameTextInput = await screen.findByLabelText("firstName");
     expect(firstNameTextInput).toBeInTheDocument();
-    fireEvent.change(firstNameTextInput, { target: { value: "Devlin" } });
+    userEvent.type(firstNameTextInput, "Devlin");
     expect(firstNameTextInput).toHaveValue("Devlin");
 
     const lastNameTextInput = await screen.findByLabelText("lastName");
     expect(lastNameTextInput).toBeInTheDocument();
-    fireEvent.change(lastNameTextInput, { target: { value: "Duldulao" } });
+    userEvent.type(lastNameTextInput, "Duldulao");
     expect(lastNameTextInput).toHaveValue("Duldulao");
 
     const houseTextInput = await screen.findByLabelText("house");
     expect(houseTextInput).toBeInTheDocument();
-    fireEvent.change(houseTextInput, { target: { value: "Marvel" } });
+    userEvent.type(houseTextInput, "Marvel");
     expect(houseTextInput).toHaveValue("Marvel");
 
     const knownAsTextInput = await screen.findByLabelText("knownAs");
     expect(knownAsTextInput).toBeInTheDocument();
-    fireEvent.change(knownAsTextInput, { target: { value: "React Man" } });
+    userEvent.type(knownAsTextInput, "React Man");
     expect(knownAsTextInput).toHaveValue("React Man");
 
     const saveCharacterButton = await screen.findByRole("button", {
       name: "Save Character",
     });
     expect(saveCharacterButton).toBeEnabled();
-    fireEvent.click(saveCharacterButton);
+    userEvent.click(saveCharacterButton);
 
     rerender(<AntiHeroesPage />);
 
     await waitFor(() => {
-      expect(screen.getAllByRole("card")).toHaveLength(3);
-      expect(screen.getByRole("total-anti-heroes")).toHaveTextContent("3");
+      const cards = screen.getAllByRole("card");
+      expect(cards).toHaveLength(3);
+      const counter = screen.getByRole("total-anti-heroes");
+      expect(counter).toHaveTextContent("3");
     });
   });
 
-  // it("should delete a hero from the database after", async () => {
-  //   const { rerender } = render(<AntiHeroesPage />);
-  //
-  //   // await waitFor(() => {
-  //     // const button = screen.getByRole("button", { name: "DELETE in DB" });
-  //     // expect(button).toBeInTheDocument();
-  //   // });
-  // });
+  it("should delete a hero from the database", async () => {
+    render(<AntiHeroesPage />);
+
+    const buttons = await screen.findAllByRole("button", {
+      name: "DELETE in DB",
+    });
+    userEvent.click(buttons[0]);
+    expect(screen.getByRole("card")).toBeInTheDocument();
+    expect(screen.getByRole("total-anti-heroes")).toHaveTextContent("1");
+  });
+
+  it("should remove a hero from the store", async () => {
+    render(<AntiHeroesPage />);
+
+    const buttons = await screen.findAllByRole("button", {
+      name: "Remove",
+    });
+    userEvent.click(buttons[0]);
+    expect(screen.getByRole("card")).toBeInTheDocument();
+    expect(screen.getByRole("total-anti-heroes")).toHaveTextContent("1");
+  });
+
+  it("should mark a hero", async () => {
+    render(<AntiHeroesPage />);
+
+    const buttons = await screen.findAllByRole("button", {
+      name: "Mark",
+    });
+    expect(buttons).toHaveLength(2);
+    userEvent.click(buttons[0]);
+    const cards = await screen.findAllByRole("card");
+    expect(cards[0]).toHaveTextContent("marked");
+  });
 });

@@ -20,8 +20,8 @@ const SharedInput = ({ id }: Props) => {
         type={"text"}
         name={id}
         as={TextField}
-        error={formik.touched[id] && formik.errors[id]}
-        helperText={formik.touched[id] && formik.errors[id]}
+        error={!!(formik.touched[id] && formik.errors[id])}
+        helperText={formik.touched[id] ? formik.errors[id] : null}
       />
     </Box>
   );

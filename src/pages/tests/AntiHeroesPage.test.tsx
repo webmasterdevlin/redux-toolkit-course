@@ -1,13 +1,12 @@
+import AntiHeroesPage from "pages/AntiHeroesPage";
+import { store } from "App";
+import { getAntiHeroesAction } from "features/antiHeroes/antiHeroAsyncActions";
 import {
   render,
   screen,
   waitFor,
   fireEvent,
 } from "test-utils/testing-library-utils";
-
-import AntiHeroesPage from "pages/AntiHeroesPage";
-import { getAntiHeroesAction } from "features/antiHeroes/antiHeroAsyncActions";
-import { store } from "App";
 
 describe("Anti Heroes Page", () => {
   it("should render title", () => {
@@ -86,6 +85,15 @@ describe("Anti Heroes Page", () => {
     await waitFor(() => {
       expect(screen.queryAllByRole("card")).toHaveLength(3);
       expect(screen.queryByRole("total-anti-heroes")).toHaveTextContent("3");
+    });
+  });
+
+  it("should delete a hero from the database after", async () => {
+    const wrapper = render(<AntiHeroesPage />);
+
+    await waitFor(() => {
+      const button = screen.queryByRole("button", { name: "DELETE in DB" });
+      // expect(button).toBeInTheDocument();
     });
   });
 });

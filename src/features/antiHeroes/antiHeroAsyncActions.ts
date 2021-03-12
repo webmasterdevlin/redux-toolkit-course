@@ -24,7 +24,7 @@ export const postAntiHeroAction = createAsyncThunk(
   }
 );
 
-export const deleteAntiHeroByIdAction = createAsyncThunk(
+export const deleteAntiHeroAction = createAsyncThunk(
   AntiHeroActionTypes.REMOVE_ANTI_HERO_BY_ID,
   async (id: string) => {
     return await deleteAxios<void>(EndPoints.antiHeroes, id);

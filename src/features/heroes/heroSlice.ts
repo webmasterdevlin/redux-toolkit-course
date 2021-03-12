@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
-  deleteHeroByIdAction,
+  deleteHeroAction,
   getHeroesAction,
   postHeroAction,
 } from "./heroAsyncActions";
@@ -24,7 +24,7 @@ export const heroSlice = createSlice({
 
   // mutate using non-asynchronous actions
   reducers: {
-    removeHeroByIdTemporaryAction: (state, action: PayloadAction<string>) => {
+    softDeleteHeroAction: (state, action: PayloadAction<string>) => {
       state.heroes = state.heroes.filter((h) => h.id !== action.payload);
     },
   },
@@ -62,14 +62,14 @@ export const heroSlice = createSlice({
     });
 
     /* DELETE - Optimistic update */
-    builder.addCase(deleteHeroByIdAction.pending, (state, action) => {
+    builder.addCase(deleteHeroAction.pending, (state, action) => {
       state.tempData = [...state.heroes];
       state.error = "";
       const index = state.heroes.findIndex((h) => h.id === action.meta.arg);
       state.heroes.splice(index, 1);
     });
 
-    builder.addCase(deleteHeroByIdAction.rejected, (state, action: any) => {
+    builder.addCase(deleteHeroAction.rejected, (state, action: any) => {
       state.error = action?.error?.message;
       state.heroes = state.tempData as HeroModel[];
     });
@@ -77,6 +77,6 @@ export const heroSlice = createSlice({
 });
 
 /* non-async actions */
-export const { removeHeroByIdTemporaryAction } = heroSlice.actions;
+export const { softDeleteHeroAction } = heroSlice.actions;
 
 export default heroSlice.reducer;

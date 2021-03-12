@@ -1,9 +1,9 @@
 import {
   getHeroesAction,
   postHeroAction,
-  deleteHeroByIdAction,
+  deleteHeroAction,
 } from "../heroAsyncActions";
-import { removeHeroByIdTemporaryAction } from "../heroSlice";
+import { softDeleteHeroAction } from "../heroSlice";
 import { HeroStateType } from "../heroTypes";
 import { store } from "App";
 
@@ -32,13 +32,13 @@ describe("HeroesPage dispatch", () => {
   });
 
   it("should dispatch deleteHeroByIdAction", async function () {
-    await store.dispatch(deleteHeroByIdAction(state.heroes[0].id));
+    await store.dispatch(deleteHeroAction(state.heroes[0].id));
     state = store.getState().hero;
     expect(state.heroes).toHaveLength(2);
   });
 
   it("should dispatch removeHeroByIdTemporaryAction", () => {
-    store.dispatch(removeHeroByIdTemporaryAction(state.heroes[0].id));
+    store.dispatch(softDeleteHeroAction(state.heroes[0].id));
     state = store.getState().hero;
     expect(state.heroes).toHaveLength(1);
   });

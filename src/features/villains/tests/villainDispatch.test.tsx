@@ -1,9 +1,9 @@
 import {
   getVillainsAction,
   postVillainAction,
-  deleteVillainByIdAction,
+  deleteVillainAction,
 } from "../villainAsyncActions";
-import { removeVillainByIdTemporaryAction } from "../villainSlice";
+import { softDeleteVillainAction } from "../villainSlice";
 import { VillainStateType } from "../villainTypes";
 import { store } from "../../../App";
 
@@ -32,13 +32,13 @@ describe("VillainsPage dispatch", () => {
   });
 
   it("should dispatch deleteVillainByIdAction", async () => {
-    await store.dispatch(deleteVillainByIdAction(state.villains[0].id));
+    await store.dispatch(deleteVillainAction(state.villains[0].id));
     state = store.getState().villain;
     expect(state.villains).toHaveLength(2);
   });
 
   it("should dispatch removeVillainByIdTemporaryAction", () => {
-    store.dispatch(removeVillainByIdTemporaryAction(state.villains[0].id));
+    store.dispatch(softDeleteVillainAction(state.villains[0].id));
     state = store.getState().villain;
     expect(state.villains).toHaveLength(1);
   });

@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import TitleBar from "components/TitleBar";
 import UpdateUiLabel from "components/UpdateUiLabel";
 import {
-  deleteVillainByIdAction,
+  deleteVillainAction,
   getVillainsAction,
   postVillainAction,
 } from "features/villains/villainAsyncActions";
-import { removeVillainByIdTemporaryAction } from "features/villains/villainSlice";
+import { softDeleteVillainAction } from "features/villains/villainSlice";
 import { RootState } from "store/reducers";
 
 import {
@@ -69,9 +69,7 @@ const VillainsPage = () => {
                 </Button>{" "}
                 <Button
                   className={classes.button}
-                  onClick={() =>
-                    dispatch(removeVillainByIdTemporaryAction(v.id))
-                  }
+                  onClick={() => dispatch(softDeleteVillainAction(v.id))}
                   variant={"contained"}
                   color={"secondary"}
                 >
@@ -79,7 +77,7 @@ const VillainsPage = () => {
                 </Button>{" "}
                 <Button
                   className={classes.button}
-                  onClick={() => dispatch(deleteVillainByIdAction(v.id))}
+                  onClick={() => dispatch(deleteVillainAction(v.id))}
                   variant={"outlined"}
                   color={"secondary"}
                 >

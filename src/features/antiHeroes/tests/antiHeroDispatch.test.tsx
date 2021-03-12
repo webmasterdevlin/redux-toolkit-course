@@ -1,9 +1,9 @@
 import {
   getAntiHeroesAction,
   postAntiHeroAction,
-  deleteAntiHeroByIdAction,
+  deleteAntiHeroAction,
 } from "../antiHeroAsyncActions";
-import { removeAntiHeroByIdTemporaryAction } from "../antiHeroSlice";
+import { softDeleteAntiHeroAction } from "../antiHeroSlice";
 import { AntiHeroStateType } from "../antiHeroTypes";
 import { store } from "App";
 
@@ -32,13 +32,13 @@ describe("AntiHeroesPage dispatch", () => {
   });
 
   it("should dispatch deleteAntiHeroByIdAction", async () => {
-    await store.dispatch(deleteAntiHeroByIdAction(state.antiHeroes[0].id));
+    await store.dispatch(deleteAntiHeroAction(state.antiHeroes[0].id));
     state = store.getState().antiHero;
     expect(state.antiHeroes).toHaveLength(2);
   });
 
   it("should dispatch removeAntiHeroByIdTemporaryAction", () => {
-    store.dispatch(removeAntiHeroByIdTemporaryAction(state.antiHeroes[0].id));
+    store.dispatch(softDeleteAntiHeroAction(state.antiHeroes[0].id));
     state = store.getState().antiHero;
     expect(state.antiHeroes).toHaveLength(1);
   });

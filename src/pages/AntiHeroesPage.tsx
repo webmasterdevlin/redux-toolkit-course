@@ -4,9 +4,9 @@ import { RootState } from "store/reducers";
 
 import TitleBar from "components/TitleBar";
 import UpdateUiLabel from "components/UpdateUiLabel";
-import { removeAntiHeroByIdTemporaryAction } from "features/antiHeroes/antiHeroSlice";
+import { softDeleteAntiHeroAction } from "features/antiHeroes/antiHeroSlice";
 import {
-  deleteAntiHeroByIdAction,
+  deleteAntiHeroAction,
   getAntiHeroesAction,
   postAntiHeroAction,
 } from "features/antiHeroes/antiHeroAsyncActions";
@@ -71,9 +71,7 @@ const AntiHeroesPage = () => {
                 </Button>{" "}
                 <Button
                   className={classes.button}
-                  onClick={() =>
-                    dispatch(removeAntiHeroByIdTemporaryAction(ah.id))
-                  }
+                  onClick={() => dispatch(softDeleteAntiHeroAction(ah.id))}
                   variant={"contained"}
                   color={"secondary"}
                 >
@@ -81,7 +79,7 @@ const AntiHeroesPage = () => {
                 </Button>{" "}
                 <Button
                   className={classes.button}
-                  onClick={() => dispatch(deleteAntiHeroByIdAction(ah.id))}
+                  onClick={() => dispatch(deleteAntiHeroAction(ah.id))}
                   variant={"outlined"}
                   color={"secondary"}
                 >

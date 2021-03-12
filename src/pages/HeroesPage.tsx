@@ -5,11 +5,11 @@ import TitleBar from "components/TitleBar";
 import UpdateUiLabel from "components/UpdateUiLabel";
 import { RootState } from "store/reducers";
 import {
-  deleteHeroByIdAction,
+  deleteHeroAction,
   getHeroesAction,
   postHeroAction,
 } from "features/heroes/heroAsyncActions";
-import { removeHeroByIdTemporaryAction } from "features/heroes/heroSlice";
+import { softDeleteHeroAction } from "features/heroes/heroSlice";
 import {
   Box,
   Button,
@@ -67,7 +67,7 @@ const HeroesPage = () => {
                 </Button>{" "}
                 <Button
                   className={classes.button}
-                  onClick={() => dispatch(removeHeroByIdTemporaryAction(h.id))}
+                  onClick={() => dispatch(softDeleteHeroAction(h.id))}
                   variant={"contained"}
                   color={"secondary"}
                 >
@@ -75,7 +75,7 @@ const HeroesPage = () => {
                 </Button>{" "}
                 <Button
                   className={classes.button}
-                  onClick={() => dispatch(deleteHeroByIdAction(h.id))}
+                  onClick={() => dispatch(deleteHeroAction(h.id))}
                   variant={"outlined"}
                   color={"secondary"}
                 >

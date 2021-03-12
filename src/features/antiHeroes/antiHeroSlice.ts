@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
-  deleteAntiHeroByIdAction,
+  deleteAntiHeroAction,
   getAntiHeroesAction,
   postAntiHeroAction,
 } from "./antiHeroAsyncActions";
@@ -33,10 +33,7 @@ export const antiHeroSlice = createSlice({
 
   // mutate using non-asynchronous actions
   reducers: {
-    removeAntiHeroByIdTemporaryAction: (
-      state,
-      action: PayloadAction<string>
-    ) => {
+    softDeleteAntiHeroAction: (state, action: PayloadAction<string>) => {
       state.antiHeroes = state.antiHeroes.filter(
         (ah) => ah.id !== action.payload
       );
@@ -76,7 +73,7 @@ export const antiHeroSlice = createSlice({
     });
 
     /* DELETE - Optimistic update */
-    builder.addCase(deleteAntiHeroByIdAction.pending, (state, action) => {
+    builder.addCase(deleteAntiHeroAction.pending, (state, action) => {
       state.tempData = [...state.antiHeroes];
       state.error = "";
       const index = state.antiHeroes.findIndex(
@@ -85,7 +82,7 @@ export const antiHeroSlice = createSlice({
       state.antiHeroes.splice(index, 1);
     });
 
-    builder.addCase(deleteAntiHeroByIdAction.rejected, (state, action: any) => {
+    builder.addCase(deleteAntiHeroAction.rejected, (state, action: any) => {
       state.error = action?.error?.message;
       state.antiHeroes = state.tempData as AntiHeroModel[];
     });
@@ -93,6 +90,6 @@ export const antiHeroSlice = createSlice({
 });
 
 /* export all non-async actions */
-export const { removeAntiHeroByIdTemporaryAction } = antiHeroSlice.actions;
+export const { softDeleteAntiHeroAction } = antiHeroSlice.actions;
 
 export default antiHeroSlice.reducer;

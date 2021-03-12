@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
-  deleteVillainByIdAction,
+  deleteVillainAction,
   getVillainsAction,
   postVillainAction,
 } from "./villainAsyncActions";
@@ -28,10 +28,7 @@ export const villainSlice = createSlice({
 
   // mutate using non-asynchronous actions
   reducers: {
-    removeVillainByIdTemporaryAction: (
-      state,
-      action: PayloadAction<string>
-    ) => {
+    softDeleteVillainAction: (state, action: PayloadAction<string>) => {
       state.villains = state.villains.filter((v) => v.id !== action.payload);
     },
   },
@@ -69,14 +66,14 @@ export const villainSlice = createSlice({
     });
 
     /* DELETE - Optimistic update */
-    builder.addCase(deleteVillainByIdAction.pending, (state, action) => {
+    builder.addCase(deleteVillainAction.pending, (state, action) => {
       state.tempData = [...state.villains];
       state.error = "";
       const index = state.villains.findIndex((v) => v.id === action.meta.arg);
       state.villains.splice(index, 1);
     });
 
-    builder.addCase(deleteVillainByIdAction.rejected, (state, action: any) => {
+    builder.addCase(deleteVillainAction.rejected, (state, action: any) => {
       state.error = action?.error?.message;
       state.villains = state.tempData as VillainModel[];
     });
@@ -84,6 +81,6 @@ export const villainSlice = createSlice({
 });
 
 /* non-async actions */
-export const { removeVillainByIdTemporaryAction } = villainSlice.actions;
+export const { softDeleteVillainAction } = villainSlice.actions;
 
 export default villainSlice.reducer;

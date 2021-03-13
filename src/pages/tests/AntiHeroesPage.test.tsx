@@ -95,7 +95,7 @@ describe("Anti Heroes Page", () => {
     expect(screen.getByRole("total-anti-heroes")).toHaveTextContent("1");
   });
 
-  it("should remove a hero from the store", async () => {
+  it("should remove an anti hero from the store", async () => {
     render(<AntiHeroesPage />);
 
     const buttons = await screen.findAllByRole("button", {
@@ -106,7 +106,7 @@ describe("Anti Heroes Page", () => {
     expect(screen.getByRole("total-anti-heroes")).toHaveTextContent("1");
   });
 
-  it("should mark a hero", async () => {
+  it("should mark an anti hero", async () => {
     render(<AntiHeroesPage />);
 
     const buttons = await screen.findAllByRole("button", {

@@ -2,7 +2,6 @@ export type AntiHeroStateType = {
   readonly antiHeroes: AntiHeroModel[];
   readonly antiHero: AntiHeroModel;
   readonly loading: boolean;
-  readonly error: string;
   readonly tempData?: any[];
 };
 
@@ -16,7 +15,7 @@ export type AntiHeroModel = {
   knownAs: string;
 } & ApiResponse;
 
-export const antiHeroNamespace = 'antiHero';
+export const antiHeroNamespace = "antiHero";
 
 /* action types */
 export const AntiHeroActionTypes = {

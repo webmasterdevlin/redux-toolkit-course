@@ -2,7 +2,6 @@ export type HeroStateType = {
   readonly heroes: HeroModel[];
   readonly hero: HeroModel;
   readonly loading: boolean;
-  readonly error: string;
   readonly tempData?: any[];
 };
 
@@ -16,7 +15,7 @@ export type HeroModel = {
   knownAs: string;
 } & ApiResponse;
 
-export const heroNamespace = 'hero';
+export const heroNamespace = "hero";
 
 /* action types */
 export const HeroActionTypes = {

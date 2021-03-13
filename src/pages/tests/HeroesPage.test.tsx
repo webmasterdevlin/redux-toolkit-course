@@ -8,7 +8,7 @@ describe("Heroes Page", () => {
   it("should render title", () => {
     render(<HeroesPage />);
 
-    const title = screen.getByRole("heading", { name: "Super HeroesPage" });
+    const title = screen.getByRole("heading", { name: "Super Heroes Page" });
     expect(title).toBeInTheDocument();
   });
 

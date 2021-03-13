@@ -38,7 +38,7 @@ const AntiHeroesPage = () => {
 
   return (
     <div>
-      <TitleBar title={"Anti HeroesPage"} />
+      <TitleBar title={"Anti-Heroes Page"} />
       <FormSubmission handleCreateAction={postAntiHeroAction} />
       <UpdateUiLabel />
       <>

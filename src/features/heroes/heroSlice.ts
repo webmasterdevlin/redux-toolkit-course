@@ -10,7 +10,6 @@ import { HeroModel, heroNamespace, HeroStateType } from "./heroTypes";
 export const initialState: HeroStateType = {
   hero: {} as HeroModel,
   heroes: [] as HeroModel[],
-  error: "",
   loading: false,
 };
 
@@ -42,7 +41,7 @@ export const heroSlice = createSlice({
     });
 
     builder.addCase(getHeroesAction.rejected, (state, action: any) => {
-      state.error = action?.payload?.message;
+      console.log(action.payload.message);
       state.loading = false;
     });
 
@@ -57,20 +56,19 @@ export const heroSlice = createSlice({
     });
 
     builder.addCase(postHeroAction.rejected, (state, action: any) => {
-      state.error = action?.payload?.message;
+      console.log(action.payload.message);
       state.loading = false;
     });
 
     /* DELETE - Optimistic update */
     builder.addCase(deleteHeroAction.pending, (state, action) => {
       state.tempData = [...state.heroes];
-      state.error = "";
       const index = state.heroes.findIndex((h) => h.id === action.meta.arg);
       state.heroes.splice(index, 1);
     });
 
     builder.addCase(deleteHeroAction.rejected, (state, action: any) => {
-      state.error = action?.error?.message;
+      console.log(action.payload.message);
       state.heroes = state.tempData as HeroModel[];
     });
   },

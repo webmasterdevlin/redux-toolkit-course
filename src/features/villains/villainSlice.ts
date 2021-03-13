@@ -14,7 +14,6 @@ import {
 export const initialState: VillainStateType = {
   villain: {} as VillainModel,
   villains: [] as VillainModel[],
-  error: "",
   loading: false,
 };
 
@@ -46,7 +45,7 @@ export const villainSlice = createSlice({
     });
 
     builder.addCase(getVillainsAction.rejected, (state, action: any) => {
-      state.error = action?.payload?.message;
+      console.log(action.payload.message);
       state.loading = false;
     });
 
@@ -61,20 +60,19 @@ export const villainSlice = createSlice({
     });
 
     builder.addCase(postVillainAction.rejected, (state, action: any) => {
-      state.error = action?.payload?.message;
+      console.log(action.payload.message);
       state.loading = false;
     });
 
     /* DELETE - Optimistic update */
     builder.addCase(deleteVillainAction.pending, (state, action) => {
       state.tempData = [...state.villains];
-      state.error = "";
       const index = state.villains.findIndex((v) => v.id === action.meta.arg);
       state.villains.splice(index, 1);
     });
 
     builder.addCase(deleteVillainAction.rejected, (state, action: any) => {
-      state.error = action?.error?.message;
+      console.log(action.payload.message);
       state.villains = state.tempData as VillainModel[];
     });
   },

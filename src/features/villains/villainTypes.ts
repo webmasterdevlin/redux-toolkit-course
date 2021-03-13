@@ -2,7 +2,6 @@ export type VillainStateType = {
   readonly villains: VillainModel[];
   readonly villain: VillainModel;
   readonly loading: boolean;
-  readonly error: string;
   readonly tempData?: any[];
 };
 
@@ -16,7 +15,7 @@ export type VillainModel = {
   knownAs: string;
 } & ApiResponse;
 
-export const villainNamespace = 'villain';
+export const villainNamespace = "villain";
 
 /* action types */
 export const VillainActionTypes = {

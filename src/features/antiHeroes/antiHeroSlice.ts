@@ -15,7 +15,6 @@ import {
 export const initialState: AntiHeroStateType = {
   antiHero: {} as AntiHeroModel,
   antiHeroes: [] as AntiHeroModel[],
-  error: "",
   loading: false,
 };
 
@@ -53,7 +52,7 @@ export const antiHeroSlice = createSlice({
     });
 
     builder.addCase(getAntiHeroesAction.rejected, (state, action: any) => {
-      state.error = action?.payload?.message;
+      console.log(action.payload.message);
       state.loading = false;
     });
 
@@ -68,14 +67,13 @@ export const antiHeroSlice = createSlice({
     });
 
     builder.addCase(postAntiHeroAction.rejected, (state, action: any) => {
-      state.error = action?.payload?.message;
+      console.log(action.payload.message);
       state.loading = false;
     });
 
     /* DELETE - Optimistic update */
     builder.addCase(deleteAntiHeroAction.pending, (state, action) => {
       state.tempData = [...state.antiHeroes];
-      state.error = "";
       const index = state.antiHeroes.findIndex(
         (ah) => ah.id === action.meta.arg
       );
@@ -83,7 +81,7 @@ export const antiHeroSlice = createSlice({
     });
 
     builder.addCase(deleteAntiHeroAction.rejected, (state, action: any) => {
-      state.error = action?.error?.message;
+      console.log(action.payload.message);
       state.antiHeroes = state.tempData as AntiHeroModel[];
     });
   },

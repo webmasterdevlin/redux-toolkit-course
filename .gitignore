@@ -23,3 +23,14 @@ yarn-debug.log*
 yarn-error.log*
 
 .eslintcache
+
+
+# Cypress video directory
+**/cypress/videos
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# nyc test coverage
+.nyc_output

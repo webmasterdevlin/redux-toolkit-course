@@ -2,7 +2,7 @@
 
 describe("Dev", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("/");
   });
 
   it("should match URL to /anti-heroes", () => {
@@ -11,18 +11,12 @@ describe("Dev", () => {
   });
 
   it("should get the title of the anti-heroes page", () => {
-    const antiHeroesLink = cy.get("[data-cy=nav-anti-heroes]");
-    antiHeroesLink.click();
-
-    const title = cy.get("[data-cy=title-page]");
-    title.contains("Anti-Heroes Page");
+    cy.get("[data-cy=nav-anti-heroes]").click();
+    cy.get("[data-cy=title-page]").contains("Anti-Heroes Page");
   });
 
   it("should get the title of heroes page", () => {
-    const heroesLink = cy.get("[data-cy=nav-heroes]");
-    heroesLink.click();
-
-    const title = cy.get("[data-cy=title-page]");
-    title.contains("Super Heroes Page");
+    cy.get("[data-cy=nav-heroes]").click();
+    cy.get("[data-cy=title-page]").contains("Super Heroes Page");
   });
 });

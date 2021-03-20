@@ -55,6 +55,7 @@ const NavigationBar = () => {
             className={classes.button}
             onClick={() => history.push("/villains")}
             color="inherit"
+            data-testid="nav-villains"
           >
             Villains
           </Button>

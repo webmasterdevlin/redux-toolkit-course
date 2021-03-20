@@ -51,6 +51,7 @@ const HeroesPage = () => {
               display={"flex"}
               flexDirection={smallScreen ? "column" : "row"}
               justifyContent={"space-between"}
+              data-testid={"card"}
             >
               <Typography>
                 <span>{`${h.firstName} ${h.lastName} is ${h.knownAs}`}</span>

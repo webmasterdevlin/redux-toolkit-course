@@ -53,6 +53,7 @@ const VillainsPage = () => {
               display={"flex"}
               flexDirection={smallScreen ? "column" : "row"}
               justifyContent={"space-between"}
+              data-testid={"card"}
             >
               <Typography>
                 <span>{`${v.firstName} ${v.lastName} is ${v.knownAs}`}</span>

@@ -1,27 +1,8 @@
-/// <reference types="Cypress"/>
+/// <reference types="cypress"/>
 
 describe("Rows of Anti Heroes", () => {
   beforeEach(() => {
-    cy.intercept("GET", "/anti-heroes", {
-      statusCode: 200,
-      body: [
-        {
-          id: "4893hfwuig",
-          firstName: "Eddy",
-          lastName: "Brock",
-          house: "Marvel",
-          knownAs: "Venom",
-        },
-        {
-          id: "9greg7t767g",
-          firstName: "Wade",
-          lastName: "Wilson",
-          house: "Marvel",
-          knownAs: "Deadpool",
-        },
-      ],
-    }).as("loadData");
-
+    cy.fetchAntiHeroes();
     cy.visit("/");
     cy.get("[data-testid=nav-anti-heroes]").click();
   });

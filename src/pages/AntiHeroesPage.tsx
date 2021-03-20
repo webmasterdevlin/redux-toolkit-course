@@ -48,11 +48,11 @@ const AntiHeroesPage = () => {
           antiHeroes.map((ah) => (
             <Box
               mb={2}
-              role={"card"}
               key={ah.id}
               display={"flex"}
               flexDirection={smallScreen ? "column" : "row"}
               justifyContent={"space-between"}
+              data-testid={"card"}
             >
               <div>
                 <Typography>

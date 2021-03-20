@@ -39,7 +39,7 @@ describe("Anti Heroes Page", () => {
   it("should show exact number of anti heroes in main content and navigation bar", async () => {
     render(<AntiHeroesPage />);
 
-    const cards = await screen.findAllByRole("card");
+    const cards = await screen.findAllByTestId("card");
     expect(cards).toHaveLength(2);
     const counter = screen.getByRole("total-anti-heroes");
     expect(counter).toHaveTextContent("2");
@@ -77,7 +77,7 @@ describe("Anti Heroes Page", () => {
     rerender(<AntiHeroesPage />);
 
     await waitFor(() => {
-      const cards = screen.getAllByRole("card");
+      const cards = screen.getAllByTestId("card");
       expect(cards).toHaveLength(3);
       const counter = screen.getByRole("total-anti-heroes");
       expect(counter).toHaveTextContent("3");
@@ -91,7 +91,7 @@ describe("Anti Heroes Page", () => {
       name: "DELETE in DB",
     });
     userEvent.click(buttons[0]);
-    expect(screen.getByRole("card")).toBeInTheDocument();
+    expect(screen.getByTestId("card")).toBeInTheDocument();
     expect(screen.getByRole("total-anti-heroes")).toHaveTextContent("1");
   });
 
@@ -102,7 +102,7 @@ describe("Anti Heroes Page", () => {
       name: "Remove",
     });
     userEvent.click(buttons[0]);
-    expect(screen.getByRole("card")).toBeInTheDocument();
+    expect(screen.getByTestId("card")).toBeInTheDocument();
     expect(screen.getByRole("total-anti-heroes")).toHaveTextContent("1");
   });
 
@@ -114,7 +114,7 @@ describe("Anti Heroes Page", () => {
     });
     expect(buttons).toHaveLength(2);
     userEvent.click(buttons[0]);
-    const cards = await screen.findAllByRole("card");
+    const cards = await screen.findAllByTestId("card");
     expect(cards[0]).toHaveTextContent("marked");
   });
 });

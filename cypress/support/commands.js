@@ -1,17 +1,18 @@
+/// <reference types="Cypress"/>
+
+import "@cypress/code-coverage/support";
+import "@percy/cypress";
+import "@bahmutov/cy-api/support";
 import "@testing-library/cypress/add-commands";
 
-/*This example commands.js shows you how to
- create various custom commands and overwrite
- existing commands.*/
+Cypress.Commands.add("fetchAntiHeroes", (options = {}) => {
+  console.log("HEELLLO");
 
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+  cy.intercept("GET", "http://localhost:5000/anti-heroes/", {
+    body: {
+      statusCode: 200,
+      message: "Request successful",
+      result: [],
+    },
+  }).as("loadData");
+});

@@ -27,7 +27,7 @@ const NavigationBar = () => {
             className={classes.button}
             onClick={() => history.push("/anti-heroes")}
             color="inherit"
-            data-cy="nav-anti-heroes"
+            data-testid="nav-anti-heroes"
           >
             Anti Heroes
           </Button>
@@ -41,7 +41,7 @@ const NavigationBar = () => {
             className={classes.button}
             onClick={() => history.push("/heroes")}
             color="inherit"
-            data-cy="nav-heroes"
+            data-testid="nav-heroes"
           >
             Heroes
           </Button>

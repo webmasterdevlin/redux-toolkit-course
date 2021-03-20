@@ -12,6 +12,8 @@
     "test:jest": "react-scripts test",
     "test:watch": "jest --verbose --watchAll --no-cache --runInBand",
     "test:cypress": "npx cypress run",
+    "test:cypress-open": "npx cypress open --browser edge",
+    "test:cypress-headed": "npx cypress --headed",
     "tsc:check": "npm run tsc:src && npm run tsc:cypress",
     "tsc:src": "tsc --noEmit --project tsconfig.json",
     "tsc:cypress": "tsc --noEmit --project cypress/tsconfig.json",

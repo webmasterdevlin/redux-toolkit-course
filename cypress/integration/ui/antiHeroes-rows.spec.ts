@@ -22,7 +22,7 @@ describe("Rows of Anti Heroes", () => {
       ],
     }).as("loadData");
 
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
     cy.get("[data-testid=nav-anti-heroes]").click();
   });
 

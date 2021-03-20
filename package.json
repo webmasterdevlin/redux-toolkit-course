@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "backend": "json-server --watch db.json --port 5000 --delay=1000",
+    "backend": "json-server --watch data/database.json --port 5000 --delay=1000",
     "start:fullstack": "concurrently \"npm run backend\" \"npm run start\"",
     "build": "npm run checkTs && react-scripts test -- --watch=false && react-scripts build",
     "eject": "react-scripts eject",

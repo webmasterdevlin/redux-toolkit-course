@@ -1,13 +1,13 @@
 /// <reference types="cypress"/>
 
-describe("Rows of Villains", () => {
+describe("Heroes Page", () => {
   beforeEach(() => {
-    cy.fetchVillains();
+    cy.fetchHeroes();
     cy.visit("/");
-    cy.get("[data-testid=nav-villains]").click();
+    cy.get("[data-testid=nav-heroes]").click();
   });
 
-  it("should render villains", () => {
+  it("should render heroes", () => {
     cy.get("[data-testid=card]").should("have.length", 2);
   });
 });

@@ -2,7 +2,7 @@
 
 import { HEROES } from "../../../src/mocks/handlers/heroHandler";
 
-describe("Anti-Heroes Page", () => {
+describe.skip("Anti-Heroes Page", () => {
   beforeEach(() => {
     cy.fetchHeroes();
     cy.visit("/");

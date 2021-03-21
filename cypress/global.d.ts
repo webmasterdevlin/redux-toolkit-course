@@ -2,8 +2,10 @@
 
 declare namespace Cypress {
   interface Chainable {
-    fetchAntiHeroes(): Chainable<any>;
+    getAntiHeroesCommand(): Chainable<any>;
     fetchHeroes(): Chainable<any>;
     fetchVillains(): Chainable<any>;
+
+    deleteAntiHeroCommand(): Chainable<any>;
   }
 }

@@ -4,7 +4,8 @@ import { ANTI_HEROES } from "../../../src/mocks/handlers/antiHeroHandler";
 
 describe("Anti-Heroes Page", () => {
   beforeEach(() => {
-    cy.fetchAntiHeroes();
+    cy.getAntiHeroesCommand();
+    cy.deleteAntiHeroCommand();
     cy.visit("/");
     cy.get("[data-testid=nav-anti-heroes]").click();
 
@@ -33,11 +34,12 @@ describe("Anti-Heroes Page", () => {
     });
 
     it("should delete an anti hero from the database after clicking a delete-from-db button", () => {
-      cy.get("[data-testid=delete-button]").eq(1).click();
+      const antiHero = cy.get("[data-testid=delete-button]").eq(1);
+      antiHero.click();
     });
   });
 
-  context("Save Button", () => {
+  context.skip("Save Button", () => {
     it("should add a new anti hero", () => {
       cy.get("@FirstName").type("Bucky");
       cy.get("@LastName").type("Barnes");

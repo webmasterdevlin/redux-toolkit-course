@@ -2,18 +2,14 @@
 
 import { VILLAINS } from "../../../src/mocks/handlers/villainHandler";
 
-describe.skip("Anti-Heroes Page", () => {
+describe("Villains Page", () => {
   beforeEach(() => {
-    cy.fetchVillains();
-    cy.visit("/");
-    cy.get("[data-testid=nav-villains]").click();
-
-    // demo of writing aliases
-    cy.get("[data-testid=firstName]").as("FirstName");
-    cy.get("[data-testid=lastName]").as("LastName");
-    cy.get("[data-testid=house]").as("House");
-    cy.get("[data-testid=knownAs]").as("KnownAs");
-    cy.get("[data-testid=save-character]").as("Save");
+    /* Custom commands. Please see support/commands.ts
+     * and the global.d.ts for intellisense */
+    cy.getCommand("/villains", VILLAINS);
+    cy.deleteCommand("/villains/*");
+    cy.NavigateByTestIdCommand("nav-villains");
+    cy.SetupInputFieldsCommand();
   });
 
   it("should render villains", () => {
@@ -37,12 +33,25 @@ describe.skip("Anti-Heroes Page", () => {
     });
   });
 
-  context("Save Button", () => {
-    it("should add a new villain", () => {
-      cy.get("@FirstName").type("Bucky");
-      cy.get("@LastName").type("Barnes");
-      cy.get("@House").type("Marvel");
-      cy.get("@KnownAs").type("The Winter Soldier");
+  context("Save Button", async () => {
+    it("should add a new villain", async () => {
+      const firstName = "Victor";
+      const lastName = "Von Doom";
+      const house = "Marvel";
+      const knownAs = "Doctor Doom";
+
+      cy.get("@FirstName").clear().type(firstName);
+      cy.get("@LastName").clear().type(lastName);
+      cy.get("@House").clear().type(house);
+      cy.get("@KnownAs").clear().type(knownAs);
+
+      cy.postCommand("/villains", {
+        firstName,
+        lastName,
+        house,
+        knownAs,
+      });
+
       cy.get("@Save").click();
 
       cy.findAllByTestId("card").should("have.length", VILLAINS.length + 1);

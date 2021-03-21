@@ -2,11 +2,10 @@
 
 declare namespace Cypress {
   interface Chainable {
-    getAntiHeroesCommand(): Chainable<any>;
-    fetchHeroes(): Chainable<any>;
-    fetchVillains(): Chainable<any>;
-
-    deleteAntiHeroCommand(): Chainable<any>;
-    postAntiHeroCommand(antiHero: any): Chainable<any>;
+    getCommand(url: string, responseBody: Array<any>): Chainable<any>;
+    deleteCommand(url: string): Chainable<any>;
+    postCommand(url: string, requestBody: any): Chainable<any>;
+    SetupInputFieldsCommand(): Chainable<any>;
+    NavigateByTestIdCommand(testId: string): Chainable<any>;
   }
 }

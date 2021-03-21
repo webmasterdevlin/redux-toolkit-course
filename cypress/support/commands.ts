@@ -1,48 +1,43 @@
-/// <reference types="Cypress"/>
-
+// @ts-check
+///<reference path="../global.d.ts" />
+/// <reference types="cypress"/>
 import "@cypress/code-coverage/support";
 import "@percy/cypress";
 import "@bahmutov/cy-api/support";
 import "@testing-library/cypress/add-commands";
-import { ANTI_HEROES } from "../../src/mocks/handlers/antiHeroHandler";
-import { HEROES } from "../../src/mocks/handlers/heroHandler";
-import { VILLAINS } from "../../src/mocks/handlers/villainHandler";
-import { AntiHeroModel } from "../../src/features/antiHeroes/antiHeroTypes";
-import { Simulate } from "react-dom/test-utils";
-import animationEnd = Simulate.animationEnd;
+import { v4 as uuidv4 } from "uuid";
 
-Cypress.Commands.add("getAntiHeroesCommand", () => {
-  cy.intercept("GET", "/anti-heroes", {
+Cypress.Commands.add("getCommand", (url: string, responseBody: Array<any>) => {
+  cy.intercept("GET", url, {
     statusCode: 200,
-    body: ANTI_HEROES,
+    body: responseBody,
   });
 });
 
-Cypress.Commands.add("deleteAntiHeroCommand", () => {
-  cy.intercept("DELETE", "/anti-heroes/*", {
+Cypress.Commands.add("deleteCommand", (url: string) => {
+  cy.intercept("DELETE", url, {
     statusCode: 200,
   });
 });
 
-Cypress.Commands.add("postAntiHeroCommand", (antiHero: AntiHeroModel) => {
-  antiHero.id = "1a2s3d";
+Cypress.Commands.add("postCommand", (url: string, requestBody: any) => {
+  requestBody.id = uuidv4();
 
-  cy.intercept("POST", "/anti-heroes", {
+  cy.intercept("POST", url, {
     statusCode: 201,
-    body: antiHero,
+    body: requestBody,
   });
 });
 
-Cypress.Commands.add("fetchHeroes", () => {
-  cy.intercept("GET", "/heroes", {
-    statusCode: 200,
-    body: HEROES,
-  });
+Cypress.Commands.add("SetupInputFieldsCommand", () => {
+  cy.get("[data-testid=firstName]").as("FirstName");
+  cy.get("[data-testid=lastName]").as("LastName");
+  cy.get("[data-testid=house]").as("House");
+  cy.get("[data-testid=knownAs]").as("KnownAs");
+  cy.get("[data-testid=save-character]").as("Save");
 });
 
-Cypress.Commands.add("fetchVillains", () => {
-  cy.intercept("GET", "/villains", {
-    statusCode: 200,
-    body: VILLAINS,
-  });
+Cypress.Commands.add("NavigateByTestIdCommand", (testId: string) => {
+  cy.visit("/");
+  cy.get(`[data-testid=${testId}]`).click();
 });

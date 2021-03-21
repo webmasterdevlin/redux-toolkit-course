@@ -1,22 +1,15 @@
 /// <reference types="cypress"/>
 
 import { ANTI_HEROES } from "../../../src/mocks/handlers/antiHeroHandler";
-import { AntiHeroModel } from "../../../src/features/antiHeroes/antiHeroTypes";
 
 describe("Anti-Heroes Page", () => {
   beforeEach(() => {
-    cy.getAntiHeroesCommand();
-    cy.deleteAntiHeroCommand();
-
-    cy.visit("/");
-    cy.get("[data-testid=nav-anti-heroes]").click();
-
-    // demo of writing aliases
-    cy.get("[data-testid=firstName]").as("FirstName");
-    cy.get("[data-testid=lastName]").as("LastName");
-    cy.get("[data-testid=house]").as("House");
-    cy.get("[data-testid=knownAs]").as("KnownAs");
-    cy.get("[data-testid=save-character]").as("Save");
+    /* Custom commands. Please see support/commands.ts
+     * and the global.d.ts for intellisense */
+    cy.getCommand("/anti-heroes", ANTI_HEROES);
+    cy.deleteCommand("/anti-heroes/*");
+    cy.NavigateByTestIdCommand("nav-anti-heroes");
+    cy.SetupInputFieldsCommand();
   });
 
   it("should render anti heroes", () => {
@@ -36,30 +29,28 @@ describe("Anti-Heroes Page", () => {
     });
 
     it("should delete an anti hero from the database after clicking a delete-from-db button", () => {
-      const antiHero = cy.get("[data-testid=delete-button]").eq(1);
-      antiHero.click();
+      cy.get("[data-testid=delete-button]").eq(1).click();
     });
   });
 
   context("Save Button", async () => {
     it("should add a new anti hero", async () => {
-      let firstName = "Bucky";
-      let lastName = "Barnes";
-      let house = "BB";
-      let knownAs = "The Winter Soldier";
+      const firstName = "Bucky";
+      const lastName = "Barnes";
+      const house = "Marvel";
+      const knownAs = "The Winter Soldier";
 
-      cy.get("@FirstName").type(firstName);
-      cy.get("@LastName").type(lastName);
-      cy.get("@House").type(house);
-      cy.get("@KnownAs").type(knownAs);
+      cy.get("@FirstName").clear().type(firstName);
+      cy.get("@LastName").clear().type(lastName);
+      cy.get("@House").clear().type(house);
+      cy.get("@KnownAs").clear().type(knownAs);
 
-      cy.postAntiHeroCommand({
+      cy.postCommand("/anti-heroes", {
         firstName,
         lastName,
         house,
         knownAs,
-        id: "",
-      } as AntiHeroModel);
+      });
 
       cy.get("@Save").click();
 

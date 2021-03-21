@@ -4,7 +4,7 @@ import { VILLAINS } from "../../../src/mocks/handlers/villainHandler";
 
 describe("Anti-Heroes Page", () => {
   beforeEach(() => {
-    cy.fetchAntiHeroes();
+    cy.fetchVillains();
     cy.visit("/");
     cy.get("[data-testid=nav-villains]").click();
 

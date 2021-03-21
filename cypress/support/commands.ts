@@ -7,6 +7,9 @@ import "@testing-library/cypress/add-commands";
 import { ANTI_HEROES } from "../../src/mocks/handlers/antiHeroHandler";
 import { HEROES } from "../../src/mocks/handlers/heroHandler";
 import { VILLAINS } from "../../src/mocks/handlers/villainHandler";
+import { AntiHeroModel } from "../../src/features/antiHeroes/antiHeroTypes";
+import { Simulate } from "react-dom/test-utils";
+import animationEnd = Simulate.animationEnd;
 
 Cypress.Commands.add("getAntiHeroesCommand", () => {
   cy.intercept("GET", "/anti-heroes", {
@@ -21,9 +24,12 @@ Cypress.Commands.add("deleteAntiHeroCommand", () => {
   });
 });
 
-Cypress.Commands.add("postAntiHeroCommand", () => {
+Cypress.Commands.add("postAntiHeroCommand", (antiHero: AntiHeroModel) => {
+  antiHero.id = "1a2s3d";
+
   cy.intercept("POST", "/anti-heroes", {
     statusCode: 201,
+    body: antiHero,
   });
 });
 

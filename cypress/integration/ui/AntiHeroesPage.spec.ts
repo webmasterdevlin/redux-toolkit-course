@@ -1,12 +1,13 @@
 /// <reference types="cypress"/>
 
 import { ANTI_HEROES } from "../../../src/mocks/handlers/antiHeroHandler";
+import { AntiHeroModel } from "../../../src/features/antiHeroes/antiHeroTypes";
 
 describe("Anti-Heroes Page", () => {
   beforeEach(() => {
     cy.getAntiHeroesCommand();
     cy.deleteAntiHeroCommand();
-    cy.postAntiHeroCommand();
+
     cy.visit("/");
     cy.get("[data-testid=nav-anti-heroes]").click();
 
@@ -40,12 +41,26 @@ describe("Anti-Heroes Page", () => {
     });
   });
 
-  context("Save Button", () => {
-    it("should add a new anti hero", () => {
-      cy.get("@FirstName").type("Bucky");
-      cy.get("@LastName").type("Barnes");
-      cy.get("@House").type("Marvel");
-      cy.get("@KnownAs").type("The Winter Soldier");
+  context("Save Button", async () => {
+    it("should add a new anti hero", async () => {
+      let firstName = "Bucky";
+      let lastName = "Barnes";
+      let house = "BB";
+      let knownAs = "The Winter Soldier";
+
+      cy.get("@FirstName").type(firstName);
+      cy.get("@LastName").type(lastName);
+      cy.get("@House").type(house);
+      cy.get("@KnownAs").type(knownAs);
+
+      cy.postAntiHeroCommand({
+        firstName,
+        lastName,
+        house,
+        knownAs,
+        id: "",
+      } as AntiHeroModel);
+
       cy.get("@Save").click();
 
       cy.findAllByTestId("card").should("have.length", ANTI_HEROES.length + 1);

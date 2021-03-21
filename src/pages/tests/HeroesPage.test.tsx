@@ -41,7 +41,7 @@ describe("Heroes Page", () => {
 
     const cards = await screen.findAllByRole("card");
     expect(cards).toHaveLength(2);
-    const counter = screen.getByRole("total-heroes");
+    const counter = screen.getByTestId("total-heroes");
     expect(counter).toHaveTextContent("2");
   });
 
@@ -79,7 +79,7 @@ describe("Heroes Page", () => {
     await waitFor(() => {
       const cards = screen.getAllByRole("card");
       expect(cards).toHaveLength(3);
-      const counter = screen.getByRole("total-heroes");
+      const counter = screen.getByTestId("total-heroes");
       expect(counter).toHaveTextContent("3");
     });
   });
@@ -92,7 +92,7 @@ describe("Heroes Page", () => {
     });
     userEvent.click(buttons[0]);
     expect(screen.getByRole("card")).toBeInTheDocument();
-    expect(screen.getByRole("total-heroes")).toHaveTextContent("1");
+    expect(screen.getByTestId("total-heroes")).toHaveTextContent("1");
   });
 
   it("should remove a hero from the store", async () => {
@@ -103,7 +103,7 @@ describe("Heroes Page", () => {
     });
     userEvent.click(buttons[0]);
     expect(screen.getByRole("card")).toBeInTheDocument();
-    expect(screen.getByRole("total-heroes")).toHaveTextContent("1");
+    expect(screen.getByTestId("total-heroes")).toHaveTextContent("1");
   });
 
   it("should mark a hero", async () => {

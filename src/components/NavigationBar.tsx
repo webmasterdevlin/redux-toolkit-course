@@ -34,7 +34,7 @@ const NavigationBar = () => {
           </Button>
           <TotalOfCharacters
             collection={store.antiHero.antiHeroes}
-            role={"total-anti-heroes"}
+            dataTestId={"total-anti-heroes"}
           />
         </Box>
         <Box>
@@ -48,7 +48,7 @@ const NavigationBar = () => {
           </Button>
           <TotalOfCharacters
             collection={store.hero.heroes}
-            role={"total-heroes"}
+            dataTestId={"total-heroes"}
           />
         </Box>
         <Box>
@@ -62,7 +62,7 @@ const NavigationBar = () => {
           </Button>
           <TotalOfCharacters
             collection={store.villain.villains}
-            role={"total-villains"}
+            dataTestId={"total-villains"}
           />
         </Box>
       </Toolbar>

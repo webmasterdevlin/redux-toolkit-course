@@ -41,7 +41,7 @@ describe("Anti Heroes Page", () => {
 
     const cards = await screen.findAllByTestId("card");
     expect(cards).toHaveLength(2);
-    const counter = screen.getByRole("total-anti-heroes");
+    const counter = screen.getByTestId("total-anti-heroes");
     expect(counter).toHaveTextContent("2");
   });
 
@@ -79,7 +79,7 @@ describe("Anti Heroes Page", () => {
     await waitFor(() => {
       const cards = screen.getAllByTestId("card");
       expect(cards).toHaveLength(3);
-      const counter = screen.getByRole("total-anti-heroes");
+      const counter = screen.getByTestId("total-anti-heroes");
       expect(counter).toHaveTextContent("3");
     });
   });
@@ -92,7 +92,7 @@ describe("Anti Heroes Page", () => {
     });
     userEvent.click(buttons[0]);
     expect(screen.getByTestId("card")).toBeInTheDocument();
-    expect(screen.getByRole("total-anti-heroes")).toHaveTextContent("1");
+    expect(screen.getByTestId("total-anti-heroes")).toHaveTextContent("1");
   });
 
   it("should remove an anti hero from the store", async () => {
@@ -103,7 +103,7 @@ describe("Anti Heroes Page", () => {
     });
     userEvent.click(buttons[0]);
     expect(screen.getByTestId("card")).toBeInTheDocument();
-    expect(screen.getByRole("total-anti-heroes")).toHaveTextContent("1");
+    expect(screen.getByTestId("total-anti-heroes")).toHaveTextContent("1");
   });
 
   it("should mark an anti hero", async () => {

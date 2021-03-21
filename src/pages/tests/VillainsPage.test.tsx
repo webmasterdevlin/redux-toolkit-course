@@ -41,7 +41,7 @@ describe("Villains Page", () => {
 
     const cards = await screen.findAllByRole("card");
     expect(cards).toHaveLength(2);
-    const counter = screen.getByRole("total-villains");
+    const counter = screen.getByTestId("total-villains");
     expect(counter).toHaveTextContent("2");
   });
 
@@ -79,7 +79,7 @@ describe("Villains Page", () => {
     await waitFor(() => {
       const cards = screen.getAllByRole("card");
       expect(cards).toHaveLength(3);
-      const counter = screen.getByRole("total-villains");
+      const counter = screen.getByTestId("total-villains");
       expect(counter).toHaveTextContent("3");
     });
   });
@@ -92,7 +92,7 @@ describe("Villains Page", () => {
     });
     userEvent.click(buttons[0]);
     expect(screen.getByRole("card")).toBeInTheDocument();
-    expect(screen.getByRole("total-villains")).toHaveTextContent("1");
+    expect(screen.getByTestId("total-villains")).toHaveTextContent("1");
   });
 
   it("should remove a villain from the store", async () => {
@@ -103,7 +103,7 @@ describe("Villains Page", () => {
     });
     userEvent.click(buttons[0]);
     expect(screen.getByRole("card")).toBeInTheDocument();
-    expect(screen.getByRole("total-villains")).toHaveTextContent("1");
+    expect(screen.getByTestId("total-villains")).toHaveTextContent("1");
   });
 
   it("should mark a villain", async () => {

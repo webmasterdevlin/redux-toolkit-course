@@ -9,22 +9,22 @@ import { HEROES } from "../../src/mocks/handlers/heroHandler";
 import { VILLAINS } from "../../src/mocks/handlers/villainHandler";
 
 Cypress.Commands.add("fetchAntiHeroes", () => {
-  cy.intercept("GET", "/anti-heroes/*", {
+  cy.intercept("GET", "/anti-heroes", {
     statusCode: 200,
-    body: [...ANTI_HEROES],
+    body: ANTI_HEROES,
   });
 });
 
 Cypress.Commands.add("fetchHeroes", () => {
-  cy.intercept("GET", "/heroes/*", {
+  cy.intercept("GET", "/heroes", {
     statusCode: 200,
-    body: [...HEROES],
+    body: HEROES,
   });
 });
 
 Cypress.Commands.add("fetchVillains", () => {
-  cy.intercept("GET", "/villains/*", {
+  cy.intercept("GET", "/villains", {
     statusCode: 200,
-    body: [...VILLAINS],
+    body: VILLAINS,
   });
 });

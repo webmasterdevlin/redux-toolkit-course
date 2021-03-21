@@ -8,21 +8,21 @@ import { ANTI_HEROES } from "../../src/mocks/handlers/antiHeroHandler";
 import { HEROES } from "../../src/mocks/handlers/heroHandler";
 import { VILLAINS } from "../../src/mocks/handlers/villainHandler";
 
-Cypress.Commands.add("getAntiHeroesCommands", () => {
+Cypress.Commands.add("getAntiHeroesCommand", () => {
   cy.intercept("GET", "/anti-heroes", {
     statusCode: 200,
     body: ANTI_HEROES,
   });
 });
 
-Cypress.Commands.add("deleteAntiHeroCommands", (id) => {
+Cypress.Commands.add("deleteAntiHeroCommand", () => {
   cy.intercept("DELETE", "/anti-heroes/*", {
     statusCode: 200,
   });
 });
 
-Cypress.Commands.add("postAntiHeroCommands", () => {
-  cy.intercept("POST", "/anti-heroes", {
+Cypress.Commands.add("postAntiHeroCommand", () => {
+  cy.intercept("POST", "/anti-heroes/", {
     statusCode: 200,
   });
 });

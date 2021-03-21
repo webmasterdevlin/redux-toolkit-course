@@ -39,7 +39,7 @@ describe("Anti-Heroes Page", () => {
     });
   });
 
-  context.skip("Save Button", () => {
+  context("Save Button", () => {
     it("should add a new anti hero", () => {
       cy.get("@FirstName").type("Bucky");
       cy.get("@LastName").type("Barnes");

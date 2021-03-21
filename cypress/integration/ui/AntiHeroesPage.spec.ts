@@ -6,6 +6,7 @@ describe("Anti-Heroes Page", () => {
   beforeEach(() => {
     cy.getAntiHeroesCommand();
     cy.deleteAntiHeroCommand();
+    cy.postAntiHeroCommand();
     cy.visit("/");
     cy.get("[data-testid=nav-anti-heroes]").click();
 

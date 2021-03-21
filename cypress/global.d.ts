@@ -7,5 +7,6 @@ declare namespace Cypress {
     fetchVillains(): Chainable<any>;
 
     deleteAntiHeroCommand(): Chainable<any>;
+    postAntiHeroCommand(): Chainable<any>;
   }
 }

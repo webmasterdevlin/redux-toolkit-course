@@ -3,8 +3,9 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "store/reducers";
 import { AppBar, Box, Button, createStyles, Toolbar } from "@material-ui/core";
-import TotalOfCharacters from "./TotalOfCharacters";
 import { makeStyles } from "@material-ui/styles";
+
+import TotalOfCharacters from "./TotalOfCharacters";
 
 const NavigationBar = () => {
   const store = useSelector((state: RootState) => state);

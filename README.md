@@ -12,7 +12,7 @@ The React app, and the fake web service will run concurrently.
 ![screenshot](./screenshot.png)
 
 
-### Best practices in writing tests
+### React Testing Library's best practices in writing tests
 
 https://kentcdodds.com/blog/common-mistakes-with-react-testing-library
 
@@ -24,3 +24,13 @@ https://kentcdodds.com/blog/common-mistakes-with-react-testing-library
 - if necessary, use await waitFor instead of await wait
 - use userEvent instead of fireEvent
 - don't use userEvent inside the callback of waitFor
+
+
+### Cypress' best practices in writing tests
+
+https://docs.cypress.io/guides/references/best-practices.html
+
+### Application's styles
+
+- The application is using test ID instead of role when querying dom elements
+- Test IDs are simple and isolated

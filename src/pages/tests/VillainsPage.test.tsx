@@ -37,7 +37,7 @@ describe("Villains Page", () => {
   it("should show exact number of villains in main content and navigation bar", async () => {
     render(<VillainsPage />);
 
-    const cards = await screen.findAllByRole("card");
+    const cards = await screen.findAllByTestId("card");
     expect(cards).toHaveLength(2);
     const counter = screen.getByTestId("total-villains");
     expect(counter).toHaveTextContent("2");
@@ -75,44 +75,38 @@ describe("Villains Page", () => {
     rerender(<VillainsPage />);
 
     await waitFor(() => {
-      const cards = screen.getAllByRole("card");
+      const cards = screen.getAllByTestId("card");
       expect(cards).toHaveLength(3);
       const counter = screen.getByTestId("total-villains");
       expect(counter).toHaveTextContent("3");
     });
   });
 
-  it("should delete a villain from the database", async () => {
+  it("should mark a villain", async () => {
     render(<VillainsPage />);
 
-    const buttons = await screen.findAllByRole("button", {
-      name: "DELETE in DB",
-    });
+    const buttons = await screen.findAllByTestId("mark-button");
+    expect(buttons).toHaveLength(2);
     userEvent.click(buttons[0]);
-    expect(screen.getByRole("card")).toBeInTheDocument();
-    expect(screen.getByTestId("total-villains")).toHaveTextContent("1");
+    const cards = await screen.findAllByTestId("card");
+    expect(cards[0]).toHaveTextContent("marked");
   });
 
   it("should remove a villain from the store", async () => {
     render(<VillainsPage />);
 
-    const buttons = await screen.findAllByRole("button", {
-      name: "Remove",
-    });
+    const buttons = await screen.findAllByTestId("remove-button");
     userEvent.click(buttons[0]);
-    expect(screen.getByRole("card")).toBeInTheDocument();
+    expect(screen.getByTestId("card")).toBeInTheDocument();
     expect(screen.getByTestId("total-villains")).toHaveTextContent("1");
   });
 
-  it("should mark a villain", async () => {
+  it("should delete a villain from the database", async () => {
     render(<VillainsPage />);
 
-    const buttons = await screen.findAllByRole("button", {
-      name: "Mark",
-    });
-    expect(buttons).toHaveLength(2);
+    const buttons = await screen.findAllByTestId("delete-button");
     userEvent.click(buttons[0]);
-    const cards = await screen.findAllByRole("card");
-    expect(cards[0]).toHaveTextContent("marked");
+    expect(screen.getByTestId("card")).toBeInTheDocument();
+    expect(screen.getByTestId("total-villains")).toHaveTextContent("1");
   });
 });

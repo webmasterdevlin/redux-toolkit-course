@@ -68,6 +68,7 @@ const AntiHeroesPage = () => {
                   onClick={() => setCounter(ah.id)}
                   variant={"contained"}
                   color={"default"}
+                  data-testid={"mark-button"}
                 >
                   Mark
                 </Button>{" "}
@@ -76,6 +77,7 @@ const AntiHeroesPage = () => {
                   onClick={() => dispatch(softDeleteAntiHeroAction(ah.id))}
                   variant={"contained"}
                   color={"secondary"}
+                  data-testid={"remove-button"}
                 >
                   Remove
                 </Button>{" "}
@@ -84,6 +86,7 @@ const AntiHeroesPage = () => {
                   onClick={() => dispatch(deleteAntiHeroAction(ah.id))}
                   variant={"outlined"}
                   color={"secondary"}
+                  data-testid={"delete-button"}
                 >
                   DELETE in DB
                 </Button>

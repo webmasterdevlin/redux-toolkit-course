@@ -28,16 +28,14 @@ describe("Heroes Page", () => {
   it("should save character button be in disabled", () => {
     render(<HeroesPage />);
 
-    const saveCharacterButton = screen.getByRole("button", {
-      name: "Save Character",
-    });
+    const saveCharacterButton = screen.getByTestId("save-character");
     expect(saveCharacterButton).toBeDisabled();
   });
 
   it("should show exact number of heroes in main content and navigation bar", async () => {
     render(<HeroesPage />);
 
-    const cards = await screen.findAllByRole("card");
+    const cards = await screen.findAllByTestId("card");
     expect(cards).toHaveLength(2);
     const counter = screen.getByTestId("total-heroes");
     expect(counter).toHaveTextContent("2");
@@ -66,31 +64,28 @@ describe("Heroes Page", () => {
     userEvent.type(knownAsTextInput, "React Man");
     expect(knownAsTextInput).toHaveValue("React Man");
 
-    const saveCharacterButton = await screen.findByRole("button", {
-      name: "Save Character",
-    });
+    const saveCharacterButton = await screen.findByTestId("save-character");
     expect(saveCharacterButton).toBeEnabled();
     userEvent.click(saveCharacterButton);
 
     rerender(<HeroesPage />);
 
     await waitFor(() => {
-      const cards = screen.getAllByRole("card");
+      const cards = screen.getAllByTestId("card");
       expect(cards).toHaveLength(3);
       const counter = screen.getByTestId("total-heroes");
       expect(counter).toHaveTextContent("3");
     });
   });
 
-  it("should delete a hero from the database", async () => {
+  it("should mark a hero", async () => {
     render(<HeroesPage />);
 
-    const buttons = await screen.findAllByRole("button", {
-      name: "DELETE in DB",
-    });
+    const buttons = await screen.findAllByTestId("mark-button");
+    expect(buttons).toHaveLength(2);
     userEvent.click(buttons[0]);
-    expect(screen.getByRole("card")).toBeInTheDocument();
-    expect(screen.getByTestId("total-heroes")).toHaveTextContent("1");
+    const cards = await screen.findAllByTestId("card");
+    expect(cards[0]).toHaveTextContent("marked");
   });
 
   it("should remove a hero from the store", async () => {
@@ -100,19 +95,18 @@ describe("Heroes Page", () => {
       name: "Remove",
     });
     userEvent.click(buttons[0]);
-    expect(screen.getByRole("card")).toBeInTheDocument();
+    expect(screen.getByTestId("card")).toBeInTheDocument();
     expect(screen.getByTestId("total-heroes")).toHaveTextContent("1");
   });
 
-  it("should mark a hero", async () => {
+  it("should delete a hero from the database", async () => {
     render(<HeroesPage />);
 
     const buttons = await screen.findAllByRole("button", {
-      name: "Mark",
+      name: "DELETE in DB",
     });
-    expect(buttons).toHaveLength(2);
     userEvent.click(buttons[0]);
-    const cards = await screen.findAllByRole("card");
-    expect(cards[0]).toHaveTextContent("marked");
+    expect(screen.getByTestId("card")).toBeInTheDocument();
+    expect(screen.getByTestId("total-heroes")).toHaveTextContent("1");
   });
 });

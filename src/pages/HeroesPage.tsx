@@ -48,7 +48,6 @@ const HeroesPage = () => {
           heroes.map((h) => (
             <Box
               key={h.id}
-              role={"card"}
               mb={2}
               display={"flex"}
               flexDirection={smallScreen ? "column" : "row"}
@@ -65,6 +64,7 @@ const HeroesPage = () => {
                   onClick={() => setCounter(h.id)}
                   variant={"contained"}
                   color={"default"}
+                  data-testid={"mark-button"}
                 >
                   Mark
                 </Button>{" "}
@@ -73,6 +73,7 @@ const HeroesPage = () => {
                   onClick={() => dispatch(softDeleteHeroAction(h.id))}
                   variant={"contained"}
                   color={"secondary"}
+                  data-testid={"remove-button"}
                 >
                   Remove
                 </Button>{" "}
@@ -81,6 +82,7 @@ const HeroesPage = () => {
                   onClick={() => dispatch(deleteHeroAction(h.id))}
                   variant={"outlined"}
                   color={"secondary"}
+                  data-testid={"delete-button"}
                 >
                   DELETE in DB
                 </Button>

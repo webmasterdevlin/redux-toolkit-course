@@ -18,7 +18,7 @@ describe("Anti-Heroes Page", () => {
       cy.findAllByTestId("card").should("contain", "- marked");
     });
 
-    it("should remove an anti hero after clicking a remove button", () => {
+    it("should remove an anti hero from the store after clicking a remove button", () => {
       cy.get("[data-testid=remove-button]").eq(1).click();
       cy.get("[data-testid=card]").should("have.length", 1);
     });

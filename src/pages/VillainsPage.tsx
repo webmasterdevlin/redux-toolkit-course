@@ -50,7 +50,6 @@ const VillainsPage = () => {
           villains.map((v) => (
             <Box
               key={v.id}
-              role={"card"}
               mb={2}
               display={"flex"}
               flexDirection={smallScreen ? "column" : "row"}
@@ -67,6 +66,7 @@ const VillainsPage = () => {
                   onClick={() => setCounter(v.id)}
                   variant={"contained"}
                   color={"default"}
+                  data-testid={"mark-button"}
                 >
                   Mark
                 </Button>{" "}
@@ -75,6 +75,7 @@ const VillainsPage = () => {
                   onClick={() => dispatch(softDeleteVillainAction(v.id))}
                   variant={"contained"}
                   color={"secondary"}
+                  data-testid={"remove-button"}
                 >
                   Remove
                 </Button>{" "}
@@ -83,6 +84,7 @@ const VillainsPage = () => {
                   onClick={() => dispatch(deleteVillainAction(v.id))}
                   variant={"outlined"}
                   color={"secondary"}
+                  data-testid={"delete-button"}
                 >
                   DELETE in DB
                 </Button>

@@ -28,9 +28,7 @@ describe("Anti Heroes Page", () => {
   it("should save character button be in disabled", () => {
     render(<AntiHeroesPage />);
 
-    const saveCharacterButton = screen.getByRole("button", {
-      name: "Save Character",
-    });
+    const saveCharacterButton = screen.getByTestId("save-character");
     expect(saveCharacterButton).toBeDisabled();
   });
 
@@ -66,9 +64,7 @@ describe("Anti Heroes Page", () => {
     userEvent.type(knownAsTextInput, "React Man");
     expect(knownAsTextInput).toHaveValue("React Man");
 
-    const saveCharacterButton = await screen.findByRole("button", {
-      name: "Save Character",
-    });
+    const saveCharacterButton = await screen.findByTestId("save-character");
     expect(saveCharacterButton).toBeEnabled();
     userEvent.click(saveCharacterButton);
 
@@ -82,15 +78,14 @@ describe("Anti Heroes Page", () => {
     });
   });
 
-  it("should delete a hero from the database", async () => {
+  it("should mark an anti hero", async () => {
     render(<AntiHeroesPage />);
 
-    const buttons = await screen.findAllByRole("button", {
-      name: "DELETE in DB",
-    });
+    const buttons = await screen.findAllByTestId("mark-button");
+    expect(buttons).toHaveLength(2);
     userEvent.click(buttons[0]);
-    expect(screen.getByTestId("card")).toBeInTheDocument();
-    expect(screen.getByTestId("total-anti-heroes")).toHaveTextContent("1");
+    const cards = await screen.findAllByTestId("card");
+    expect(cards[0]).toHaveTextContent("marked");
   });
 
   it("should remove an anti hero from the store", async () => {
@@ -104,15 +99,14 @@ describe("Anti Heroes Page", () => {
     expect(screen.getByTestId("total-anti-heroes")).toHaveTextContent("1");
   });
 
-  it("should mark an anti hero", async () => {
+  it("should delete a hero from the database", async () => {
     render(<AntiHeroesPage />);
 
     const buttons = await screen.findAllByRole("button", {
-      name: "Mark",
+      name: "DELETE in DB",
     });
-    expect(buttons).toHaveLength(2);
     userEvent.click(buttons[0]);
-    const cards = await screen.findAllByTestId("card");
-    expect(cards[0]).toHaveTextContent("marked");
+    expect(screen.getByTestId("card")).toBeInTheDocument();
+    expect(screen.getByTestId("total-anti-heroes")).toHaveTextContent("1");
   });
 });

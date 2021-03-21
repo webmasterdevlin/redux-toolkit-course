@@ -22,6 +22,7 @@ const SharedForm = () => {
             type="submit"
             color={"primary"}
             variant={"outlined"}
+            data-testid={"save-character"}
           >
             Save Character
           </Button>

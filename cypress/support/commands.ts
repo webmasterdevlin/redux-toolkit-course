@@ -22,8 +22,8 @@ Cypress.Commands.add("deleteAntiHeroCommand", () => {
 });
 
 Cypress.Commands.add("postAntiHeroCommand", () => {
-  cy.intercept("POST", "/anti-heroes/", {
-    statusCode: 200,
+  cy.intercept("POST", "/anti-heroes", {
+    statusCode: 201,
   });
 });
 

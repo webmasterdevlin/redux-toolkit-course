@@ -1,20 +1,22 @@
+import { v4 as uuidv4 } from "uuid";
+
+import { softDeleteVillainAction } from "../villainSlice";
+import { VillainStateType } from "../villainTypes";
+import { store } from "App";
 import {
   getVillainsAction,
   postVillainAction,
   deleteVillainAction,
 } from "../villainAsyncActions";
-import { softDeleteVillainAction } from "../villainSlice";
-import { VillainStateType } from "../villainTypes";
-import { store } from "../../../App";
 
 describe("VillainsPage dispatch", () => {
   let state: VillainStateType;
   let newVillain = {
-    id: "123",
+    id: uuidv4(),
     firstName: "Devlin",
     lastName: "Duldulao",
-    house: "Angular Devs",
-    knownAs: "Angular trainer",
+    house: "Devs",
+    knownAs: "React trainer",
   };
 
   /* Select the store.getState().villain again

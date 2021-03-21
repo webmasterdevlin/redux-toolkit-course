@@ -1,20 +1,22 @@
+import { v4 as uuidv4 } from "uuid";
+
+import { softDeleteAntiHeroAction } from "../antiHeroSlice";
+import { AntiHeroStateType } from "../antiHeroTypes";
+import { store } from "App";
 import {
   getAntiHeroesAction,
   postAntiHeroAction,
   deleteAntiHeroAction,
 } from "../antiHeroAsyncActions";
-import { softDeleteAntiHeroAction } from "../antiHeroSlice";
-import { AntiHeroStateType } from "../antiHeroTypes";
-import { store } from "App";
 
 describe("AntiHeroesPage dispatch", () => {
   let state: AntiHeroStateType;
   let newAntiHero = {
-    id: "123",
+    id: uuidv4(),
     firstName: "Devlin",
     lastName: "Duldulao",
-    house: "Angular Devs",
-    knownAs: "Angular trainer",
+    house: "Devs",
+    knownAs: "React trainer",
   };
 
   /* Select the store.getState().antiHero again

@@ -1,20 +1,22 @@
+import { v4 as uuidv4 } from "uuid";
+
+import { softDeleteHeroAction } from "../heroSlice";
+import { HeroStateType } from "../heroTypes";
+import { store } from "App";
 import {
   getHeroesAction,
   postHeroAction,
   deleteHeroAction,
 } from "../heroAsyncActions";
-import { softDeleteHeroAction } from "../heroSlice";
-import { HeroStateType } from "../heroTypes";
-import { store } from "App";
 
 describe("HeroesPage dispatch", () => {
   let state: HeroStateType;
   let newHero = {
-    id: "123",
+    id: uuidv4(),
     firstName: "Devlin",
     lastName: "Duldulao",
-    house: "Angular Devs",
-    knownAs: "Angular trainer",
+    house: "Devs",
+    knownAs: "React trainer",
   };
 
   /* Select the store.getState().hero again

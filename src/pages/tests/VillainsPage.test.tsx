@@ -8,16 +8,14 @@ describe("Villains Page", () => {
   it("should render title", () => {
     render(<VillainsPage />);
 
-    const title = screen.getByRole("heading", { name: "Super Villains Page" });
+    const title = screen.getByTestId("title-page");
     expect(title).toBeInTheDocument();
   });
 
   it("should render loading message", async () => {
     render(<VillainsPage />);
 
-    const loading = screen.getByRole("heading", {
-      name: "Loading.. Please wait..",
-    });
+    const loading = screen.getByTestId("loading");
     expect(loading).toHaveTextContent("Loading.. Please wait..");
   });
 

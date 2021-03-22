@@ -40,10 +40,10 @@ describe("Anti-Heroes Page", () => {
       const house = "Marvel";
       const knownAs = "The Winter Soldier";
 
-      cy.get("@FirstName").clear().type(firstName);
-      cy.get("@LastName").clear().type(lastName);
-      cy.get("@House").clear().type(house);
-      cy.get("@KnownAs").clear().type(knownAs);
+      cy.get("@FirstName").type(firstName);
+      cy.get("@LastName").type(lastName);
+      cy.get("@House").type(house);
+      cy.get("@KnownAs").type(knownAs);
 
       cy.postCommand("/anti-heroes", {
         firstName,

@@ -97,6 +97,7 @@ const AntiHeroesPage = () => {
       </>
       {antiHeroes.length === 0 && !loading && (
         <Button
+          data-testid={"refetch-button"}
           className={classes.button}
           variant={"contained"}
           color={"primary"}

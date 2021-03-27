@@ -6,7 +6,7 @@
     "start": "react-scripts start",
     "backend": "json-server --watch db.json --port 5000 --delay=1000",
     "start:fullstack": "concurrently \"npm run backend\" \"npm run start\"",
-    "build": "CI= react-scripts build NODE_ENV=production",
+    "build": "tsc --noEmit && npm run test -- --watchAll=false && CI= react-scripts build NODE_ENV=production",
     "eject": "react-scripts eject",
     "test": "react-scripts test",
     "test:jest": "jest",

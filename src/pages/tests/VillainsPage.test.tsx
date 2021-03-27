@@ -43,7 +43,7 @@ describe("Villains Page", () => {
     expect(counter).toHaveTextContent("2");
   });
 
-  it("should add new villain", async () => {
+  it.skip("should add new villain", async () => {
     const { rerender } = render(<VillainsPage />);
 
     const firstNameTextInput = await screen.findByLabelText("First Name");

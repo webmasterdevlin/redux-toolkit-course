@@ -43,7 +43,7 @@ describe("Villains Page", () => {
     expect(counter).toHaveTextContent("2");
   });
 
-  it.skip("should add new villain", async () => {
+  it("should add new villain", async () => {
     const { rerender } = render(<VillainsPage />);
 
     const firstNameTextInput = await screen.findByLabelText("First Name");
@@ -66,9 +66,7 @@ describe("Villains Page", () => {
     userEvent.type(knownAsTextInput, "React Man");
     expect(knownAsTextInput).toHaveValue("React Man");
 
-    const saveCharacterButton = await screen.findByRole("button", {
-      name: "Save Character",
-    });
+    const saveCharacterButton = await screen.findByTestId("save-character");
     expect(saveCharacterButton).toBeEnabled();
     userEvent.click(saveCharacterButton);
 

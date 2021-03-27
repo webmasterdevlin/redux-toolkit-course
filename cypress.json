@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://loving-lumiere-cd3724.netlify.app",
+  "baseUrl": "http://localhost:3000",
   "video": false,
   "ignoreTestFiles": ["**/examples/*.ts"]
 }

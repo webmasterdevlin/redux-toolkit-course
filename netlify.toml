@@ -2,7 +2,7 @@
 # build settings in this file
 [build]
   command = "npm run build"
-  publish = "public"
+  publish = "build"
 # Cypress plugin
 [[plugins]]
   package = "netlify-plugin-cypress"

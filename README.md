@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d63df0b1-8aaa-4ee6-98ed-127f88b488c3/deploy-status)](https://app.netlify.com/sites/loving-lumiere-cd3724/deploys)
+
 ## Redux Toolkit Course
 
 ```sh

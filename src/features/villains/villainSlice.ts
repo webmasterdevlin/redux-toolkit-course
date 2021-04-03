@@ -45,7 +45,7 @@ export const villainSlice = createSlice({
     });
 
     builder.addCase(getVillainsAction.rejected, (state, action: any) => {
-      console.log(action.payload.message);
+      console.log(action?.error);
       state.loading = false;
     });
 
@@ -60,7 +60,7 @@ export const villainSlice = createSlice({
     });
 
     builder.addCase(postVillainAction.rejected, (state, action: any) => {
-      console.log(action.payload.message);
+      console.log(action?.error);
       state.loading = false;
     });
 
@@ -72,7 +72,7 @@ export const villainSlice = createSlice({
     });
 
     builder.addCase(deleteVillainAction.rejected, (state, action: any) => {
-      console.log(action.payload.message);
+      console.log(action?.error);
       state.villains = state.tempData as VillainModel[];
     });
   },

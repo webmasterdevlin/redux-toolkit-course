@@ -52,7 +52,7 @@ export const antiHeroSlice = createSlice({
     });
 
     builder.addCase(getAntiHeroesAction.rejected, (state, action: any) => {
-      console.log(action.payload.message);
+      console.log(action?.error);
       state.loading = false;
     });
 
@@ -67,7 +67,7 @@ export const antiHeroSlice = createSlice({
     });
 
     builder.addCase(postAntiHeroAction.rejected, (state, action: any) => {
-      console.log(action.payload.message);
+      console.log(action?.error);
       state.loading = false;
     });
 
@@ -81,7 +81,7 @@ export const antiHeroSlice = createSlice({
     });
 
     builder.addCase(deleteAntiHeroAction.rejected, (state, action: any) => {
-      console.log(action.payload.message);
+      console.log(action?.error);
       state.antiHeroes = state.tempData as AntiHeroModel[];
     });
   },

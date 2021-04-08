@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../react-query-course/.idea/react-query-course.iml" filepath="$PROJECT_DIR$/../react-query-course/.idea/react-query-course.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/react-typescript-redux-toolkit.iml" filepath="$PROJECT_DIR$/.idea/react-typescript-redux-toolkit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/redux-toolkit-course.iml" filepath="$PROJECT_DIR$/.idea/redux-toolkit-course.iml" />
     </modules>
   </component>
 </project>

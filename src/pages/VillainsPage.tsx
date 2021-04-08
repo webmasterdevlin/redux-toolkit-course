@@ -47,9 +47,9 @@ const VillainsPage = () => {
             Loading.. Please wait..
           </Typography>
         ) : (
-          villains.map((v) => (
+          villains?.map((v) => (
             <Box
-              key={v.id}
+              key={v?.id}
               mb={2}
               display={"flex"}
               flexDirection={smallScreen ? "column" : "row"}
@@ -57,8 +57,8 @@ const VillainsPage = () => {
               data-testid={"card"}
             >
               <Typography>
-                <span>{`${v.firstName} ${v.lastName} is ${v.knownAs}`}</span>
-                {counter === v.id && <span> - marked</span>}
+                <span>{`${v?.firstName} ${v?.lastName} is ${v?.knownAs}`}</span>
+                {counter === v?.id && <span> - marked</span>}
               </Typography>
               <div>
                 <Button

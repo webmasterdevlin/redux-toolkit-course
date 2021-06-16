@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2022108a-8f4e-4c02-a26f-9cf09ee3a181" name="Default Changelist" comment="updated" />
+    <list default="true" id="2022108a-8f4e-4c02-a26f-9cf09ee3a181" name="Default Changelist" comment="updated">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +41,8 @@
       <option name="presentableId" value="Default" />
       <updated>1617879671286</updated>
       <workItem from="1617879672553" duration="398000" />
+      <workItem from="1623875161319" duration="502000" />
+      <workItem from="1623878036509" duration="32000" />
     </task>
     <task id="LOCAL-00001" summary="updated">
       <created>1617880059232</created>
@@ -62,6 +67,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />

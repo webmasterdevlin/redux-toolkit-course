@@ -1,6 +1,7 @@
 /// <reference types="cypress"/>
 
 import { villainsFixture } from "../../../src/mocks/handlers/villainHandler";
+import { VillainModel } from "../../../src/features/villains/villainTypes";
 
 const url = "/api/villains";
 
@@ -47,22 +48,21 @@ describe("Villains Page", () => {
 
   context("Save Button", () => {
     it("should add a new villain", () => {
-      const firstName = "Victor";
-      const lastName = "Von Doom";
-      const house = "Marvel";
-      const knownAs = "Doctor Doom";
+      cy.fixture<VillainModel>("character").then(
+        ({ firstName, lastName, house, knownAs }) => {
+          cy.get("@FirstName").type(firstName);
+          cy.get("@LastName").type(lastName);
+          cy.get("@House").type(house);
+          cy.get("@KnownAs").type(knownAs);
 
-      cy.get("@FirstName").type(firstName);
-      cy.get("@LastName").type(lastName);
-      cy.get("@House").type(house);
-      cy.get("@KnownAs").type(knownAs);
-
-      cy.postCommand(url, {
-        firstName,
-        lastName,
-        house,
-        knownAs,
-      });
+          cy.postCommand(url, {
+            firstName,
+            lastName,
+            house,
+            knownAs,
+          });
+        }
+      );
 
       cy.get("@Save").click();
 

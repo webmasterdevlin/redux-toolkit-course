@@ -1,6 +1,7 @@
 /// <reference types="cypress"/>
 
 import { antiHeroesFixture } from "../../../src/mocks/handlers/antiHeroHandler";
+import { AntiHeroModel } from "../../../src/features/antiHeroes/antiHeroTypes";
 
 const url = "/api/anti-heroes";
 
@@ -50,22 +51,21 @@ describe("Anti-Heroes Page", () => {
 
   context("Save Button", () => {
     it("should add a new anti hero", () => {
-      const firstName = "Bucky";
-      const lastName = "Barnes";
-      const house = "Marvel";
-      const knownAs = "The Winter Soldier";
+      cy.fixture<AntiHeroModel>("character").then(
+        ({ firstName, lastName, house, knownAs }) => {
+          cy.get("@FirstName").type(firstName);
+          cy.get("@LastName").type(lastName);
+          cy.get("@House").type(house);
+          cy.get("@KnownAs").type(knownAs);
 
-      cy.get("@FirstName").type(firstName);
-      cy.get("@LastName").type(lastName);
-      cy.get("@House").type(house);
-      cy.get("@KnownAs").type(knownAs);
-
-      cy.postCommand(url, {
-        firstName,
-        lastName,
-        house,
-        knownAs,
-      });
+          cy.postCommand(url, {
+            firstName,
+            lastName,
+            house,
+            knownAs,
+          });
+        }
+      );
 
       cy.get("@Save").click();
 

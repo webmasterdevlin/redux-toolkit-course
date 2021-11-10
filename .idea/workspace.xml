@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2022108a-8f4e-4c02-a26f-9cf09ee3a181" name="Default Changelist" comment="updated">
+      <change afterPath="$PROJECT_DIR$/cypress/fixtures/character.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/fixtures/example.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/fixtures/profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/fixtures/users.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/integration/ui/AntiHeroesPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/ui/AntiHeroesPage.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/integration/ui/HeroesPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/ui/HeroesPage.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/integration/ui/VillainsPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/ui/VillainsPage.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mocks/handlers/antiHeroHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mocks/handlers/antiHeroHandler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mocks/handlers/heroHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mocks/handlers/heroHandler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mocks/handlers/villainHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mocks/handlers/villainHandler.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636573359038</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="updated">
+      <created>1636577343666</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1636577343666</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

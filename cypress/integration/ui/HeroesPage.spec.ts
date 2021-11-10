@@ -1,6 +1,7 @@
 /// <reference types="cypress"/>
 
 import { heroesFixture } from "../../../src/mocks/handlers/heroHandler";
+import { HeroModel } from "../../../src/features/heroes/heroTypes";
 
 const url = "/api/heroes";
 
@@ -47,22 +48,21 @@ describe("Heroes Page", () => {
 
   context("Save Button", () => {
     it("should add a new hero", () => {
-      const firstName = "Bruce";
-      const lastName = "Wayne";
-      const house = "DC";
-      const knownAs = "Batman";
+      cy.fixture<HeroModel>("character").then(
+        ({ firstName, lastName, house, knownAs }) => {
+          cy.get("@FirstName").type(firstName);
+          cy.get("@LastName").type(lastName);
+          cy.get("@House").type(house);
+          cy.get("@KnownAs").type(knownAs);
 
-      cy.get("@FirstName").type(firstName);
-      cy.get("@LastName").type(lastName);
-      cy.get("@House").type(house);
-      cy.get("@KnownAs").type(knownAs);
-
-      cy.postCommand(url, {
-        firstName,
-        lastName,
-        house,
-        knownAs,
-      });
+          cy.postCommand(url, {
+            firstName,
+            lastName,
+            house,
+            knownAs,
+          });
+        }
+      );
 
       cy.get("@Save").click();
 

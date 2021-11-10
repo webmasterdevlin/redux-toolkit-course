@@ -2,7 +2,7 @@ import { rest } from "msw";
 
 const baseUrl = "http://localhost/api";
 
-export const HEROES = [
+export const heroesFixture = [
   {
     id: "7ggew732dw",
     firstName: "Barry",
@@ -21,11 +21,11 @@ export const HEROES = [
 
 export const heroHandler = [
   rest.get(`${baseUrl}/heroes`, (req, res, ctx) => {
-    return res(ctx.json(HEROES));
+    return res(ctx.json(heroesFixture));
   }),
 
   rest.delete(`${baseUrl}/heroes/:id`, (req, res, ctx) => {
-    return HEROES.find((h) => h.id === req.params.id)
+    return heroesFixture.find((h) => h.id === req.params.id)
       ? res(ctx.status(200))
       : res(ctx.status(404));
   }),
@@ -35,7 +35,7 @@ export const heroHandler = [
   }),
 
   rest.put(`${baseUrl}/heroes/:id`, (req, res, ctx) => {
-    return HEROES.find((h) => h.id === req.params.id)
+    return heroesFixture.find((h) => h.id === req.params.id)
       ? res(ctx.status(200))
       : res(ctx.status(404));
   }),

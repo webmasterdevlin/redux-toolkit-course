@@ -2,7 +2,7 @@ import { rest } from "msw";
 
 const baseUrl = "http://localhost/api";
 
-export const ANTI_HEROES = [
+export const antiHeroesFixture = [
   {
     id: "4893hfwuig",
     firstName: "Eddy",
@@ -21,11 +21,13 @@ export const ANTI_HEROES = [
 
 export const antiHeroHandler = [
   rest.get(`${baseUrl}/anti-heroes`, (req, res, ctx) => {
-    return res(ctx.json(ANTI_HEROES));
+    return res(ctx.json(antiHeroesFixture));
   }),
 
   rest.delete(`${baseUrl}/anti-heroes/:id`, (req, res, ctx) => {
-    const antiHeroExist = ANTI_HEROES.find((ah) => ah.id === req.params.id);
+    const antiHeroExist = antiHeroesFixture.find(
+      (ah) => ah.id === req.params.id
+    );
     return antiHeroExist ? res(ctx.status(200)) : res(ctx.status(404));
   }),
 
@@ -36,7 +38,7 @@ export const antiHeroHandler = [
   rest.put(`${baseUrl}/anti-heroes/:id`, (req, res, ctx) => {
     console.log("ID:", req.params.id);
 
-    return ANTI_HEROES.find((ah) => ah.id === req.params.id)
+    return antiHeroesFixture.find((ah) => ah.id === req.params.id)
       ? res(ctx.status(200))
       : res(ctx.status(404));
   }),

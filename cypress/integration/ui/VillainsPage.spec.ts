@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-import { VILLAINS } from "../../../src/mocks/handlers/villainHandler";
+import { villainsFixture } from "../../../src/mocks/handlers/villainHandler";
 
 const url = "/api/villains";
 
@@ -8,14 +8,14 @@ describe("Villains Page", () => {
   beforeEach(() => {
     /* Custom commands. Please see support/commands.ts
      * and the global.d.ts for intellisense */
-    cy.getCommand(url, VILLAINS);
+    cy.getCommand(url, villainsFixture);
     cy.deleteCommand(`${url}/*`);
     cy.NavigateByTestIdCommand("nav-villains");
     cy.SetupInputFieldsCommand();
   });
 
   it("should render villains", () => {
-    cy.get("[data-testid=card]").should("have.length", VILLAINS.length);
+    cy.get("[data-testid=card]").should("have.length", villainsFixture.length);
   });
 
   context("Buttons inside a card", () => {
@@ -29,13 +29,19 @@ describe("Villains Page", () => {
     it("should remove a villain from the store after clicking a remove button", () => {
       const index = 1;
       cy.get("[data-testid=remove-button]").eq(index).click();
-      cy.get("[data-testid=card]").should("have.length", VILLAINS.length - 1);
+      cy.get("[data-testid=card]").should(
+        "have.length",
+        villainsFixture.length - 1
+      );
     });
 
     it("should delete a villain from the database after clicking a delete-from-db button", () => {
       const index = 1;
       cy.get("[data-testid=delete-button]").eq(index).click();
-      cy.get("[data-testid=card]").should("have.length", VILLAINS.length - 1);
+      cy.get("[data-testid=card]").should(
+        "have.length",
+        villainsFixture.length - 1
+      );
     });
   });
 
@@ -60,8 +66,11 @@ describe("Villains Page", () => {
 
       cy.get("@Save").click();
 
-      cy.findAllByTestId("card").should("have.length", VILLAINS.length + 1);
-      cy.findByTestId("total-villains").contains(VILLAINS.length + 1);
+      cy.findAllByTestId("card").should(
+        "have.length",
+        villainsFixture.length + 1
+      );
+      cy.findByTestId("total-villains").contains(villainsFixture.length + 1);
     });
   });
 
@@ -70,16 +79,22 @@ describe("Villains Page", () => {
       cy.get("[data-testid=remove-button]").each(($el) => cy.wrap($el).click());
       cy.get("[data-testid=card]").should("not.exist");
       cy.get("[data-testid=refetch-button]").click();
-      cy.get("[data-testid=card]").should("have.length", VILLAINS.length);
-      cy.get("[data-testid=total-villains]").contains(VILLAINS.length);
+      cy.get("[data-testid=card]").should(
+        "have.length",
+        villainsFixture.length
+      );
+      cy.get("[data-testid=total-villains]").contains(villainsFixture.length);
     });
 
     it("should refetch all villains after deleting all villains", () => {
       cy.get("[data-testid=delete-button]").each(($el) => cy.wrap($el).click());
       cy.get("[data-testid=card]").should("not.exist");
       cy.get("[data-testid=refetch-button]").click();
-      cy.get("[data-testid=card]").should("have.length", VILLAINS.length);
-      cy.get("[data-testid=total-villains]").contains(VILLAINS.length);
+      cy.get("[data-testid=card]").should(
+        "have.length",
+        villainsFixture.length
+      );
+      cy.get("[data-testid=total-villains]").contains(villainsFixture.length);
     });
   });
 });

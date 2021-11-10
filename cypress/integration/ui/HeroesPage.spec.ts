@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-import { HEROES } from "../../../src/mocks/handlers/heroHandler";
+import { heroesFixture } from "../../../src/mocks/handlers/heroHandler";
 
 const url = "/api/heroes";
 
@@ -8,14 +8,14 @@ describe("Heroes Page", () => {
   beforeEach(() => {
     /* Custom commands. Please see support/commands.ts
      * and the global.d.ts for intellisense */
-    cy.getCommand(url, HEROES);
+    cy.getCommand(url, heroesFixture);
     cy.deleteCommand(`${url}/*`);
     cy.NavigateByTestIdCommand("nav-heroes");
     cy.SetupInputFieldsCommand();
   });
 
   it("should render heroes", () => {
-    cy.get("[data-testid=card]").should("have.length", HEROES.length);
+    cy.get("[data-testid=card]").should("have.length", heroesFixture.length);
   });
 
   context("Buttons inside a card", () => {
@@ -29,13 +29,19 @@ describe("Heroes Page", () => {
     it("should remove a hero from the store after clicking a remove button", () => {
       const index = 1;
       cy.get("[data-testid=remove-button]").eq(index).click();
-      cy.get("[data-testid=card]").should("have.length", HEROES.length - 1);
+      cy.get("[data-testid=card]").should(
+        "have.length",
+        heroesFixture.length - 1
+      );
     });
 
     it("should delete a hero from the database after clicking a delete-from-db button", () => {
       const index = 1;
       cy.get("[data-testid=delete-button]").eq(index).click();
-      cy.get("[data-testid=card]").should("have.length", HEROES.length - 1);
+      cy.get("[data-testid=card]").should(
+        "have.length",
+        heroesFixture.length - 1
+      );
     });
   });
 
@@ -60,8 +66,11 @@ describe("Heroes Page", () => {
 
       cy.get("@Save").click();
 
-      cy.findAllByTestId("card").should("have.length", HEROES.length + 1);
-      cy.findByTestId("total-heroes").contains(HEROES.length + 1);
+      cy.findAllByTestId("card").should(
+        "have.length",
+        heroesFixture.length + 1
+      );
+      cy.findByTestId("total-heroes").contains(heroesFixture.length + 1);
     });
   });
 
@@ -70,16 +79,16 @@ describe("Heroes Page", () => {
       cy.get("[data-testid=remove-button]").each(($el) => cy.wrap($el).click());
       cy.get("[data-testid=card]").should("not.exist");
       cy.get("[data-testid=refetch-button]").click();
-      cy.get("[data-testid=card]").should("have.length", HEROES.length);
-      cy.get("[data-testid=total-heroes]").contains(HEROES.length);
+      cy.get("[data-testid=card]").should("have.length", heroesFixture.length);
+      cy.get("[data-testid=total-heroes]").contains(heroesFixture.length);
     });
 
     it("should refetch all heroes after deleting all heroes", () => {
       cy.get("[data-testid=delete-button]").each(($el) => cy.wrap($el).click());
       cy.get("[data-testid=card]").should("not.exist");
       cy.get("[data-testid=refetch-button]").click();
-      cy.get("[data-testid=card]").should("have.length", HEROES.length);
-      cy.get("[data-testid=total-heroes]").contains(HEROES.length);
+      cy.get("[data-testid=card]").should("have.length", heroesFixture.length);
+      cy.get("[data-testid=total-heroes]").contains(heroesFixture.length);
     });
   });
 });

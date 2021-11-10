@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-import { ANTI_HEROES } from "../../../src/mocks/handlers/antiHeroHandler";
+import { antiHeroesFixture } from "../../../src/mocks/handlers/antiHeroHandler";
 
 const url = "/api/anti-heroes";
 
@@ -8,14 +8,17 @@ describe("Anti-Heroes Page", () => {
   beforeEach(() => {
     /* Custom commands. Please see support/commands.ts
      * and the global.d.ts for intellisense */
-    cy.getCommand(url, ANTI_HEROES);
+    cy.getCommand(url, antiHeroesFixture);
     cy.deleteCommand(`${url}/*`);
     cy.NavigateByTestIdCommand("nav-anti-heroes");
     cy.SetupInputFieldsCommand();
   });
 
   it("should render anti heroes", () => {
-    cy.get("[data-testid=card]").should("have.length", ANTI_HEROES.length);
+    cy.get("[data-testid=card]").should(
+      "have.length",
+      antiHeroesFixture.length
+    );
   });
 
   context("Buttons inside a card", () => {
@@ -31,7 +34,7 @@ describe("Anti-Heroes Page", () => {
       cy.get("[data-testid=remove-button]").eq(index).click();
       cy.get("[data-testid=card]").should(
         "have.length",
-        ANTI_HEROES.length - 1
+        antiHeroesFixture.length - 1
       );
     });
 
@@ -40,7 +43,7 @@ describe("Anti-Heroes Page", () => {
       cy.get("[data-testid=delete-button]").eq(index).click();
       cy.get("[data-testid=card]").should(
         "have.length",
-        ANTI_HEROES.length - 1
+        antiHeroesFixture.length - 1
       );
     });
   });
@@ -66,8 +69,13 @@ describe("Anti-Heroes Page", () => {
 
       cy.get("@Save").click();
 
-      cy.findAllByTestId("card").should("have.length", ANTI_HEROES.length + 1);
-      cy.findByTestId("total-anti-heroes").contains(ANTI_HEROES.length + 1);
+      cy.findAllByTestId("card").should(
+        "have.length",
+        antiHeroesFixture.length + 1
+      );
+      cy.findByTestId("total-anti-heroes").contains(
+        antiHeroesFixture.length + 1
+      );
     });
   });
 
@@ -76,16 +84,26 @@ describe("Anti-Heroes Page", () => {
       cy.get("[data-testid=remove-button]").each(($el) => cy.wrap($el).click());
       cy.get("[data-testid=card]").should("not.exist");
       cy.get("[data-testid=refetch-button]").click();
-      cy.get("[data-testid=card]").should("have.length", ANTI_HEROES.length);
-      cy.get("[data-testid=total-anti-heroes]").contains(ANTI_HEROES.length);
+      cy.get("[data-testid=card]").should(
+        "have.length",
+        antiHeroesFixture.length
+      );
+      cy.get("[data-testid=total-anti-heroes]").contains(
+        antiHeroesFixture.length
+      );
     });
 
     it("should refetch all anti heroes after deleting all anti heroes", () => {
       cy.get("[data-testid=delete-button]").each(($el) => cy.wrap($el).click());
       cy.get("[data-testid=card]").should("not.exist");
       cy.get("[data-testid=refetch-button]").click();
-      cy.get("[data-testid=card]").should("have.length", ANTI_HEROES.length);
-      cy.get("[data-testid=total-anti-heroes]").contains(ANTI_HEROES.length);
+      cy.get("[data-testid=card]").should(
+        "have.length",
+        antiHeroesFixture.length
+      );
+      cy.get("[data-testid=total-anti-heroes]").contains(
+        antiHeroesFixture.length
+      );
     });
   });
 });

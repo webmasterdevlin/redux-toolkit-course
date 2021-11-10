@@ -9,6 +9,9 @@
       <change beforePath="$PROJECT_DIR$/cypress/integration/ui/AntiHeroesPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/ui/AntiHeroesPage.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/integration/ui/HeroesPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/ui/HeroesPage.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/integration/ui/VillainsPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/ui/VillainsPage.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mocks/handlers/antiHeroHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mocks/handlers/antiHeroHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mocks/handlers/heroHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mocks/handlers/heroHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mocks/handlers/villainHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mocks/handlers/villainHandler.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

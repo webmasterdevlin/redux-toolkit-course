@@ -2,38 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2022108a-8f4e-4c02-a26f-9cf09ee3a181" name="Default Changelist" comment="updated">
-      <change afterPath="$PROJECT_DIR$/src/json-server/routes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/actions.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/aliasing.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/assertions.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/connectors.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/cookies.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/cypress_api.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/files.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/local_storage.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/location.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/misc.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/navigation.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/network_requests.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/querying.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/spies_stubs_clocks.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/traversal.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/utilities.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/viewport.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/waiting.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/window.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/json-server/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/axios/api-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/axios/api-config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tests/NavigationBar.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tests/NavigationBar.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tests/UpdateUiLabel.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tests/UpdateUiLabel.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mocks/handlers/antiHeroHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mocks/handlers/antiHeroHandler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mocks/handlers/heroHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mocks/handlers/heroHandler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mocks/handlers/villainHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mocks/handlers/villainHandler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/tests/HomePage.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tests/HomePage.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netlify.toml" beforeDir="false" afterPath="$PROJECT_DIR$/netlify.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +56,8 @@
       <workItem from="1623878036509" duration="32000" />
       <workItem from="1636305040940" duration="1306000" />
       <workItem from="1636307974252" duration="9417000" />
-      <workItem from="1636388101453" duration="5293000" />
+      <workItem from="1636388101453" duration="6239000" />
+      <workItem from="1636554108271" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="updated">
       <created>1617880059232</created>
@@ -95,7 +66,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617880059232</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="updated">
+      <created>1636399659441</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1636399659441</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

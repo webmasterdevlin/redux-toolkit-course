@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2022108a-8f4e-4c02-a26f-9cf09ee3a181" name="Default Changelist" comment="updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/configureStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/configureStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/ui/AntiHeroesPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/ui/AntiHeroesPage.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/ui/HeroesPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/ui/HeroesPage.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/ui/VillainsPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/ui/VillainsPage.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/json-server/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/json-server/db.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +69,7 @@
       <workItem from="1636307974252" duration="9417000" />
       <workItem from="1636388101453" duration="6239000" />
       <workItem from="1636554108271" duration="113000" />
-      <workItem from="1636554371387" duration="4165000" />
+      <workItem from="1636554371387" duration="7444000" />
     </task>
     <task id="LOCAL-00001" summary="updated">
       <created>1617880059232</created>
@@ -105,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636556163360</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="updated">
+      <created>1636566464800</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1636566464800</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -6,8 +6,8 @@ describe("Anti-Heroes Page", () => {
   beforeEach(() => {
     /* Custom commands. Please see support/commands.ts
      * and the global.d.ts for intellisense */
-    cy.getCommand("/anti-heroes", ANTI_HEROES);
-    cy.deleteCommand("/anti-heroes/*");
+    cy.getCommand("/api/anti-heroes", ANTI_HEROES);
+    cy.deleteCommand("/api/anti-heroes/*");
     cy.NavigateByTestIdCommand("nav-anti-heroes");
     cy.SetupInputFieldsCommand();
   });

@@ -2,12 +2,14 @@
 
 import { ANTI_HEROES } from "../../../src/mocks/handlers/antiHeroHandler";
 
+const url = "/api/anti-heroes";
+
 describe("Anti-Heroes Page", () => {
   beforeEach(() => {
     /* Custom commands. Please see support/commands.ts
      * and the global.d.ts for intellisense */
-    cy.getCommand("/api/anti-heroes", ANTI_HEROES);
-    cy.deleteCommand("/api/anti-heroes/*");
+    cy.getCommand(url, ANTI_HEROES);
+    cy.deleteCommand(`${url}/*`);
     cy.NavigateByTestIdCommand("nav-anti-heroes");
     cy.SetupInputFieldsCommand();
   });
@@ -55,7 +57,7 @@ describe("Anti-Heroes Page", () => {
       cy.get("@House").type(house);
       cy.get("@KnownAs").type(knownAs);
 
-      cy.postCommand("/anti-heroes", {
+      cy.postCommand(url, {
         firstName,
         lastName,
         house,

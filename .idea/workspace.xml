@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/cypress/integration/ui/AntiHeroesPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/ui/AntiHeroesPage.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/integration/ui/HeroesPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/ui/HeroesPage.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cypress/integration/ui/VillainsPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/ui/VillainsPage.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json-server/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/json-server/db.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +68,7 @@
       <workItem from="1636307974252" duration="9417000" />
       <workItem from="1636388101453" duration="6239000" />
       <workItem from="1636554108271" duration="113000" />
-      <workItem from="1636554371387" duration="7444000" />
+      <workItem from="1636554371387" duration="8319000" />
     </task>
     <task id="LOCAL-00001" summary="updated">
       <created>1617880059232</created>
@@ -113,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636566464800</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="updated">
+      <created>1636573359038</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1636573359038</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

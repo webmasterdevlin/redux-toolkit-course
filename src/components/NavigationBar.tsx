@@ -1,15 +1,16 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "store/reducers";
 import { AppBar, Box, Button, createStyles, Toolbar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
 import TotalOfCharacters from "./TotalOfCharacters";
+import { pathNames } from "../LazyRoutes";
 
 const NavigationBar = () => {
   const store = useSelector((state: RootState) => state);
-  const history = useHistory();
+  const navigate = useNavigate();
   const classes = useStyles();
   return (
     <AppBar position="static" style={{ marginBottom: "2rem" }}>
@@ -17,7 +18,7 @@ const NavigationBar = () => {
         <Box>
           <Button
             className={classes.button}
-            onClick={() => history.push("/")}
+            onClick={() => navigate(pathNames.home)}
             color="inherit"
           >
             Home
@@ -26,7 +27,7 @@ const NavigationBar = () => {
         <Box>
           <Button
             className={classes.button}
-            onClick={() => history.push("/anti-heroes")}
+            onClick={() => navigate(pathNames.antiHeroes)}
             color="inherit"
             data-testid="nav-anti-heroes"
           >
@@ -40,7 +41,7 @@ const NavigationBar = () => {
         <Box>
           <Button
             className={classes.button}
-            onClick={() => history.push("/heroes")}
+            onClick={() => navigate(pathNames.heroes)}
             color="inherit"
             data-testid="nav-heroes"
           >
@@ -54,7 +55,7 @@ const NavigationBar = () => {
         <Box>
           <Button
             className={classes.button}
-            onClick={() => history.push("/villains")}
+            onClick={() => navigate(pathNames.villains)}
             color="inherit"
             data-testid="nav-villains"
           >

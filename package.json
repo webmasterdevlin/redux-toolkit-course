@@ -8,6 +8,7 @@
     "backend": "json-server --watch src/json-server/db.json --port 5000 --delay=1000 --routes src/json-server/routes.json",
     "start:fullstack": "concurrently \"npm run backend\" \"npm run start\"",
     "build": "tsc --noEmit && npm run test -- --watchAll=false && CI= react-scripts build NODE_ENV=production",
+    "test": "react-scripts test",
     "test:cypress": "npx cypress run",
     "test:cypress-open": "npx cypress open --browser edge",
     "test:cypress-headed": "npx cypress --headed"

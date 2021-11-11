@@ -8,7 +8,6 @@
     "backend": "json-server --watch src/json-server/db.json --port 5000 --delay=1000 --routes src/json-server/routes.json",
     "start:fullstack": "concurrently \"npm run backend\" \"npm run start\"",
     "build": "tsc --noEmit && npm run test -- --watchAll=false && CI= react-scripts build NODE_ENV=production",
-    "test": "react-scripts test",
     "test:cypress": "npx cypress run",
     "test:cypress-open": "npx cypress open --browser edge",
     "test:cypress-headed": "npx cypress --headed"
@@ -39,6 +38,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.7",
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.11",
     "@types/react-redux": "^7.1.20",

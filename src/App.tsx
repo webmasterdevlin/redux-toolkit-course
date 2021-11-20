@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { configureAppStore } from "./store/configureStore";
 import NavigationBar from "components/NavigationBar";
 
-import EagerRoutes from "./EagerRoutes";
 import LazyRoutes from "./LazyRoutes";
 import { Container, CssBaseline } from "@mui/material";
 

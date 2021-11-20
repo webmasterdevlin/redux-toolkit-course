@@ -4,10 +4,9 @@ import { Provider } from "react-redux";
 import { configureAppStore } from "./store/configureStore";
 import NavigationBar from "components/NavigationBar";
 
-import { Container } from "@material-ui/core";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import EagerRoutes from "./EagerRoutes";
 import LazyRoutes from "./LazyRoutes";
+import { Container, CssBaseline } from "@mui/material";
 
 export const store = configureAppStore();
 
@@ -16,12 +15,10 @@ const App = () => {
     <Provider store={store}>
       <CssBaseline>
         <BrowserRouter>
-          <>
-            <NavigationBar />
-            <Container>
-              <LazyRoutes />
-            </Container>
-          </>
+          <NavigationBar />
+          <Container>
+            <LazyRoutes />
+          </Container>
         </BrowserRouter>
       </CssBaseline>
     </Provider>

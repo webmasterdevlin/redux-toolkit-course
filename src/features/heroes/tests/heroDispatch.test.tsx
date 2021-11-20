@@ -13,10 +13,10 @@ describe("HeroesPage dispatch", () => {
   let state: HeroStateType;
   let newHero = {
     id: uuidv4(),
-    firstName: "Devlin",
-    lastName: "Duldulao",
-    house: "Devs",
-    knownAs: "React trainer",
+    firstName: "Geralt",
+    lastName: "Witcher",
+    house: "The Withcers",
+    knownAs: "Geralt of Rivia",
   };
 
   /* Select the store.getState().hero again

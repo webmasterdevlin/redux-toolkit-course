@@ -1,5 +1,5 @@
+import { Box } from "@mui/material";
 import React from "react";
-import { Box } from "@material-ui/core";
 
 const UpdateUiLabel = () => (
   <Box

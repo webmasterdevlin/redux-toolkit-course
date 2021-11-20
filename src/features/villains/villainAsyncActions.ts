@@ -6,7 +6,7 @@ import { deleteAxios, getAxios, postAxios } from "axios/generic-api-calls";
 export const getVillainsAction = createAsyncThunk(
   VillainActionTypes.FETCH_VILLAINS,
   async () => {
-    const { data } = await getAxios<VillainModel>(EndPoints.villains);
+    const { data } = await getAxios<VillainModel[]>(EndPoints.villains);
 
     return data;
   }

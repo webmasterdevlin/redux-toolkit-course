@@ -10,15 +10,9 @@ import {
   postHeroAction,
 } from "features/heroes/heroAsyncActions";
 import { softDeleteHeroAction } from "features/heroes/heroSlice";
-import {
-  Box,
-  Button,
-  createStyles,
-  Typography,
-  useMediaQuery,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
 import FormSubmission from "components/FormSubmission";
+import { Box, Button, Typography, useMediaQuery } from "@mui/material";
+import { createStyles, makeStyles } from "@mui/styles";
 
 const HeroesPage = () => {
   const dispatch = useDispatch();
@@ -63,7 +57,6 @@ const HeroesPage = () => {
                   className={classes.button}
                   onClick={() => setCounter(h.id)}
                   variant={"contained"}
-                  color={"default"}
                   data-testid={"mark-button"}
                 >
                   Mark

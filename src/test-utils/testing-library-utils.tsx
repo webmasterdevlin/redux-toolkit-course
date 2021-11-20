@@ -2,20 +2,17 @@ import React from "react";
 import { render as rtlRender } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { Container } from "@material-ui/core";
 import { configureAppStore } from "store/configureStore";
 import NavigationBar from "components/NavigationBar";
+import { Container, CssBaseline } from "@mui/material";
 
 const render = (ui, { store = configureAppStore(), ...renderOptions } = {}) => {
   const Wrapper = ({ children }) => (
     <Provider store={store}>
       <CssBaseline>
         <BrowserRouter>
-          <>
-            <NavigationBar />
-            <Container>{children}</Container>
-          </>
+          <NavigationBar />
+          <Container>{children}</Container>
         </BrowserRouter>
       </CssBaseline>
     </Provider>

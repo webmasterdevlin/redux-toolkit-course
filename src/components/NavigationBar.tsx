@@ -2,11 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "store/reducers";
-import { AppBar, Box, Button, createStyles, Toolbar } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
 
 import TotalOfCharacters from "./TotalOfCharacters";
 import { pathNames } from "../LazyRoutes";
+import { AppBar, Box, Button, Toolbar } from "@mui/material";
+import { createStyles, makeStyles } from "@mui/styles";
 
 const NavigationBar = () => {
   const store = useSelector((state: RootState) => state);

@@ -10,15 +10,9 @@ import {
 import { softDeleteVillainAction } from "features/villains/villainSlice";
 import { RootState } from "store/reducers";
 
-import {
-  Box,
-  Button,
-  createStyles,
-  Typography,
-  useMediaQuery,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
 import FormSubmission from "components/FormSubmission";
+import { Box, Button, Typography, useMediaQuery } from "@mui/material";
+import { createStyles, makeStyles } from "@mui/styles";
 
 const VillainsPage = () => {
   const dispatch = useDispatch();
@@ -26,8 +20,8 @@ const VillainsPage = () => {
     (state: RootState) => state.villain
   );
 
-  const classes = useStyles();
   const smallScreen = useMediaQuery("(max-width:600px)");
+  const classes = useStyles();
 
   /*local state*/
   const [counter, setCounter] = useState("0");
@@ -65,7 +59,6 @@ const VillainsPage = () => {
                   className={classes.button}
                   onClick={() => setCounter(v.id)}
                   variant={"contained"}
-                  color={"default"}
                   data-testid={"mark-button"}
                 >
                   Mark

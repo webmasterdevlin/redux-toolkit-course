@@ -1,4 +1,4 @@
-import React, { ElementType, lazy, Suspense } from "react";
+import { ElementType, lazy, Suspense } from "react";
 import { RouteObject, useRoutes } from "react-router";
 
 /*

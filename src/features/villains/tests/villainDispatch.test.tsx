@@ -30,18 +30,18 @@ describe("VillainsPage dispatch", () => {
   it("should dispatch deleteVillainByIdAction", async () => {
     await store.dispatch(deleteVillainAction(state.villains[0].id));
     state = store.getState().villain;
-    expect(state.villains).toHaveLength(2);
+    expect(state.villains).toHaveLength(1);
   });
 
   it("should dispatch removeVillainByIdTemporaryAction", () => {
     store.dispatch(softDeleteVillainAction(state.villains[0].id));
     state = store.getState().villain;
-    expect(state.villains).toHaveLength(1);
+    expect(state.villains).toHaveLength(0);
   });
 
   it("should dispatch postVillainAction", async () => {
     await store.dispatch(postVillainAction(newVillain));
     state = store.getState().villain;
-    expect(state.villains).toHaveLength(3);
+    expect(state.villains).toHaveLength(1);
   });
 });

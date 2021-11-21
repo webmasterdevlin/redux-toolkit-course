@@ -30,18 +30,18 @@ describe("AntiHeroesPage dispatch", () => {
   it("should dispatch deleteAntiHeroByIdAction", async () => {
     await store.dispatch(deleteAntiHeroAction(state.antiHeroes[0].id));
     state = store.getState().antiHero;
-    expect(state.antiHeroes).toHaveLength(2);
+    expect(state.antiHeroes).toHaveLength(1);
   });
 
   it("should dispatch removeAntiHeroByIdTemporaryAction", () => {
     store.dispatch(softDeleteAntiHeroAction(state.antiHeroes[0].id));
     state = store.getState().antiHero;
-    expect(state.antiHeroes).toHaveLength(1);
+    expect(state.antiHeroes).toHaveLength(0);
   });
 
   it("should dispatch postAntiHeroAction", async () => {
     await store.dispatch(postAntiHeroAction(newAntiHero));
     state = store.getState().antiHero;
-    expect(state.antiHeroes).toHaveLength(3);
+    expect(state.antiHeroes).toHaveLength(1);
   });
 });

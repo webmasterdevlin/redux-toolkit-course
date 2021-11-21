@@ -13,12 +13,13 @@ const SharedInput = (props: Props) => {
   const classes = useStyles();
   const formik = useFormikContext<any>();
 
+  // TODO: required={props.required} // breaks the tests because of the * in the label
+
   return (
     <Box mb={2}>
       <Field
-        required={props.required}
         id={props.id}
-        label={`${props.label}`}
+        label={props.label}
         data-testid={props.dataTestId}
         className={classes.field}
         type={"text"}

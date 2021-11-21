@@ -11,20 +11,27 @@ const SharedForm = () => {
         <Form style={{ padding: "1rem" }}>
           <div>
             <SharedInput
+              required={true}
               id={"firstName"}
-              dataTestId={"firstName"}
               label={"First Name"}
+              dataTestId={"firstName"}
             />
             <SharedInput
+              required={true}
               id={"lastName"}
-              dataTestId={"lastName"}
               label={"Last Name"}
+              dataTestId={"lastName"}
             />
-            <SharedInput id={"house"} dataTestId={"house"} label={"House"} />
+            <SharedInput
+              required={true}
+              id={"house"}
+              label={"House"}
+              dataTestId={"house"}
+            />
             <SharedInput
               id={"knownAs"}
-              dataTestId={"knownAs"}
               label={"Known As"}
+              dataTestId={"knownAs"}
             />
           </div>
 
@@ -38,6 +45,9 @@ const SharedForm = () => {
             Save Character
           </Button>
         </Form>
+        {process.env.NODE_ENV !== "production" && (
+          <pre>{JSON.stringify(formik, null, 2)}</pre>
+        )}
       </Paper>
     </Box>
   );

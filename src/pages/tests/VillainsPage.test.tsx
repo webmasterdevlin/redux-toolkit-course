@@ -25,6 +25,34 @@ describe("Villains Page", () => {
     expect(state.villains).toHaveLength(2);
   });
 
+  it("should mark a villain", async () => {
+    render(<VillainsPage />);
+
+    const buttons = await screen.findAllByTestId("mark-button");
+    expect(buttons).toHaveLength(2);
+    userEvent.click(buttons[0]);
+    const cards = await screen.findAllByTestId("card");
+    expect(cards[0]).toHaveTextContent("marked");
+  });
+
+  it("should remove a villain from the store", async () => {
+    render(<VillainsPage />);
+
+    const buttons = await screen.findAllByTestId("remove-button");
+    userEvent.click(buttons[0]);
+    expect(screen.getByTestId("card")).toBeInTheDocument();
+    expect(screen.getByTestId("total-villains")).toHaveTextContent("1");
+  });
+
+  it("should delete a villain from the database", async () => {
+    render(<VillainsPage />);
+
+    const buttons = await screen.findAllByTestId("delete-button");
+    userEvent.click(buttons[0]);
+    expect(screen.getByTestId("card")).toBeInTheDocument();
+    expect(screen.getByTestId("total-villains")).toHaveTextContent("1");
+  });
+
   it("should save character button be in disabled", () => {
     render(<VillainsPage />);
 
@@ -32,15 +60,6 @@ describe("Villains Page", () => {
       name: "Save Character",
     });
     expect(saveCharacterButton).toBeDisabled();
-  });
-
-  it("should show exact number of villains in main content and navigation bar", async () => {
-    render(<VillainsPage />);
-
-    const cards = await screen.findAllByTestId("card");
-    expect(cards).toHaveLength(2);
-    const counter = screen.getByTestId("total-villains");
-    expect(counter).toHaveTextContent("2");
   });
 
   it("should add new villain", async () => {
@@ -80,31 +99,12 @@ describe("Villains Page", () => {
     });
   });
 
-  it("should mark a villain", async () => {
+  it("should show exact number of villains in main content and navigation bar", async () => {
     render(<VillainsPage />);
 
-    const buttons = await screen.findAllByTestId("mark-button");
-    expect(buttons).toHaveLength(2);
-    userEvent.click(buttons[0]);
     const cards = await screen.findAllByTestId("card");
-    expect(cards[0]).toHaveTextContent("marked");
-  });
-
-  it("should remove a villain from the store", async () => {
-    render(<VillainsPage />);
-
-    const buttons = await screen.findAllByTestId("remove-button");
-    userEvent.click(buttons[0]);
-    expect(screen.getByTestId("card")).toBeInTheDocument();
-    expect(screen.getByTestId("total-villains")).toHaveTextContent("1");
-  });
-
-  it("should delete a villain from the database", async () => {
-    render(<VillainsPage />);
-
-    const buttons = await screen.findAllByTestId("delete-button");
-    userEvent.click(buttons[0]);
-    expect(screen.getByTestId("card")).toBeInTheDocument();
-    expect(screen.getByTestId("total-villains")).toHaveTextContent("1");
+    expect(cards).toHaveLength(2);
+    const counter = screen.getByTestId("total-villains");
+    expect(counter).toHaveTextContent("2");
   });
 });

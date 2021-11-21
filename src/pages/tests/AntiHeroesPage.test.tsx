@@ -25,20 +25,39 @@ describe("Anti Heroes Page", () => {
     expect(state.antiHeroes).toHaveLength(2);
   });
 
+  it("should mark an anti hero", async () => {
+    render(<AntiHeroesPage />);
+
+    const buttons = await screen.findAllByTestId("mark-button");
+    expect(buttons).toHaveLength(2);
+    userEvent.click(buttons[0]);
+    const cards = await screen.findAllByTestId("card");
+    expect(cards[0]).toHaveTextContent("marked");
+  });
+
+  it("should remove an anti hero from the store", async () => {
+    render(<AntiHeroesPage />);
+
+    const buttons = await screen.findAllByTestId("remove-button");
+    userEvent.click(buttons[0]);
+    expect(screen.getByTestId("card")).toBeInTheDocument();
+    expect(screen.getByTestId("total-anti-heroes")).toHaveTextContent("1");
+  });
+
+  it("should delete a hero from the database", async () => {
+    render(<AntiHeroesPage />);
+
+    const buttons = await screen.findAllByTestId("delete-button");
+    userEvent.click(buttons[0]);
+    expect(screen.getByTestId("card")).toBeInTheDocument();
+    expect(screen.getByTestId("total-anti-heroes")).toHaveTextContent("1");
+  });
+
   it("should save character button be in disabled", () => {
     render(<AntiHeroesPage />);
 
     const saveCharacterButton = screen.getByTestId("save-character");
     expect(saveCharacterButton).toBeDisabled();
-  });
-
-  it("should show exact number of anti heroes in main content and navigation bar", async () => {
-    render(<AntiHeroesPage />);
-
-    const cards = await screen.findAllByTestId("card");
-    expect(cards).toHaveLength(2);
-    const counter = screen.getByTestId("total-anti-heroes");
-    expect(counter).toHaveTextContent("2");
   });
 
   it("should add new anti hero", async () => {
@@ -78,31 +97,12 @@ describe("Anti Heroes Page", () => {
     });
   });
 
-  it("should mark an anti hero", async () => {
+  it("should show exact number of anti heroes in main content and navigation bar", async () => {
     render(<AntiHeroesPage />);
 
-    const buttons = await screen.findAllByTestId("mark-button");
-    expect(buttons).toHaveLength(2);
-    userEvent.click(buttons[0]);
     const cards = await screen.findAllByTestId("card");
-    expect(cards[0]).toHaveTextContent("marked");
-  });
-
-  it("should remove an anti hero from the store", async () => {
-    render(<AntiHeroesPage />);
-
-    const buttons = await screen.findAllByTestId("remove-button");
-    userEvent.click(buttons[0]);
-    expect(screen.getByTestId("card")).toBeInTheDocument();
-    expect(screen.getByTestId("total-anti-heroes")).toHaveTextContent("1");
-  });
-
-  it("should delete a hero from the database", async () => {
-    render(<AntiHeroesPage />);
-
-    const buttons = await screen.findAllByTestId("delete-button");
-    userEvent.click(buttons[0]);
-    expect(screen.getByTestId("card")).toBeInTheDocument();
-    expect(screen.getByTestId("total-anti-heroes")).toHaveTextContent("1");
+    expect(cards).toHaveLength(2);
+    const counter = screen.getByTestId("total-anti-heroes");
+    expect(counter).toHaveTextContent("2");
   });
 });

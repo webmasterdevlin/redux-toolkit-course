@@ -27,12 +27,6 @@ describe("AntiHeroesPage dispatch", () => {
     expect(state.antiHeroes).toHaveLength(2);
   });
 
-  it("should dispatch postAntiHeroAction", async () => {
-    await store.dispatch(postAntiHeroAction(newAntiHero));
-    state = store.getState().antiHero;
-    expect(state.antiHeroes).toHaveLength(3);
-  });
-
   it("should dispatch deleteAntiHeroByIdAction", async () => {
     await store.dispatch(deleteAntiHeroAction(state.antiHeroes[0].id));
     state = store.getState().antiHero;
@@ -43,5 +37,11 @@ describe("AntiHeroesPage dispatch", () => {
     store.dispatch(softDeleteAntiHeroAction(state.antiHeroes[0].id));
     state = store.getState().antiHero;
     expect(state.antiHeroes).toHaveLength(1);
+  });
+
+  it("should dispatch postAntiHeroAction", async () => {
+    await store.dispatch(postAntiHeroAction(newAntiHero));
+    state = store.getState().antiHero;
+    expect(state.antiHeroes).toHaveLength(3);
   });
 });

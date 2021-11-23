@@ -1,5 +1,8 @@
 {
   "baseUrl": "http://localhost:3000",
   "video": false,
-  "ignoreTestFiles": ["**/examples/*.ts"]
+  "ignoreTestFiles": [
+    "**/examples/*.ts"
+  ],
+  "projectId": "k3cf9v"
 }

@@ -3,7 +3,6 @@ module.exports = {
   extends: [
     "react-app",
     "react-app/jest",
-    "plugin:testing-library/recommended",
     "plugin:testing-library/react",
     "plugin:jest-dom/recommended",
   ],
